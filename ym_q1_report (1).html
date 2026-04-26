@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<title>YM Finance · FY26 Q1 Quarterly Report</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
+
+  :root {
+    --green-deep: #1C4532;
+    --green-mid: #2D6A4F;
+    --green-light: #52B788;
+    --green-pale: #D8F3DC;
+    --gold: #C9A227;
+    --gold-light: #F9EDCC;
+    --gold-dark: #8B6914;
+    --cream: #FAFAF7;
+    --ink: #1A1A18;
+    --ink-mid: #4A4A46;
+    --ink-light: #8A8A84;
+    --rule: #E0DDD4;
+    --red: #C0392B;
+    --red-pale: #FDEDEB;
+    --teal: #1D6A6A;
+    --teal-pale: #E0F2F1;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #E8E6E0;
+    color: var(--ink);
+    font-size: 10pt;
+    line-height: 1.6;
+  }
+
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    background: white;
+    margin: 0.4in auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.15);
+  }
+
+  /* ── COVER PAGE ── */
+  .cover {
+    background: var(--green-deep);
+    min-height: 11in;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+  .cover-top {
+    padding: 0.55in 0.65in 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .cover-logo {
+    width: 46px; height: 46px; border-radius: 50%;
+    background: white;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px; color: var(--green-deep);
+  }
+
+  .cover-logo img {
+  width: 150px; /* adjust as needed */
+  height: auto;
+}
+
+  .cover-dept {
+    font-size: 9pt; color: rgba(255,255,255,0.5);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    text-align: right; line-height: 1.8;
+  }
+  .cover-hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.55in 0.65in;
+  }
+  .cover-label {
+    font-size: 9pt; color: var(--gold);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 18px;
+  }
+  .cover-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52pt;
+    color: white;
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+  .cover-title em {
+    color: var(--gold);
+    font-style: italic;
+  }
+  .cover-sub {
+    font-size: 13pt;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+  .cover-divider {
+    width: 60px; height: 2px;
+    background: var(--gold);
+    margin-bottom: 32px;
+  }
+  .cover-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 5in;
+  }
+  .cover-meta-item label {
+    display: block;
+    font-size: 7.5pt;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+  .cover-meta-item span {
+    font-size: 11pt;
+    color: white;
+    font-weight: 500;
+  }
+  .cover-pattern {
+    width: 100%; height: 2.2in;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-pattern svg { width: 100%; height: 100%; }
+
+  /* ── INNER PAGE LAYOUT ── */
+  .inner {
+    padding: 0.6in 0.65in;
+  }
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1.5px solid var(--green-deep);
+    margin-bottom: 0.4in;
+  }
+  .page-header-left {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .page-header-logo {
+  width: 46px; 
+  height: 46x; 
+  border-radius: 50%;
+  overflow: hidden;
+  background: none;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+.page-header-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+  .page-header-title {
+    font-size: 8pt;
+    color: var(--ink-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .page-header-right {
+    font-size: 8pt; color: var(--ink-light);
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-size: 7.5pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--green-mid);
+    margin-bottom: 8px;
+  }
+  .section-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22pt;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  .section-heading em { color: var(--green-mid); font-style: italic; }
+
+  /* ── STAT CARDS ── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .stat-card {
+    border-radius: 10px;
+    padding: 14px 14px 16px;
+    border: 1px solid var(--rule);
+  }
+  .stat-card.green { background: var(--green-pale); border-color: #B7DFBF; }
+  .stat-card.gold { background: var(--gold-light); border-color: #EBCF7A; }
+  .stat-card.teal { background: var(--teal-pale); border-color: #A0D4D4; }
+  .stat-card.cream { background: var(--cream); }
+  .stat-card label {
+    display: block;
+    font-size: 7.5pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .stat-card.green label { color: var(--green-mid); }
+  .stat-card.gold label { color: var(--gold-dark); }
+  .stat-card.teal label { color: var(--teal); }
+  .stat-card.cream label { color: var(--ink-mid); }
+  .stat-card .num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26pt;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-card.green .num { color: var(--green-deep); }
+  .stat-card.gold .num { color: var(--gold-dark); }
+  .stat-card.teal .num { color: var(--teal); }
+  .stat-card.cream .num { color: var(--ink); }
+  .stat-card .sub {
+    font-size: 8pt;
+  }
+  .stat-card.green .sub { color: var(--green-mid); }
+  .stat-card.gold .sub { color: var(--gold-dark); }
+  .stat-card.teal .sub { color: var(--teal); }
+  .stat-card.cream .sub { color: var(--ink-light); }
+
+  /* ── POLICY CARDS ── */
+  .policy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .policy-card {
+    border-radius: 10px;
+    padding: 16px 18px;
+    border-left: 4px solid;
+  }
+  .policy-card.new {
+    background: #EFF8F2;
+    border-left-color: var(--green-mid);
+  }
+  .policy-card.reminder {
+    background: var(--gold-light);
+    border-left-color: var(--gold);
+  }
+  .policy-card.alert {
+    background: var(--red-pale);
+    border-left-color: var(--red);
+  }
+  .policy-card h4 {
+    font-size: 9.5pt;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .policy-card.new h4 { color: var(--green-deep); }
+  .policy-card.reminder h4 { color: var(--gold-dark); }
+  .policy-card.alert h4 { color: var(--red); }
+  .policy-card p {
+    font-size: 8.5pt;
+    line-height: 1.55;
+  }
+  .policy-card.new p { color: var(--green-mid); }
+  .policy-card.reminder p { color: var(--gold-dark); }
+  .policy-card.alert p { color: #8B2020; }
+  .policy-card ul {
+    margin: 6px 0 0 14px;
+    font-size: 8pt;
+  }
+  .policy-card.new ul { color: var(--green-mid); }
+  .policy-card.reminder ul { color: var(--gold-dark); }
+  .policy-card.alert ul { color: #8B2020; }
+  .policy-card li { margin-bottom: 2px; }
+
+  .badge {
+    display: inline-block;
+    font-size: 7pt;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .badge.new { background: var(--green-mid); color: white; }
+  .badge.reminder { background: var(--gold); color: white; }
+  .badge.alert { background: var(--red); color: white; }
+
+  /* ── EVENT TABLE ── */
+  .event-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+    font-size: 9pt;
+  }
+  .event-table thead tr {
+    background: var(--green-deep);
+    color: white;
+  }
+  .event-table thead th {
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .event-table thead th:first-child { border-radius: 8px 0 0 0; }
+  .event-table thead th:last-child { border-radius: 0 8px 0 0; }
+  .event-table tbody tr { border-bottom: 1px solid var(--rule); }
+  .event-table tbody tr:nth-child(even) { background: #F9F8F5; }
+  .event-table tbody td {
+    padding: 10px 14px;
+    color: var(--ink-mid);
+    vertical-align: top;
+  }
+  .event-table tbody td:first-child { color: var(--ink); font-weight: 500; }
+  .tbd { color: var(--ink-light) !important; font-style: italic; font-size: 8.5pt; }
+  .pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 7.5pt;
+    font-weight: 600;
+  }
+  .pill.pending { background: var(--gold-light); color: var(--gold-dark); }
+  .pill.complete { background: var(--green-pale); color: var(--green-deep); }
+  .pill.reviewing { background: var(--teal-pale); color: var(--teal); }
+
+  /* ── TWO COL ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  /* ── FUNDRAISING BAR ── */
+  .fund-row {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 10px;
+  }
+  .fund-label { font-size: 8.5pt; color: var(--ink-mid); min-width: 1.4in; }
+  .fund-bar-wrap {
+    flex: 1;
+    height: 12px;
+    background: var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .fund-bar {
+    height: 100%;
+    border-radius: 6px;
+    background: var(--green-mid);
+  }
+  .fund-bar.gold { background: var(--gold); }
+  .fund-bar.teal { background: var(--teal); }
+  .fund-val {
+    font-size: 8.5pt;
+    font-weight: 600;
+    color: var(--ink);
+    min-width: 0.7in;
+    text-align: right;
+  }
+
+  /* ── CALLOUT BOX ── */
+  .callout {
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+  }
+  .callout.green { background: var(--green-pale); }
+  .callout.gold { background: var(--gold-light); }
+  .callout p {
+    font-size: 8.5pt;
+    line-height: 1.6;
+  }
+  .callout.green p { color: var(--green-mid); }
+  .callout.gold p { color: var(--gold-dark); }
+  .callout strong { color: var(--green-deep); }
+  .callout.gold strong { color: var(--gold-dark); }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    position: absolute;
+    bottom: 0.35in;
+    left: 0.65in;
+    right: 0.65in;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 7.5pt;
+    color: var(--ink-light);
+    border-top: 1px solid var(--rule);
+    padding-top: 10px;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: auto; }
+    @page { size: letter; margin: 0; }
+  }
+
+  /* ── INTERNAL TRANSFER EXPLAINER ── */
+  .transfer-flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0;
+  }
+  .tf-box {
+    background: var(--green-pale);
+    border: 1px solid #B7DFBF;
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 8pt;
+    font-weight: 600;
+    color: var(--green-deep);
+  }
+  .tf-arrow {
+    color: var(--green-mid);
+    font-size: 12pt;
+    font-weight: 600;
+  }
+  .tf-box.wrong {
+    background: var(--red-pale);
+    border-color: #F5B7B1;
+    color: var(--red);
+  }
+  .tf-arrow.wrong { color: var(--red); }
+
+  hr.rule { border: none; border-top: 1px solid var(--rule); margin: 22px 0; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     PAGE 1 — COVER
+══════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-top">
+    <div class= cover-logo > <img src="https://ymsisters.com/wp-content/uploads/2026/04/YMS-Logo.png" alt="YM Logo" /></div>
+    <div class="cover-dept">
+      Young Muslims<br>
+      National Finance Operations
+    </div>
+  </div>
+
+  <div class="cover-hero">
+    <div class="cover-label">Fiscal Year 2026</div>
+    <div class="cover-title">Quarter 1<br><em>Finance</em><br>Report</div>
+    <div class="cover-sub">January – March 2026</div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <label>Prepared by</label>
+        <span>Finance Operations Team</span>
+      </div>
+      <div class="cover-meta-item">
+        <label>Period</label>
+        <span>Q1 FY26</span>
+      </div>
+      <div class="cover-meta-item">
+        <label>Issued</label>
+        <span>April 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- decorative bottom pattern -->
+  <div class="cover-pattern">
+    <svg viewBox="0 0 816 158" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <rect width="816" height="158" fill="#163828"/>
+      <!-- geometric lattice -->
+      <g stroke="#C9A227" stroke-width="0.6" fill="none" opacity="0.18">
+        <line x1="0" y1="0" x2="816" y2="158"/>
+        <line x1="0" y1="40" x2="816" y2="198"/>
+        <line x1="0" y1="80" x2="816" y2="238"/>
+        <line x1="0" y1="120" x2="816" y2="278"/>
+        <line x1="816" y1="0" x2="0" y2="158"/>
+        <line x1="816" y1="40" x2="0" y2="198"/>
+        <line x1="816" y1="80" x2="0" y2="238"/>
+        <line x1="816" y1="120" x2="0" y2="278"/>
+      </g>
+      <!-- tiling diamonds -->
+      <g fill="#C9A227" opacity="0.08">
+        <rect x="60" y="40" width="20" height="20" transform="rotate(45 70 50)"/>
+        <rect x="180" y="70" width="14" height="14" transform="rotate(45 187 77)"/>
+        <rect x="320" y="30" width="18" height="18" transform="rotate(45 329 39)"/>
+        <rect x="460" y="80" width="22" height="22" transform="rotate(45 471 91)"/>
+        <rect x="600" y="45" width="16" height="16" transform="rotate(45 608 53)"/>
+        <rect x="720" y="90" width="20" height="20" transform="rotate(45 730 100)"/>
+        <rect x="130" y="110" width="14" height="14" transform="rotate(45 137 117)"/>
+        <rect x="390" y="115" width="16" height="16" transform="rotate(45 398 123)"/>
+        <rect x="550" y="105" width="12" height="12" transform="rotate(45 556 111)"/>
+      </g>
+      <text x="408" y="100" font-family="Georgia, serif" font-size="11" fill="white" opacity="0.22" text-anchor="middle" letter-spacing="6">YOUNG MUSLIMS · FINANCE OPERATIONS · FY26</text>
+    </svg>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     PAGE 2 — Q1 SUMMARY
+══════════════════════════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="page-header-logo"> <img src="https://ymsisters.com/wp-content/uploads/2026/04/YMS-Logo.png" alt="YM Logo" /></div>
+
+        <div class="page-header-title">FY26 Q1 Quarterly Report</div>
+      </div>
+      <div class="page-header-right">Section 01 · Summary & Stats</div>
+    </div>
+
+    <div class="section-label">Overview</div>
+    <div class="section-heading">Q1 <em>at a glance</em></div>
+
+    <div class="stat-row">
+      <div class="stat-card green">
+        <label>Total NNs</label>
+        <div class="num">50</div>
+        <div class="sub">active NeighborNets</div>
+      </div>
+      <div class="stat-card gold">
+        <label>Q1 Income</label>
+        <div class="num">$147,931.45</div>
+        <div class="sub">across all NNs + national</div>
+      </div>
+      <div class="stat-card teal">
+        <label>Q1 Expenses</label>
+        <div class="num">$38,599.57</div>
+        <div class="sub">approved reimbursements</div>
+      </div>
+      <div class="stat-card cream">
+        <label>JotForm Submissions</label>
+        <div class="num">350</div>
+        <div class="sub">total Q1 submissions</div>
+      </div>
+    </div>
+
+    <div class="callout green">
+      <p>📌 <strong>Note to Finance Team:</strong> Please populate the numbers above before distributing. Starting balance data is still outstanding for several NNs — see the dashboard status table below. These figures will be updated once SR Finance Leads submit outstanding starting numbers.</p>
+    </div>
+
+
+<div class="section-label">Dashboard Status</div>
+<div class="section-heading" style="font-size:16pt;">NN Dashboard <em>Readiness</em></div>
+
+<style>
+  .nn-search-input {
+    width: 100%; padding: 9px 14px; font-size: 9pt;
+    border: 1px solid var(--rule); border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; color: var(--ink);
+    background: white; margin-bottom: 14px; box-sizing: border-box;
+  }
+  .nn-search-input:focus { outline: none; border-color: var(--green-mid); }
+  .nn-region-group { margin-bottom: 14px; }
+  .nn-region-label {
+    font-size: 7pt; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--ink-light);
+    padding: 6px 0 4px; border-bottom: 1px solid var(--rule); margin-bottom: 6px;
+  }
+  .nn-list-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 12px; border-radius: 8px; cursor: pointer;
+    border: 1px solid var(--rule); background: white; margin-bottom: 5px;
+  }
+  .nn-list-row:hover { background: var(--green-pale); border-color: #B7DFBF; }
+  .nn-list-name { font-size: 9pt; font-weight: 600; color: var(--ink); }
+  .nn-list-region { font-size: 8pt; color: var(--ink-light); }
+  .nn-list-bal { font-size: 9pt; font-weight: 600; }
+  .nn-bal-pos { color: var(--green-deep); }
+  .nn-bal-neg { color: var(--red); }
+  .nn-bal-zero { color: var(--ink-light); }
+  .nn-detail-card {
+    border: 1px solid var(--rule); border-radius: 10px;
+    padding: 16px 18px; background: white; margin-bottom: 12px;
+  }
+  .nn-detail-name { font-family: 'DM Serif Display', serif; font-size: 16pt; color: var(--ink); }
+  .nn-detail-region { font-size: 8pt; color: var(--ink-light); margin-top: 2px; margin-bottom: 14px; }
+  .nn-detail-fields { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .nn-detail-field { background: var(--cream); border-radius: 8px; padding: 10px 12px; border: 1px solid var(--rule); }
+  .nn-detail-field-label { font-size: 7.5pt; color: var(--ink-light); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .nn-detail-field-val { font-size: 13pt; font-weight: 600; font-family: 'DM Serif Display', serif; }
+  .nn-back-btn {
+    font-size: 8pt; color: var(--green-mid); cursor: pointer;
+    margin-bottom: 10px; display: inline-block; font-weight: 600;
+  }
+  .nn-back-btn:hover { color: var(--green-deep); }
+  .nn-no-result { font-size: 9pt; color: var(--ink-light); padding: 10px 0; }
+  .nn-na-val { font-size: 8.5pt; color: var(--ink-light); font-style: italic; font-weight: 400; font-family: 'DM Sans', sans-serif; }
+  .nn-loading { font-size: 9pt; color: var(--ink-light); font-style: italic; padding: 10px 0; }
+</style>
+
+<input class="nn-search-input" type="text" id="nnSearch" placeholder="Search NeighborNet name or region..." oninput="nnDoSearch()" />
+<div id="nnResults"><div class="nn-loading">Loading NN data...</div></div>
+
+<script>
+let nnData = [];
+
+function parseCSV(csv) {
+  const rows = csv.trim().split('\n').slice(1);
+  return rows.map(row => {
+    const cols = row.split(',');
+    const name     = cols[0]?.trim();
+    const region   = cols[1]?.trim();
+    const balance  = cols[2]?.trim();
+    const cashBox  = cols[3]?.trim();
+    const personal = cols[4]?.trim();
+    return {
+      name,
+      region,
+      balance:  balance  === '' ? null : parseFloat(balance),
+      cashBox:  cashBox  === '' ? null : parseFloat(cashBox),
+      personal: personal === '' ? null : parseFloat(personal),
+    };
+  }).filter(r => r.name);
+}
+async function nnInit() {
+  try {
+    const res = await fetch('https://docs.google.com/spreadsheets/d/1dY9_OL1mEsgm7z_AqVG0geMQqnFImfuzFnIYmXMCCYA/export?format=csv&gid=0');
+    const text = await res.text();
+    nnData = parseCSV(text);
+    nnDoSearch();
+  } catch(err) {
+    document.getElementById('nnResults').innerHTML = '<div class="nn-loading">⚠ Could not load NN data.</div>';
+  }
+}
+
+function nnFmt(v) {
+  if (v === null || v === undefined || isNaN(v)) return '<span class="nn-na-val">N/A</span>';
+  const n = parseFloat(v);
+  const s = '$' + Math.abs(n).toFixed(2);
+  if (n > 0) return '<span class="nn-bal-pos">' + s + '</span>';
+  if (n < 0) return '<span class="nn-bal-neg">-' + s + '</span>';
+  return '<span class="nn-bal-zero">$0.00</span>';
+}
+
+function nnRenderCard(nn) {
+  return `<span class="nn-back-btn" onclick="nnDoSearch()">← Back to results</span>
+  <div class="nn-detail-card">
+    <div class="nn-detail-name">${nn.name}</div>
+    <div class="nn-detail-region">${nn.region}</div>
+    <div class="nn-detail-fields">
+      <div class="nn-detail-field">
+        <div class="nn-detail-field-label">Total Balance</div>
+        <div class="nn-detail-field-val">${nnFmt(nn.balance)}</div>
+      </div>
+      <div class="nn-detail-field">
+        <div class="nn-detail-field-label">Cash Box</div>
+        <div class="nn-detail-field-val">${nnFmt(nn.cashBox)}</div>
+      </div>
+      <div class="nn-detail-field">
+        <div class="nn-detail-field-label">Personal Account</div>
+        <div class="nn-detail-field-val">${nnFmt(nn.personal)}</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function nnRenderRow(nn) {
+  return `<div class="nn-list-row" onclick="nnShowNN('${nn.name.replace(/'/g,"\\'")}')">
+    <div>
+      <div class="nn-list-name">${nn.name}</div>
+      <div class="nn-list-region">${nn.region}</div>
+    </div>
+    <div class="nn-list-bal">${nnFmt(nn.balance)}</div>
+  </div>`;
+}
+
+function nnShowNN(name) {
+  const nn = nnData.find(n => n.name === name);
+  if (nn) document.getElementById('nnResults').innerHTML = nnRenderCard(nn);
+}
+
+function nnDoSearch() {
+  const q = document.getElementById('nnSearch').value.trim().toLowerCase();
+  const el = document.getElementById('nnResults');
+  if (!nnData.length) { el.innerHTML = '<div class="nn-loading">Loading NN data...</div>'; return; }
+  const filtered = q
+    ? nnData.filter(n => n.name.toLowerCase().includes(q) || n.region.toLowerCase().includes(q))
+    : nnData;
+  if (!filtered.length) { el.innerHTML = '<div class="nn-no-result">No NeighborNet found matching "' + q + '"</div>'; return; }
+  if (filtered.length === 1) { el.innerHTML = nnRenderCard(filtered[0]); return; }
+  
+  const groups = {};
+  filtered.forEach(nn => { 
+    if (!groups[nn.region]) groups[nn.region] = []; 
+    groups[nn.region].push(nn); 
+  });
+
+  let html = '';
+  Object.keys(groups).sort().forEach(region => {
+    // sort NNs alphabetically within each region
+    groups[region].sort((a, b) => a.name.localeCompare(b.name));
+    html += `<div class="nn-region-group"><div class="nn-region-label">${region}</div>`;
+    groups[region].forEach(nn => { html += nnRenderRow(nn); });
+    html += '</div>';
+  });
+  el.innerHTML = html;
+}
+
+nnInit();
+</script>
+
+    <div class="callout gold">
+      <p>⚠ <strong>Urgent:</strong> Starting balances were due in January/February 2026. It is now April and many NNs have still not submitted theirs. Please contact your <strong>SR Finance Lead or SRC immediately</strong> if your starting numbers have not been logged. We will be reaching out individually to outstanding chapters.</p>
+    </div>
+
+    <hr class="rule">
+
+    <div class="section-label">Fundraising</div>
+<div class="section-heading" style="font-size:16pt;">Fundraising <em>summary</em></div>
+<p style="font-size:8.5pt; color:var(--ink-mid); margin-bottom:16px;">Ramadan 2026 fundraising highlighted a positive shift — Zelle/Venmo to YM accounts made collection significantly easier to track. Below is a snapshot of fundraising activity.</p>
+
+<p style="font-size:8.5pt; color:var(--ink-mid); margin-bottom:16px;">During this time last year, we raised ~20k this year there has been a 360% increase in fundraising efforts across the org.</p>
+
+<!-- Big total box -->
+<div style="background: var(--green-deep); border-radius: 12px; padding: 24px 28px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+  <div>
+    <div style="font-size: 8pt; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; margin-bottom: 6px;">Total Fundraised · Q1 FY26</div>
+    <div style="font-family: 'DM Serif Display', serif; font-size: 38pt; color: white; line-height: 1;">$92,000</div>
+  </div>
+  <div style="text-align: right;">
+    <div style="font-size: 8pt; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">vs. Last Year</div>
+    <div style="font-family: 'DM Serif Display', serif; font-size: 18pt; color: var(--gold);">↑ 360%</div>
+    <div style="font-size: 8pt; color: rgba(255,255,255,0.4); margin-top: 2px;">~$20k same period FY25</div>
+  </div>
+</div>
+
+<!-- Breakdown rows -->
+<div class="fund-row">
+  <div class="fund-label">NN aggregate</div>
+  <div class="fund-bar-wrap"><div class="fund-bar teal" style="width:53%"></div></div>
+  <div class="fund-val">$49k</div>
+</div>
+<div class="fund-row">
+  <div class="fund-label">National Efforts</div>
+  <div class="fund-bar-wrap"><div class="fund-bar gold" style="width:42%"></div></div>
+  <div class="fund-val">$39k</div>
+</div>
+<div class="fund-row">
+  <div class="fund-label">SR aggregate</div>
+  <div class="fund-bar-wrap"><div class="fund-bar gold" style="width:4%"></div></div>
+  <div class="fund-val">$3.7k</div>
+</div>
+  <div class="page-footer">
+    <span>Young Muslims · Finance Operations Team</span>
+    <span>FY26 Q1 Report · Confidential</span>
+    <span>Page 2</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     PAGE 3 — EVENTS & FINANCIAL AID
+══════════════════════════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="page-header">
+      <div class="page-header-left">
+          <div class="page-header-logo"> <img src="https://ymsisters.com/wp-content/uploads/2026/04/YMS-Logo.png" alt="YM Logo" /></div>
+        <div class="page-header-title">FY26 Q1 Quarterly Report</div>
+      </div>
+      <div class="page-header-right">Section 02 · Events & Initiatives</div>
+    </div>
+
+    <div class="section-label">National Events</div>
+    <div class="section-heading">Q1 Events & <em>Finances</em></div>
+
+    <table class="event-table">
+      <thead>
+        <tr>
+          <th>Event</th>
+          <th>Date</th>
+          <th>Budget</th>
+          <th>Actual Spend</th>
+          <th>Variance</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SRC Leadership Weekend</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td><span class="pill reviewing">Reviewing</span></td>
+        </tr>
+        <tr>
+          <td>Leadership Onboarding</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td><span class="pill reviewing">Reviewing</span></td>
+        </tr>
+        <tr>
+          <td>Subregional Operations</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td><span class="pill pending">Pending</span></td>
+        </tr>
+        <tr>
+          <td>NeighborNet Finances</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td><span class="pill pending">Pending</span></td>
+        </tr>
+        <tr>
+          <td>NeighborNet Finances</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td><span class="pill pending">Pending</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr class="rule">
+
+    <div class="section-label">Financial Aid</div>
+    <div class="section-heading" style="font-size:16pt;">YMC & YMLC <em>Aid Summary</em></div>
+    <p style="font-size:8.5pt; color:var(--ink-mid); margin-bottom:16px; font-style:italic;">Section prepared by Aisha &amp; Hadia — please populate before distribution.</p>
+
+    <div class="two-col" style="margin-bottom: 20px;">
+      <div style="border-radius:10px; padding:18px; border:1px solid var(--rule);">
+        <div class="badge new">YMC</div>
+        <div style="font-size:9pt; color:var(--ink-mid); line-height:1.6;">
+          <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--rule);">
+            <span>Applications received</span><span class="tbd">TBD</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--rule);">
+            <span>Applications approved</span><span class="tbd">TBD</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--rule);">
+            <span>Total aid disbursed</span><span class="tbd">TBD</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:6px 0;">
+            <span>Remaining aid budget</span><span class="tbd">TBD</span>
+          </div>
+        </div>
+      </div>
+      <div style="border-radius:10px; padding:18px; border:1px solid var(--rule);">
+        <div class="badge reminder">YMLC</div>
+        <div style="font-size:9pt; color:var(--ink-mid); line-height:1.6;">
+          <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--rule);">
+            <span>Applications received</span><span class="tbd">TBD</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--rule);">
+            <span>Applications approved</span><span class="tbd">TBD</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--rule);">
+            <span>Total aid disbursed</span><span class="tbd">TBD</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:6px 0;">
+            <span>Remaining aid budget</span><span class="tbd">TBD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <div class="section-label">Budget Tracking</div>
+    <div class="section-heading" style="font-size:16pt;">P&amp;L vs. <em>Initial Budget</em></div>
+
+    <table class="event-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Initial Budget</th>
+          <th>YTD Actual</th>
+          <th>Variance</th>
+          <th>Track</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>National Operations</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td><span class="pill reviewing">Reviewing</span></td>
+        </tr>
+        <tr>
+          <td>Tarbiyyah</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td><span class="pill reviewing">Reviewing</span></td>
+        </tr>
+        <tr>
+          <td>Financial Aid (YMC + YMLC)</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td><span class="pill pending">Pending</span></td>
+        </tr>
+        <tr>
+          <td>Fundraising</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td><span class="pill complete">On Track</span></td>
+        </tr>
+        <tr>
+          <td>Marketing &amp; Merch</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td class="tbd">TBD</td>
+          <td><span class="pill reviewing">Reviewing</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="page-footer">
+    <span>Young Muslims · Finance Operations Team</span>
+    <span>FY26 Q1 Report · Confidential</span>
+    <span>Page 3</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     PAGE 4 — NEW POLICIES
+══════════════════════════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="page-header-logo"> <img src="https://ymsisters.com/wp-content/uploads/2026/04/YMS-Logo.png" alt="YM Logo" /></div>
+        <div class="page-header-title">FY26 Q1 Quarterly Report</div>
+      </div>
+      <div class="page-header-right">Section 03 · New Policies Effective Q2</div>
+    </div>
+
+    <div class="section-label">Effective Q2 FY26</div>
+    <div class="section-heading">New <em>Financial Policies</em></div>
+    <p style="font-size:9pt; color:var(--ink-mid); margin-bottom:22px; line-height:1.6;">The following policies are <strong style="color:var(--green-deep);">effective beginning Q2 (April 2026)</strong>. Submissions that do not comply will be denied. Please read carefully and share with your full shura.</p>
+
+    <div class="policy-grid">
+
+      <div class="policy-card new">
+        <div class="badge new">New · Q2</div>
+        <h4>Separate receipts for YM purchases</h4>
+        <p>All YM-related expenses must be purchased on their own, separate receipt. <strong style="color:var(--green-deep);">Do not mix personal and YM purchases on the same receipt</strong> — submissions with personal items on the same receipt will not be approved.</p>
+      </div>
+
+      <div class="policy-card new">
+        <div class="badge new">New · Q2</div>
+        <h4>Venmo or Zelle reimbursements only</h4>
+        <p>We are streamlining reimbursements to <strong style="color:var(--green-deep);">Venmo (@Young-Muslims) or Zelle only</strong>. The check option is being removed. After submitting your JotForm, please immediately send your Venmo or Zelle request so we can process it quickly.</p>
+      </div>
+
+      <div class="policy-card new">
+        <div class="badge new">New · Q2</div>
+        <h4>Amazon &amp; online purchases — PDF receipts</h4>
+        <p>Screenshots of Amazon orders or any online purchase receipts are <strong style="color:var(--green-deep);">no longer accepted</strong>. You must <strong style="color:var(--green-deep);">download the receipt as a PDF</strong> from the retailer and upload that file to the form.</p>
+        <ul>
+          <li>Amazon → Order Details → Print/Download as PDF</li>
+          <li>Any online vendor → PDF invoice or receipt</li>
+          <li>Exception: Zelle or Venmo transfer screenshots are still fine</li>
+        </ul>
+      </div>
+
+      <div class="policy-card new">
+        <div class="badge new">New · Q2</div>
+        <h4>Itemized details — items only, no prices</h4>
+        <p>In the <em>Itemized Details</em> field, <strong style="color:var(--green-deep);">list only the items purchased</strong>. Do not include individual item prices and do not include tax — just a clean list of what was bought.</p>
+        <ul>
+          <li>✓ Balloons, tablecloths, string lights, streamers</li>
+          <li>✗ Balloons $10, tablecloths $15 + tax</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="callout green">
+      <p>These updates are designed to make Finance processing faster for everyone. The Venmo/Zelle change in particular means we can approve and pay out the same Tuesday your submission comes in — no delays waiting for checks. Thank you for your patience as we tighten these processes up.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Young Muslims · Finance Operations Team</span>
+    <span>FY26 Q1 Report · Confidential</span>
+    <span>Page 4</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     PAGE 5 — POLICY REMINDERS
+══════════════════════════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="page-header-logo"> <img src="https://ymsisters.com/wp-content/uploads/2026/04/YMS-Logo.png" alt="YM Logo" /></div>
+        <div class="page-header-title">FY26 Q1 Quarterly Report</div>
+      </div>
+      <div class="page-header-right">Section 04 · Policy Reminders</div>
+    </div>
+
+    <div class="section-label">Ongoing Policies</div>
+    <div class="section-heading">Friendly <em>Reminders</em></div>
+    <p style="font-size:9pt; color:var(--ink-mid); margin-bottom:22px;">These are not new — but we've seen consistent issues this quarter. Please review.</p>
+
+    <!-- INTERNAL TRANSFER -->
+    <div class="policy-card reminder" style="margin-bottom:14px; display:block;">
+      <div class="badge reminder">Reminder</div>
+      <h4>What counts as an Internal Transfer?</h4>
+      <p style="margin-bottom:10px;">We've seen many submissions incorrectly use <em>Internal Transfer</em> as the transaction type. Internal Transfers are <strong style="color:var(--gold-dark);">only for moving money between your team's existing YM accounts.</strong></p>
+      <p style="font-size:8pt; color:var(--gold-dark); font-weight:600; margin-bottom:6px;">✓ Valid internal transfers:</p>
+      <div class="transfer-flow">
+        <div class="tf-box">YM Bank</div><div class="tf-arrow">↔</div><div class="tf-box">Cash Box</div>
+        <span style="font-size:8pt; color:var(--ink-light); margin: 0 6px;">·</span>
+        <div class="tf-box">YM Bank</div><div class="tf-arrow">↔</div><div class="tf-box">Personal Bank Acct</div>
+        <span style="font-size:8pt; color:var(--ink-light); margin: 0 6px;">·</span>
+        <div class="tf-box">Cash Box</div><div class="tf-arrow">↔</div><div class="tf-box">Personal Bank Acct</div>
+      </div>
+      <p style="font-size:8pt; color:var(--red); font-weight:600; margin: 10px 0 6px;">✗ This is NOT an internal transfer:</p>
+      <div class="transfer-flow">
+        <div class="tf-box wrong">Personal funds</div><div class="tf-arrow wrong">→</div><div class="tf-box wrong">Personal Bank Acct (YM portion)</div>
+      </div>
+      <p style="font-size:8pt; color:var(--gold-dark); margin-top:8px;">⬆ This is <strong style="color:var(--gold-dark);">Income to Personal Bank Account</strong>. Please resubmit correctly.</p>
+    </div>
+
+    <div class="policy-grid">
+
+      <div class="policy-card reminder">
+        <div class="badge reminder">Reminder</div>
+        <h4>Tax is included in your total</h4>
+        <p>We cover tax. <strong style="color:var(--gold-dark);">Do not exclude tax from your expense total.</strong> Your total amount submitted should include tax — enter the full amount from your receipt.<br> <b><i>We are a nonprofit organization and are eligible for tax expemptions</i></b>, if you need it for large purchases please email finance team.</p>
+      </div>
+
+      <div class="policy-card alert">
+        <div class="badge alert">Required</div>
+        <h4>No receipt = no approval</h4>
+        <p>Every expense submission requires a receipt or bank statement. <strong style="color:var(--red);">We will not approve any submission without one.</strong> For paper receipts, make sure the full receipt is clearly visible — if we can't read it, it will be denied.</p>
+      </div>
+
+      <div class="policy-card reminder">
+        <div class="badge reminder">Reminder</div>
+        <h4>Expense Details format</h4>
+        <p>Follow this format in the <em>Expense Details</em> field:</p>
+        <p style="margin-top:8px; background:white; border-radius:5px; padding:6px 8px; font-family:monospace; font-size:8pt; color:var(--gold-dark);">MM/DD/YY · Event Name · Expense Category</p>
+        <p style="margin-top:6px; font-size:8pt; color:var(--gold-dark);">Example: <strong>1/9/26 NJ Gala – Decorations</strong></p>
+      </div>
+
+      <div class="policy-card alert">
+        <div class="badge alert">Required</div>
+        <h4>Use your YM email</h4>
+        <p>All JotForm submissions <strong style="color:var(--red);">must use your YM email</strong> (e.g. name@ymsisters.com). Personal email submissions will not be accepted. Dashboard access requests from personal emails will also be denied. Email admin@ymsisters.com if you need a YM email.</p>
+      </div>
+
+      <div class="policy-card alert" style="grid-column: span 2;">
+        <div class="badge alert">Action Required</div>
+        <h4>Missing starting balances — contact your SR Finance Lead NOW</h4>
+        <p>It is April 2026. Starting balances were due in <strong style="color:var(--red);">January–February</strong>. Many NNs still have not submitted theirs, which means their dashboards cannot accurately reflect their Q1 finances. Please contact your <strong style="color:var(--red);">SR Finance Lead or SRC immediately</strong>. We will be reaching out individually to all outstanding chapters.</p>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <span>Young Muslims · Finance Operations Team</span>
+    <span>FY26 Q1 Report · Confidential</span>
+    <span>Page 5</span>
+  </div>
+</div>
+
+</body>
+</html>
