@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+<title>YM Finance · FY26 Q1 Quarterly Report</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
+
+  :root {
+    --green-deep: #1C4532;
+    --green-mid: #2D6A4F;
+    --green-light: #52B788;
+    --green-pale: #D8F3DC;
+    --gold: #C9A227;
+    --gold-light: #F9EDCC;
+    --gold-dark: #8B6914;
+    --cream: #FAFAF7;
+    --ink: #1A1A18;
+    --ink-mid: #4A4A46;
+    --ink-light: #8A8A84;
+    --rule: #E0DDD4;
+    --red: #C0392B;
+    --red-pale: #FDEDEB;
+    --teal: #1D6A6A;
+    --teal-pale: #E0F2F1;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #E8E6E0;
+    color: var(--ink);
+    font-size: 10pt;
+    line-height: 1.6;
+  }
+
+  .page {
+    width: 8.5in;
+    min-height: 11in;
+    background: white;
+    margin: 0.4in auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.15);
+  }
+
+  /* ── COVER PAGE ── */
+  .cover {
+    background: var(--green-deep);
+    min-height: 11in;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+  .cover-top {
+    padding: 0.55in 0.65in 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .cover-logo {
+    width: 46px; height: 46px; border-radius: 50%;
+    background: white;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px; color: var(--green-deep);
+  }
+
+  .cover-logo img {
+  width: 150px; /* adjust as needed */
+  height: auto;
+}
+
+  .cover-dept {
+    font-size: 9pt; color: rgba(255,255,255,0.5);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    text-align: right; line-height: 1.8;
+  }
+  .cover-hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.55in 0.65in;
+  }
+  .cover-label {
+    font-size: 9pt; color: var(--gold);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 18px;
+  }
+  .cover-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52pt;
+    color: white;
+    line-height: 1.05;
+    margin-bottom: 10px;
+  }
+  .cover-title em {
+    color: var(--gold);
+    font-style: italic;
+  }
+  .cover-sub {
+    font-size: 13pt;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 40px;
+    font-weight: 400;
+  }
+  .cover-divider {
+    width: 60px; height: 2px;
+    background: var(--gold);
+    margin-bottom: 32px;
+  }
+  .cover-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    max-width: 5in;
+  }
+  .cover-meta-item label {
+    display: block;
+    font-size: 7.5pt;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+  .cover-meta-item span {
+    font-size: 11pt;
+    color: white;
+    font-weight: 500;
+  }
+  .cover-pattern {
+    width: 100%; height: 2.2in;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover-pattern svg { width: 100%; height: 100%; }
+
+  /* ── INNER PAGE LAYOUT ── */
+ .inner {
+    padding: 0.6in 0.65in 1in;
+  }
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1.5px solid var(--green-deep);
+    margin-bottom: 0.4in;
+  }
+  .page-header-left {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .page-header-logo {
+  width: 46px; 
+  height: 46x; 
+  border-radius: 50%;
+  overflow: hidden;
+  background: none;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+}
+.page-header-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+  .page-header-title {
+    font-size: 8pt;
+    color: var(--ink-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .page-header-right {
+    font-size: 8pt; color: var(--ink-light);
+  }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-size: 7.5pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--green-mid);
+    margin-bottom: 8px;
+  }
+  .section-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22pt;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 18px;
+  }
+  .section-heading em { color: var(--green-mid); font-style: italic; }
+
+  /* ── STAT CARDS ── */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .stat-card {
+    border-radius: 10px;
+    padding: 14px 14px 16px;
+    border: 1px solid var(--rule);
+  }
+  .stat-card.green { background: var(--green-pale); border-color: #B7DFBF; }
+  .stat-card.gold { background: var(--gold-light); border-color: #EBCF7A; }
+  .stat-card.teal { background: var(--teal-pale); border-color: #A0D4D4; }
+  .stat-card.cream { background: var(--cream); }
+  .stat-card label {
+    display: block;
+    font-size: 7.5pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .stat-card.green label { color: var(--green-mid); }
+  .stat-card.gold label { color: var(--gold-dark); }
+  .stat-card.teal label { color: var(--teal); }
+  .stat-card.cream label { color: var(--ink-mid); }
+  .stat-card .num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26pt;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-card.green .num { color: var(--green-deep); }
+  .stat-card.gold .num { color: var(--gold-dark); }
+  .stat-card.teal .num { color: var(--teal); }
+  .stat-card.cream .num { color: var(--ink); }
+  .stat-card .sub {
+    font-size: 8pt;
+  }
+  .stat-card.green .sub { color: var(--green-mid); }
+  .stat-card.gold .sub { color: var(--gold-dark); }
+  .stat-card.teal .sub { color: var(--teal); }
+  .stat-card.cream .sub { color: var(--ink-light); }
+
+  /* ── POLICY CARDS ── */
+  .policy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .policy-card {
+    border-radius: 10px;
+    padding: 16px 18px;
+    border-left: 4px solid;
+  }
+  .policy-card.new {
+    background: #EFF8F2;
+    border-left-color: var(--green-mid);
+  }
+  .policy-card.reminder {
+    background: var(--gold-light);
+    border-left-color: var(--gold);
+  }
+  .policy-card.alert {
+    background: var(--red-pale);
+    border-left-color: var(--red);
+  }
+  .policy-card h4 {
+    font-size: 9.5pt;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .policy-card.new h4 { color: var(--green-deep); }
+  .policy-card.reminder h4 { color: var(--gold-dark); }
+  .policy-card.alert h4 { color: var(--red); }
+  .policy-card p {
+    font-size: 8.5pt;
+    line-height: 1.55;
+  }
+  .policy-card.new p { color: var(--green-mid); }
+  .policy-card.reminder p { color: var(--gold-dark); }
+  .policy-card.alert p { color: #8B2020; }
+  .policy-card ul {
+    margin: 6px 0 0 14px;
+    font-size: 8pt;
+  }
+  .policy-card.new ul { color: var(--green-mid); }
+  .policy-card.reminder ul { color: var(--gold-dark); }
+  .policy-card.alert ul { color: #8B2020; }
+  .policy-card li { margin-bottom: 2px; }
+
+  .badge {
+    display: inline-block;
+    font-size: 7pt;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .badge.new { background: var(--green-mid); color: white; }
+  .badge.reminder { background: var(--gold); color: white; }
+  .badge.alert { background: var(--red); color: white; }
+
+  /* ── EVENT TABLE ── */
+  .event-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+    font-size: 9pt;
+  }
+  .event-table thead tr {
+    background: var(--green-deep);
+    color: white;
+  }
+  .event-table thead th {
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .event-table thead th:first-child { border-radius: 8px 0 0 0; }
+  .event-table thead th:last-child { border-radius: 0 8px 0 0; }
+  .event-table tbody tr { border-bottom: 1px solid var(--rule); }
+  .event-table tbody tr:nth-child(even) { background: #F9F8F5; }
+  .event-table tbody td {
+    padding: 10px 14px;
+    color: var(--ink-mid);
+    vertical-align: top;
+  }
+  .event-table tbody td:first-child { color: var(--ink); font-weight: 500; }
+  .tbd { color: var(--ink-light) !important; font-style: italic; font-size: 8.5pt; }
+  .pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 7.5pt;
+    font-weight: 600;
+  }
+  .pill.pending { background: var(--gold-light); color: var(--gold-dark); }
+  .pill.complete { background: var(--green-pale); color: var(--green-deep); }
+  .pill.reviewing { background: var(--teal-pale); color: var(--teal); }
+
+  /* ── TWO COL ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  /* ── FUNDRAISING BAR ── */
+  .fund-row {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 10px;
+  }
+  .fund-label { font-size: 8.5pt; color: var(--ink-mid); min-width: 1.4in; }
+  .fund-bar-wrap {
+    flex: 1;
+    height: 12px;
+    background: var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .fund-bar {
+    height: 100%;
+    border-radius: 6px;
+    background: var(--green-mid);
+  }
+  .fund-bar.gold { background: var(--gold); }
+  .fund-bar.teal { background: var(--teal); }
+  .fund-val {
+    font-size: 8.5pt;
+    font-weight: 600;
+    color: var(--ink);
+    min-width: 0.7in;
+    text-align: right;
+  }
+
+  /* ── CALLOUT BOX ── */
+  .callout {
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+  }
+  .callout.green { background: var(--green-pale); }
+  .callout.gold { background: var(--gold-light); }
+  .callout p {
+    font-size: 8.5pt;
+    line-height: 1.6;
+  }
+  .callout.green p { color: var(--green-mid); }
+  .callout.gold p { color: var(--gold-dark); }
+  .callout strong { color: var(--green-deep); }
+  .callout.gold strong { color: var(--gold-dark); }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    position: absolute;
+    bottom: 0.35in;
+    left: 0.65in;
+    right: 0.65in;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 7.5pt;
+    color: var(--ink-light);
+    border-top: 1px solid var(--rule);
+    padding-top: 10px;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: auto; }
+    @page { size: letter; margin: 0; }
+  }
+
+  /* ── INTERNAL TRANSFER EXPLAINER ── */
+  .transfer-flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0;
+  }
+  .tf-box {
+    background: var(--green-pale);
+    border: 1px solid #B7DFBF;
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 8pt;
+    font-weight: 600;
+    color: var(--green-deep);
+  }
+  .tf-arrow {
+    color: var(--green-mid);
+    font-size: 12pt;
+    font-weight: 600;
+  }
+  .tf-box.wrong {
+    background: var(--red-pale);
+    border-color: #F5B7B1;
+    color: var(--red);
+  }
+  .tf-arrow.wrong { color: var(--red); }
+
+  hr.rule { border: none; border-top: 1px solid var(--rule); margin: 22px 0; }
+
+  .cover-photo-strip {
+    display: flex; width: 100%; height: 1.8in;
+    overflow: hidden; gap: 3px; position: relative;
+  }
+  .cover-photo-strip::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(28,69,50,0.55) 0%, rgba(28,69,50,0.15) 60%, rgba(28,69,50,0.7) 100%);
+    pointer-events: none;
+  }
+  .cover-photo-strip img { flex: 1; object-fit: cover; object-position: center top; min-width: 0; }
+  .cover-photo-label {
+    position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+    z-index: 2; font-size: 7pt; color: rgba(255,255,255,0.65);
+    letter-spacing: 0.2em; text-transform: uppercase; white-space: nowrap;
+  }
+  .photo-grid { display: grid; gap: 8px; margin: 18px 0; }
+  .photo-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .photo-grid.hero-left { grid-template-columns: 1.6fr 1fr; }
+  .photo-grid img { width: 100%; height: 1.1in; object-fit: cover; object-position: center top; border-radius: 8px; display: block; }
+  .photo-grid .photo-caption { font-size: 7pt; color: var(--ink-light); text-align: center; margin-top: 2px; font-style: italic; }
+  .photo-stack { display: flex; flex-direction: column; gap: 8px; }
+  .photo-stack img { width: 100%; object-fit: cover; object-position: center top; border-radius: 8px; height: 0.7in; }
+  .photo-quote {
+    display: flex; gap: 14px; align-items: center;
+    background: var(--green-deep); border-radius: 10px; padding: 14px 16px; margin: 16px 0;
+  }
+  .photo-quote img {
+    width: 0.75in; height: 0.75in; border-radius: 50%;
+    object-fit: cover; object-position: center top; flex-shrink: 0; border: 2px solid var(--green-deep);
+  }
+  .photo-quote-text { font-size: 8.5pt; color: white; line-height: 1.6; font-style: italic; }
+  .photo-quote-text strong { display: block; font-style: normal; font-size: 7.5pt; color: white; margin-top: 5px; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     PAGE 1 — COVER
+══════════════════════════════════ -->
+<div class="page cover">
+  <div class="cover-top">
+    <div class= cover-logo > <img src="https://ymsisters.com/wp-content/uploads/2026/04/YMS-Logo.png" alt="YM Logo" /></div>
+    <div class="cover-dept">
+      Young Muslims<br>
+      National Finance Operations
+    </div>
+  </div>
+
+  <div class="cover-hero">
+    <div class="cover-label">Fiscal Year 2026</div>
+    <div class="cover-title">Quarter 1<br><em>Finance</em><br>Report</div>
+    <div class="cover-sub">January – March 2026</div>
+    <div class="cover-divider"></div>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <label>Prepared by</label>
+        <span>Finance Operations Team</span>
+      </div>
+      <div class="cover-meta-item">
+        <label>Period</label>
+        <span>Q1 FY26</span>
+      </div>
+      <div class="cover-meta-item">
+        <label>Issued</label>
+        <span>April 2026</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-photo-strip" style="position:relative;">
+    <img src="https://ymsisters.com/wp-content/uploads/2026/04/IMG_2413.jpg" alt="YM camp" />
+    <img src="https://ymsisters.com/wp-content/uploads/2026/04/2026-Qiyam-Night.jpg" alt="YM event" />
+    <img src="https://ymsisters.com/wp-content/uploads/2026/04/IMG_6031.jpg" alt="YM conference" />
+    <img src="https://ymsisters.com/wp-content/uploads/2026/04/IMG_20260322_195319-scaled.jpg" alt="YM community" />
+    <div class="cover-photo-label">Young Muslims · Community Moments</div>
+  </div>
+  <!-- decorative bottom pattern -->
+  <div class="cover-pattern">
+    <svg viewBox="0 0 816 158" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <rect width="816" height="158" fill="#163828"/>
+      <!-- geometric lattice -->
+      <g stroke="#C9A227" stroke-width="0.6" fill="none" opacity="0.18">
+        <line x1="0" y1="0" x2="816" y2="158"/>
+        <line x1="0" y1="40" x2="816" y2="198"/>
+        <line x1="0" y1="80" x2="816" y2="238"/>
+        <line x1="0" y1="120" x2="816" y2="278"/>
+        <line x1="816" y1="0" x2="0" y2="158"/>
+        <line x1="816" y1="40" x2="0" y2="198"/>
+        <line x1="816" y1="80" x2="0" y2="238"/>
+        <line x1="816" y1="120" x2="0" y2="278"/>
+      </g>
+      <!-- tiling diamonds -->
+      <g fill="#C9A227" opacity="0.08">
+        <rect x="60" y="40" width="20" height="20" transform="rotate(45 70 50)"/>
+        <rect x="180" y="70" width="14" height="14" transform="rotate(45 187 77)"/>
+        <rect x="320" y="30" width="18" height="18" transform="rotate(45 329 39)"/>
+        <rect x="460" y="80" width="22" height="22" transform="rotate(45 471 91)"/>
+        <rect x="600" y="45" width="16" height="16" transform="rotate(45 608 53)"/>
+        <rect x="720" y="90" width="20" height="20" transform="rotate(45 730 100)"/>
+        <rect x="130" y="110" width="14" height="14" transform="rotate(45 137 117)"/>
+        <rect x="390" y="115" width="16" height="16" transform="rotate(45 398 123)"/>
+        <rect x="550" y="105" width="12" height="12" transform="rotate(45 556 111)"/>
+      </g>
+      <text x="408" y="100" font-family="Georgia, serif" font-size="11" fill="white" opacity="0.22" text-anchor="middle" letter-spacing="6">YOUNG MUSLIMS · FINANCE OPERATIONS · FY26</text>
+    </svg>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     PAGE 2 — Q1 SUMMARY
+══════════════════════════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="page-header-logo"> <img src="https://ymsisters.com/wp-content/uploads/2026/04/YMS-Logo.png" alt="YM Logo" /></div>
+
+        <div class="page-header-title">FY26 Q1 Quarterly Report</div>
+      </div>
+      <div class="page-header-right">Section 01 · Summary & Stats</div>
+    </div>
+
+    <div class="section-label">Overview</div>
+    <div class="section-heading">Q1 <em>at a glance</em></div>
+
+    <div class="stat-row">
+      <div class="stat-card green">
+        <label>Total NNs</label>
+        <div class="num">50</div>
+        <div class="sub">active NeighborNets</div>
+      </div>
+      <div class="stat-card gold">
+        <label>Q1 Income</label>
+        <div class="num">$147,931.45</div>
+        <div class="sub">across all NNs + national</div>
+      </div>
+      <div class="stat-card teal">
+        <label>Q1 Expenses</label>
+        <div class="num">$38,599.57</div>
+        <div class="sub">approved reimbursements</div>
+      </div>
+      <div class="stat-card cream">
+        <label>JotForm Submissions</label>
+        <div class="num">350</div>
+        <div class="sub">total Q1 submissions</div>
+      </div>
+    </div>
+
+    <div class="callout green">
+      <p>📌 <strong>Note to Finance Team:</strong> Please populate the numbers above before distributing. Starting balance data is still outstanding for several NNs — see the dashboard status table below. These figures will be updated once SR Finance Leads submit outstanding starting numbers.</p>
+    </div>
+
+
+<div class="section-label">Dashboard Status</div>
+<div class="section-heading" style="font-size:16pt;">NN Dashboard <em>Readiness</em></div>
+
+<style>
+  .nn-search-input {
+    width: 100%; padding: 9px 14px; font-size: 9pt;
+    border: 1px solid var(--rule); border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; color: var(--ink);
+    background: white; margin-bottom: 14px; box-sizing: border-box;
+  }
+  .nn-search-input:focus { outline: none; border-color: var(--green-mid); }
+  .nn-region-group { margin-bottom: 14px; }
+  .nn-region-label {
+    font-size: 7pt; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--ink-light);
+    padding: 6px 0 4px; border-bottom: 1px solid var(--rule); margin-bottom: 6px;
+  }
+  .nn-list-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 12px; border-radius: 8px; cursor: pointer;
+    border: 1px solid var(--rule); background: white; margin-bottom: 5px;
+  }
+  .nn-list-row:hover { background: var(--green-pale); border-color: #B7DFBF; }
+  .nn-list-name { font-size: 9pt; font-weight: 600; color: var(--ink); }
+  .nn-list-region { font-size: 8pt; color: var(--ink-light); }
+  .nn-list-bal { font-size: 9pt; font-weight: 600; }
+  .nn-bal-pos { color: var(--green-deep); }
+  .nn-bal-neg { color: var(--red); }
+  .nn-bal-zero { color: var(--ink-light); }
+  .nn-detail-card {
+    border: 1px solid var(--rule); border-radius: 10px;
+    padding: 16px 18px; background: white; margin-bottom: 12px;
+  }
+  .nn-detail-name { font-family: 'DM Serif Display', serif; font-size: 16pt; color: var(--ink); }
+  .nn-detail-region { font-size: 8pt; color: var(--ink-light); margin-top: 2px; margin-bottom: 14px; }
+  .nn-detail-fields { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .nn-detail-field { background: var(--cream); border-radius: 8px; padding: 10px 12px; border: 1px solid var(--rule); }
+  .nn-detail-field-label { font-size: 7.5pt; color: var(--ink-light); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .nn-detail-field-val { font-size: 13pt; font-weight: 600; font-family: 'DM Serif Display', serif; }
+  .nn-back-btn {
+    font-size: 8pt; color: var(--green-mid); cursor: pointer;
+    margin-bottom: 10px; display: inline-block; font-weight: 600;
+  }
+  .nn-back-btn:hover { color: var(--green-deep); }
+  .nn-no-result { font-size: 9pt; color: var(--ink-light); padding: 10px 0; }
+  .nn-na-val { font-size: 8.5pt; color: var(--ink-light); font-style: italic; font-weight: 400; font-family: 'DM Sans', sans-serif; }
+  .nn-loading { font-size: 9pt; color: var(--ink-light); font-style: italic; padding: 10px 0; }
+</style>
+
+<input class="nn-search-input" type="text" id="nnSearch" placeholder="Search NeighborNet name or region..." oninput="nnDoSearch()" />
+<div id="nnResults"><div class="nn-loading">Loading NN data...</div></div>
+
+<script>
+let nnData = [];
+
+function parseCSV(csv) {
+  const rows = csv.trim().split('\n').slice(1);
+  return rows.map(row => {
+    const cols = row.split(',');
+    const name     = cols[0]?.trim();
+    const region   = cols[1]?.trim();
+    const balance  = cols[2]?.trim();
+    const cashBox  = cols[3]?.trim();
+    const personal = cols[4]?.trim();
+    return {
+      name,
+      region,
+      balance:  balance  === '' ? null : parseFloat(balance),
+      cashBox:  cashBox  === '' ? null : parseFloat(cashBox),
+      personal: personal === '' ? null : parseFloat(personal),
+    };
+  }).filter(r => r.name);
+}
+async function nnInit() {
+  try {
+   const res = await fetch('https://docs.google.com/spreadsheets/d/1dY9_OL1mEsgm7z_AqVG0geMQqnFImfuzFnIYmXMCCYA/export?format=csv&gid=0');
+    const text = await res.text();
+    nnData = parseCSV(text);
+    document.getElementById('nnResults').innerHTML = '<div class="nn-loading">Type a NeighborNet name or region to search.</div>';
+  } catch(err) {
+    document.getElementById('nnResults').innerHTML = '<div class="nn-loading">⚠ Could not load NN data.</div>';
+  }
+}
+
+function nnFmt(v) {
+  if (v === null || v === undefined || isNaN(v)) return '<span class="nn-na-val">N/A</span>';
+  const n = parseFloat(v);
+  const s = '$' + Math.abs(n).toFixed(2);
+  if (n > 0) return '<span class="nn-bal-pos">' + s + '</span>';
+  if (n < 0) return '<span class="nn-bal-neg">-' + s + '</span>';
+  return '<span class="nn-bal-zero">$0.00</span>';
+}
+
+function nnRenderCard(nn) {
+  return `<span class="nn-back-btn" onclick="nnDoSearch()">← Back to results</span>
+  <div class="nn-detail-card">
+    <div class="nn-detail-name">${nn.name}</div>
+    <div class="nn-detail-region">${nn.region}</div>
+    <div class="nn-detail-fields">
+      <div class="nn-detail-field">
+        <div class="nn-detail-field-label">Total Balance</div>
+        <div class="nn-detail-field-val">${nnFmt(nn.balance)}</div>
+      </div>
+      <div class="nn-detail-field">
+        <div class="nn-detail-field-label">Cash Box</div>
+        <div class="nn-detail-field-val">${nnFmt(nn.cashBox)}</div>
+      </div>
+      <div class="nn-detail-field">
+        <div class="nn-detail-field-label">Personal Account</div>
+        <div class="nn-detail-field-val">${nnFmt(nn.personal)}</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function nnRenderRow(nn) {
+  return `<div class="nn-list-row" onclick="nnShowNN('${nn.name.replace(/'/g,"\\'")}')">
+    <div>
+      <div class="nn-list-name">${nn.name}</div>
+      <div class="nn-list-region">${nn.region}</div>
+    </div>
+    <div class="nn-list-bal">${nnFmt(nn.balance)}</div>
+  </div>`;
+}
+
+function nnShowNN(name) {
+  const nn = nnData.find(n => n.name === name);
+  if (nn) document.getElementById('nnResults').innerHTML = nnRenderCard(nn);
+}
+
+function nnDoSearch() {
+  const q = document.getElementById('nnSearch').value.trim().toLowerCase();
+  const el = document.getElementById('nnResults');
+  if (!nnData.length) { el.innerHTML = '<div class="nn-loading">Loading NN data...</div>'; return; }
+  if (!q) { el.innerHTML = '<div class="nn-loading">Type a NeighborNet name or region to search.</div>'; return; }
+  const filtered = nnData.filter(n => n.name && n.region && (n.name.toLowerCase().includes(q) || n.region.toLowerCase().includes(q)));
+  if (!filtered.length) { el.innerHTML = '<div class="nn-no-result">No NeighborNet found matching "' + q + '"</div>'; return; }
+  if (filtered.length === 1) { el.innerHTML = nnRenderCard(filtered[0]); return; }
+  let html = '';
+  filtered.forEach(nn => { html += nnRenderRow(nn); });
+  el.innerHTML = html;
+}
+
+nnInit();
+</script>
+    <div class="callout gold">
+      <p>⚠ <strong>Urgent:</strong> Starting balances were due in January/February 2026. It is now April and many NNs have still not submitted theirs. Please contact your <strong>SR Finance Lead or SRC immediately</strong> if your starting numbers have not been logged. We will be reaching out individually to outstanding chapters.</p>
+    </div>
+    <hr class="rule">
+    <div class="photo-grid cols-3" style="margin-top:18px; margin-bottom:0.3in;">
+      <img src="https://ymsisters.com/wp-content/uploads/2026/04/IMG_2413.jpg" alt="Community" style="height:2in;" />
+      <img src="https://ymsisters.com/wp-content/uploads/2026/04/2026-Qiyam-Night.jpg" alt="YM event" style="height:2in;" />
+      <img src="https://ymsisters.com/wp-content/uploads/2026/04/IMG_6031.jpg" alt="YM youth" style="height:2in;" />
+    </div>
+  <div class="page-footer">
+    <span>Young Muslims · Finance Operations Team</span>
+    <span>FY26 Q1 Report · Confidential</span>
+    <span>Page 2</span>
+  </div>
+</div>
+</div>
+
+
+
+<!-- ══════════════════════════════════
+     PAGE 3 — Fundraising Summary 
+══════════════════════════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="page-header-logo"> <img src="https://ymsisters.com/wp-content/uploads/2026/04/YMS-Logo.png" alt="YM Logo" /></div>
+
+        <div class="page-header-title">Fundraising Summary</div>
+      </div>
+      <div class="page-header-right">Section 02 · Fundraising Summary</div>
+    </div>
+
+    <div class="section-label">Fundraising</div>
+<div class="section-heading" style="font-size:16pt;">Fundraising <em>summary</em></div>
+<p style="font-size:8.5pt; color:var(--ink-mid); margin-bottom:16px;">Ramadan 2026 fundraising highlighted a positive shift — Zelle/Venmo to YM accounts made collection significantly easier to track. Below is a snapshot of fundraising activity.</p>
+
+<p style="font-size:8.5pt; color:var(--ink-mid); margin-bottom:16px;">During this time last year, we raised ~20k this year there has been a 360% increase in fundraising efforts across the org.</p>
+
+
+<!-- Big total box -->
+<div style="background: var(--green-deep); border-radius: 12px; padding: 24px 28px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
+  <div>
+    <div style="font-size: 8pt; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; margin-bottom: 6px;">Total Fundraised · Q1 FY26</div>
+    <div style="font-family: 'DM Serif Display', serif; font-size: 38pt; color: white; line-height: 1;">$92,000</div>
+  </div>
+  <div style="text-align: right;">
+    <div style="font-size: 8pt; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">vs. Last Year</div>
+    <div style="font-family: 'DM Serif Display', serif; font-size: 18pt; color: var(--gold);">↑ 360%</div>
+    <div style="font-size: 8pt; color: rgba(255,255,255,0.4); margin-top: 2px;">~$20k same period FY25</div>
+  </div>
+</div>
+
+<!-- Breakdown rows -->
+<div class="fund-row">
+  <div class="fund-label">NN aggregate</div>
+  <div class="fund-bar-wrap"><div class="fund-bar teal" style="width:53%"></div></div>
+  <div class="fund-val">$49k</div>
+</div>
+<div class="fund-row">
+  <div class="fund-label">National Efforts</div>
+  <div class="fund-bar-wrap"><div class="fund-bar gold" style="width:42%"></div></div>
+  <div class="fund-val">$39k</div>
+</div>
+<div class="fund-row">
+  <div class="fund-label">SR aggregate</div>
+  <div class="fund-bar-wrap"><div class="fund-bar gold" style="width:4%"></div></div>
+  <div class="fund-val">$3.7k</div>
+  </div>
+
+<div style="display:grid; grid-template-columns:1fr 1fr 1fr; grid-template-rows:auto auto; gap:8px; margin-bottom:16px;">
+  <img src="https://ymsisters.com/wp-content/uploads/2026/04/IMG_8444-scaled.jpg" alt="Ramadan Fundraiser" 
+    style="width:100%; height:1.6in; object-fit:cover; object-position:center top; border-radius:8px; grid-row: span 1;" />
+  <img src="https://ymsisters.com/wp-content/uploads/2026/04/2026-Qiyam-Night.jpg" alt="Qiyam Night" 
+    style="width:100%; height:3.4in; object-fit:cover; object-position:center top; border-radius:8px; grid-row: span 2;" />
+  <img src="https://ymsisters.com/wp-content/uploads/2026/04/IMG_9996-scaled.jpg" alt="Community Gathering" 
+    style="width:100%; height:1.6in; object-fit:cover; object-position:center top; border-radius:8px; grid-row: span 1;object-position: center 80%" />
+  <img src="https://ymsisters.com/wp-content/uploads/2026/04/20260403_224202_9FF742.jpeg" alt="YM Community" 
+    style="width:100%; height:2in; object-fit:cover; object-position:center top; border-radius:8px;object-position: center 50%" />
+  <img src="https://ymsisters.com/wp-content/uploads/2026/04/IMG_9412-scaled.jpeg" alt="YM Event" 
+    style="width:100%; height:2in; object-fit:cover; object-position:center top; border-radius:8px;object-position: center 50%" />
+</div>
+
+     <div class="page-footer">
+    <span>Young Muslims · Finance Operations Team</span>
+    <span>FY26 Q1 Report · Confidential</span>
+    <span>Page 3</span>
+  </div>
+    </div>
+    </div>
+<!-- ══════════════════════════════════
+     PAGE 4 — INCOME & EXPENSE CHARTS
+══════════════════════════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="page-header-logo"><img src="https://ymsisters.com/wp-content/uploads/2026/04/YMS-Logo.png" alt="YM Logo" /></div>
+        <div class="page-header-title">FY26 Q1 Quarterly Report</div>
+      </div>
+      <div class="page-header-right">Section 05 · Financial Overview</div>
+    </div>
+
+    <div class="section-label">National Financials</div>
+    <div class="section-heading">Income & <em>Expense Breakdown</em></div>
+    <p style="font-size:8.5pt; color:var(--ink-mid); margin-bottom:20px;">January 1 – April 21, 2026 · Excludes YMC/YMLC registration income. Source: QuickBooks Statement of Activity.</p>
+
+    <div style="display:flex; gap:24px; align-items:flex-start; margin-bottom:28px;">
+      <div style="flex:1; min-width:0;">
+        <div style="font-size:8pt; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--green-mid); margin-bottom:10px;">Income · $102,916.39 total</div>
+        <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px;">
+          <span style="display:flex;align-items:center;gap:4px;font-size:7.5pt;color:var(--ink-mid);"><span style="width:9px;height:9px;border-radius:2px;background:#1C4532;display:inline-block;"></span>Donations 96.7%</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:7.5pt;color:var(--ink-mid);"><span style="width:9px;height:9px;border-radius:2px;background:#52B788;display:inline-block;"></span>Event Reg 2.2%</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:7.5pt;color:var(--ink-mid);"><span style="width:9px;height:9px;border-radius:2px;background:#95D5B2;display:inline-block;"></span>Merch 1.1%</span>
+        </div>
+        <div style="font-size:7pt; color:var(--ink-light); font-style:italic; margin-bottom:4px;"> Hover over a slice to see details</div>
+        <div style="position:relative;width:100%;height:3in;margin-top:.8in; margin-left: -11; width:85%;">
+          <canvas id="rptIncomeChart" role="img" aria-label="Income pie chart">Donations $99,469.66, Event Registration $2,337.73, Merchandise $1,109.</canvas>
+        </div>
+      </div>
+
+      <div style="flex:1; min-width:0;">
+        <div style="font-size:8pt; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--green-mid); margin-bottom:10px;">Expenses · $40,358.77 total</div>
+        <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px;">
+          <span style="display:flex;align-items:center;gap:4px;font-size:7.5pt;color:var(--ink-mid);"><span style="width:9px;height:9px;border-radius:2px;background:#1C4532;display:inline-block;"></span>Sub-Regional 27.3%</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:7.5pt;color:var(--ink-mid);"><span style="width:9px;height:9px;border-radius:2px;background:#2D6A4F;display:inline-block;"></span>NN Operations 26.7%</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:7.5pt;color:var(--ink-mid);"><span style="width:9px;height:9px;border-radius:2px;background:#40916C;display:inline-block;"></span>National Depts 15.9%</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:7.5pt;color:var(--ink-mid);"><span style="width:9px;height:9px;border-radius:2px;background:#52B788;display:inline-block;"></span>Conferences 12.6%</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:7.5pt;color:var(--ink-mid);"><span style="width:9px;height:9px;border-radius:2px;background:#74C69D;display:inline-block;"></span>Merchandise Design 8.1%</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:7.5pt;color:var(--ink-mid);"><span style="width:9px;height:9px;border-radius:2px;background:#95D5B2;display:inline-block;"></span>Software 3.3%</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:7.5pt;color:var(--ink-mid);"><span style="width:9px;height:9px;border-radius:2px;background:#B7E4C7;display:inline-block;"></span>Leadership Conf 5.5%</span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:7.5pt;color:var(--ink-mid);"><span style="width:9px;height:9px;border-radius:2px;background:#D8F3DC;display:inline-block;"></span>National Ops 1.8%</span>
+        </div>
+        <div style="font-size:7pt; color:var(--ink-light); font-style:italic; margin-bottom:4px;"> Hover over a slice to see details</div>
+
+        <div style="position:relative;width:100%;height:3in;">
+          <canvas id="rptExpenseChart" role="img" aria-label="Expense pie chart">Sub-Regional $11,022, NN Operations $10,756.47, National Depts $6,419, Conferences $5,097, Merch $3,251, Software $1,318, Leadership Retreats $1,812, National Ops $737.</canvas>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;">
+      <div style="background:var(--green-pale); border:1px solid #67ad75; border-radius:10px; padding:16px 18px;">
+        <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--green-mid); margin-bottom:6px;">Total Income</div>
+        <div style="font-family:'DM Serif Display',serif; font-size:22pt; color:var(--green-deep); line-height:1;">$102,916.39</div>
+        <div style="font-size:8pt; color:var(--green-mid); margin-top:4px;">Excl. YMC/YMLC registration</div>
+      </div>
+      <div style="background:var(--gold-light); border:1px solid #b39029; border-radius:10px; padding:16px 18px;">
+        <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold-dark); margin-bottom:6px;">Total Expenses</div>
+        <div style="font-family:'DM Serif Display',serif; font-size:22pt; color:var(--gold-dark); line-height:1;">$40,358.77</div>
+        <div style="font-size:8pt; color:var(--gold-dark); margin-top:4px;">All expenditure categories</div>
+      </div>
+      <div style="background:var(--teal-pale); border:1px solid #A0D4D4; border-radius:10px; padding:16px 18px;">
+        <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--teal); margin-bottom:6px;">Net Operating Revenue</div>
+        <div style="font-family:'DM Serif Display',serif; font-size:22pt; color:var(--teal); line-height:1;">$62,557.62</div>
+        <div style="font-size:8pt; color:var(--teal); margin-top:4px;">As of April 21, 2026</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <span>Young Muslims · Finance Operations Team</span>
+    <span>FY26 Q1 Report · Confidential</span>
+    <span>Page 4</span>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+new Chart(document.getElementById('rptIncomeChart'), {
+  type: 'pie',
+  data: { labels: ['Donations','Conferences','Event Reg','Merchandise'], datasets: [{ data: [144104.99,15301.13,1922.73,1109.00], backgroundColor: ['#1C4532','#2D6A4F','#52B788','#95D5B2'], borderWidth:1, borderColor: "black" }] },
+  options: { responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label: ctx => ' $'+ctx.parsed.toLocaleString('en-US',{maximumFractionDigits:0}) }}}}
+});
+new Chart(document.getElementById('rptExpenseChart'), {
+  type: 'pie',
+  data: { labels: ["Sub-Regional","NN Operations","Nat'l Depts","Conferences","Merch & Design","Software","Leadership Conf","Retreats","Nat'l Ops"], datasets: [{ data: [11022.39,10103.48,6419.37,5096.52,3250.77,1317.65,1000.00,811.96,737.29], backgroundColor: ['#1C4532','#2D6A4F','#40916C','#52B788','#74C69D','#95D5B2','#B7E4C7','#C9A227','#D8F3DC'], borderWidth:2, borderColor:'#fff' }] },
+  options: { responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label: ctx => ' $'+ctx.parsed.toLocaleString('en-US',{maximumFractionDigits:0}) }}}}
+});
+</script>
+
+<!-- ══════════════════════════════════
+     PAGE 5 — EVENTS & FINANCIAL AID
+══════════════════════════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="page-header">
+      <div class="page-header-left">
+          <div class="page-header-logo"> <img src="https://ymsisters.com/wp-content/uploads/2026/04/YMS-Logo.png" alt="YM Logo" /></div>
+        <div class="page-header-title">FY26 Q1 Quarterly Report</div>
+      </div>
+      <div class="page-header-right">Section 02 · Events & Initiatives</div>
+    </div>
+
+    <div class="section-label">National Events</div>
+    <div class="section-heading">Q1 Events & <em>Finances</em></div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:24px;">
+
+  <div style="border-radius:10px; border:1px solid var(--rule); padding:18px 20px; background:var(--green-pale);">
+    <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--green-mid); margin-bottom:6px;">RCLC · Regional Coordination Leadership Conference</div>
+    <div style="font-family:'DM Serif Display',serif; font-size:24pt; color:var(--green-deep); line-height:1; margin-bottom:8px;">20 attendees</div>
+    <div style="font-size:8.5pt; color:var(--green-mid); line-height:1.65;">For the first time, YM brought together all regional, subregional, and expansion coordinators for a dedicated leadership retreat aligning on Vision 2030 goals and translating them into immediate action for local NeighborNets. </div>
+  </div>
+
+  <div style="border-radius:10px; border:1px solid var(--rule); padding:18px 20px;">
+    <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--green-mid); margin-bottom:6px;">NS Events & Tours</div>
+    <div style="font-family:'DM Serif Display',serif; font-size:38pt; color:var(--green-deep); line-height:1; margin-bottom:6px;" class="tbd">6</div>
+    <div style="font-size:8pt; color:var(--ink-mid);">Total NS events and tours completed in Q1 FY26</div>
+    <div style="margin-top:10px; font-size:8.5pt; color:var(--ink-mid); font-style:italic; line-height:1.6;">NS members have been able to visit over 6 unique states in the past quarter connection with local leadership and attending Subregional events. </div>
+  </div>
+
+  <div style="border-radius:10px; border:1px solid var(--rule); padding:18px 20px;">
+    <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--green-mid); margin-bottom:6px;">Leadership Onboarding Conferences</div>
+    <div style="font-family:'DM Serif Display',serif; font-size:38pt; color:var(--green-deep); line-height:1; margin-bottom:6px;" class="tbd">7</div>
+    <div style="font-size:8pt; color:var(--ink-mid);">Conferences held since the start of FY26</div>
+    <div style="margin-top:10px; font-size:8.5pt; color:var(--ink-mid); font-style:italic; line-height:1.6;">7 Subregions held leadership conferences as part of their onboarding to increase sisterhood, and proper connection between local leadership. Conferences has speakers ranging from active leadership to local scholars to enahnce tarbiyyah and personal growth.</div>
+  </div>
+
+  <div style="border-radius:10px; border:1px solid var(--rule); padding:18px 20px; background:var(--gold-light);">
+    <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold-dark); margin-bottom:6px;">Active NeighborNets & Local Impact</div>
+    <div style="font-family:'DM Serif Display',serif; font-size:38pt; color:var(--gold-dark); line-height:1; margin-bottom:6px;">50</div>
+    <div style="font-size:8pt; color:var(--gold-dark);">Active NeighborNets across all regions</div>
+    <div style="margin-top:10px; font-size:8.5pt; color:var(--gold-dark); font-style:italic; line-height:1.6;">NeighborNets have gone beyond weekly Friday nights hosting family and parent nights, Ramadan cafes, and Eid henna nights across the country, bringing Young Muslims deeper into their local communities.</div>
+  </div>
+
+</div>
+
+    <hr class="rule">
+  <div class="photo-grid hero-left" style="margin-bottom:14px;">
+      <img src="https://ymsisters.com/wp-content/uploads/2026/04/IMG_5061-scaled.jpg" alt="YM Gala" style="height:3.4in; border-radius:8px; object-fit:contain; background:#f5f5f0;" />
+      <div class="photo-stack">
+        <img src="https://ymsisters.com/wp-content/uploads/2026/04/IMG_6031.jpg" alt="Leadership Weekend" style="height:2in;" />
+        <img src="https://ymsisters.com/wp-content/uploads/2026/04/IMG_1356.jpg" alt="Community gathering" style="height:2in;"/>
+      </div>
+    </div>
+   
+    <div class="section-label">Financial Aid</div>
+    <div class="section-heading" style="font-size:16pt;">Financial <em>Aid Summary</em></div>
+    <p style="font-size:8.5pt; color:var(--ink-mid); margin-bottom:16px; font-style:italic;">Section prepared by Aisha &amp; Hadia — please populate before distribution.</p>
+
+   <div style="margin-bottom:20px;">
+  <div style="display:grid; grid-template-columns:1fr 2fr; gap:16px; align-items:start;">
+
+    <div style="background:var(--green-pale); border:1px solid #B7DFBF; border-radius:10px; padding:20px 22px; text-align:center;">
+      <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--green-mid); margin-bottom:10px;">Total Aid Applications Received</div>
+      <div style="font-family:'DM Serif Display',serif; font-size:38pt; color:var(--green-deep); line-height:1;" class="tbd">62</div>
+      <div style="font-size:8pt; color:var(--green-mid); margin-top:6px;">Q1 FY26 submissions</div>
+    </div>
+
+    <div style="border:1px solid var(--rule); border-radius:10px; padding:20px 22px;">
+      <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; color:var(--green-mid); margin-bottom:10px;">Impact Statement</div>
+      <div style="font-size:9pt; color:var(--ink-mid); line-height:1.7; font-style:italic;">Registration for many events opened up in Quarter 1 such YMLC, YMC, MAD, etc. The requests have been received and will be processed during Quarter 2</div>
+    </div>
+
+  </div>
+</div>
+     
+
+    
+
+      
+  <div class="page-footer">
+    <span>Young Muslims · Finance Operations Team</span>
+    <span>FY26 Q1 Report · Confidential</span>
+    <span>Page 5</span>
+  </div>
+</div>
+
+</div>
+
+
+<!-- ══════════════════════════════════
+     PAGE 6 — SR BREAKDOWN
+══════════════════════════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="page-header-logo"><img src="https://ymsisters.com/wp-content/uploads/2026/04/YMS-Logo.png" alt="YM Logo" /></div>
+        <div class="page-header-title">FY26 Q1 Quarterly Report</div>
+      </div>
+      <div class="page-header-right">Section 03 · Subregional Summary</div>
+      
+    </div>
+
+   <div class="section-label">Subregional Breakdown</div>
+    <div class="section-heading" style="font-size:16pt;">SR Activity <em>Summary</em></div>
+    <p style="font-size:8.5pt; color:var(--ink-mid); margin-bottom:16px;">Q1 FY26 · Based on approved JotForm submissions across all subregions. Not putting into account intitial budgte. STRICTLY spending and income from each subregion.</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:16px;">
+
+      <div style="border-radius:10px; border:1px solid #B7DFBF; padding:14px 16px; background:var(--green-pale);">
+        <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--green-mid); margin-bottom:4px;">New Jersey - Central</div>
+        <div style="font-family:'DM Serif Display',serif; font-size:16pt; color:var(--green-deep); line-height:1; margin-bottom:6px;">$3,608 net</div>
+        <div style="font-size:7.5pt; color:var(--green-mid);">Income $5,535 · Exp $1,927</div>
+      </div>
+
+      <div style="border-radius:10px; border:1px solid #B7DFBF; padding:14px 16px; background:var(--green-pale);">
+        <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--green-mid); margin-bottom:4px;">New York</div>
+        <div style="font-family:'DM Serif Display',serif; font-size:16pt; color:var(--green-deep); line-height:1; margin-bottom:6px;">$3,016 net</div>
+        <div style="font-size:7.5pt; color:var(--green-mid);">Income $4,218 · Exp $1,202</div>
+      </div>
+
+      <div style="border-radius:10px; border:1px solid #B7DFBF; padding:14px 16px; background:var(--green-pale);">
+        <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--green-mid); margin-bottom:4px;">New Jersey - North</div>
+        <div style="font-family:'DM Serif Display',serif; font-size:16pt; color:var(--green-deep); line-height:1; margin-bottom:6px;">$1,503 net</div>
+        <div style="font-size:7.5pt; color:var(--green-mid);">Income $2,530 · Exp $1,027</div>
+      </div>
+
+      <div style="border-radius:10px; border:1px solid #B7DFBF; padding:14px 16px; background:var(--green-pale);">
+        <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--green-mid); margin-bottom:4px;">Virginia</div>
+        <div style="font-family:'DM Serif Display',serif; font-size:16pt; color:var(--green-deep); line-height:1; margin-bottom:6px;">$1,494 net</div>
+        <div style="font-size:7.5pt; color:var(--green-mid);">Income $2,132 · Exp $638</div>
+      </div>
+
+      <div style="border-radius:10px; border:1px solid #B7DFBF; padding:14px 16px; background:var(--green-pale);">
+        <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--green-mid); margin-bottom:4px;">Dallas</div>
+        <div style="font-family:'DM Serif Display',serif; font-size:16pt; color:var(--green-deep); line-height:1; margin-bottom:6px;">$620 net</div>
+        <div style="font-size:7.5pt; color:var(--green-mid);">Income $1,295 · Exp $675</div>
+      </div>
+
+      <div style="border-radius:10px; border:1px solid #F5B7B1; padding:14px 16px; background:var(--red-pale);">
+        <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--red); margin-bottom:4px;">New Jersey - South</div>
+        <div style="font-family:'DM Serif Display',serif; font-size:16pt; color:var(--red); line-height:1; margin-bottom:6px;">-$259 net</div>
+        <div style="font-size:7.5pt; color:var(--red);">Income $260 · Exp $519</div>
+      </div>
+
+      <div style="border-radius:10px; border:1px solid #F5B7B1; padding:14px 16px; background:var(--red-pale);">
+        <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--red); margin-bottom:4px;">Houston</div>
+        <div style="font-family:'DM Serif Display',serif; font-size:16pt; color:var(--red); line-height:1; margin-bottom:6px;">-$277 net</div>
+        <div style="font-size:7.5pt; color:var(--red);">Income $243 · Exp $520</div>
+      </div>
+
+      <div style="border-radius:10px; border:1px solid #F5B7B1; padding:14px 16px; background:var(--red-pale);">
+        <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--red); margin-bottom:4px;">Connecticut</div>
+        <div style="font-family:'DM Serif Display',serif; font-size:16pt; color:var(--red); line-height:1; margin-bottom:6px;">-$340 net</div>
+        <div style="font-size:7.5pt; color:var(--red);">Income $419 · Exp $759</div>
+      </div>
+
+      <div style="border-radius:10px; border:1px solid #F5B7B1; padding:14px 16px; background:var(--red-pale);">
+        <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--red); margin-bottom:4px;">Maryland</div>
+        <div style="font-family:'DM Serif Display',serif; font-size:16pt; color:var(--red); line-height:1; margin-bottom:6px;">-$317 net</div>
+        <div style="font-size:7.5pt; color:var(--red);">Income $0 · Exp $317 · No income logged</div>
+      </div>
+
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+      <div style="background:var(--green-pale); border:1px solid #B7DFBF; border-radius:10px; padding:14px 16px;">
+        <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--green-mid); margin-bottom:4px;">Total SR Income</div>
+        <div style="font-family:'DM Serif Display',serif; font-size:18pt; color:var(--green-deep); line-height:1;">$16,632</div>
+      </div>
+      <div style="background:var(--gold-light); border:1px solid #EBCF7A; border-radius:10px; padding:14px 16px;">
+        <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold-dark); margin-bottom:4px;">Total SR Expenses</div>
+        <div style="font-family:'DM Serif Display',serif; font-size:18pt; color:var(--gold-dark); line-height:1;">$7,064</div>
+      </div>
+      <div style="background:var(--teal-pale); border:1px solid #A0D4D4; border-radius:10px; padding:14px 16px;">
+        <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--teal); margin-bottom:4px;">Net SR Balance</div>
+        <div style="font-family:'DM Serif Display',serif; font-size:18pt; color:var(--teal); line-height:1;">$9,568</div>
+      </div>
+    </div>
+     <div class="photo-quote">
+      <img src="https://ymsisters.com/wp-content/uploads/2026/04/D97FC5D7-BFB2-4A3E-9AF7-92102DCB72B9.jpeg" alt="YM photo" style="zoom: 170%;" />
+      <div class="photo-quote-text">
+        "Q1 was a quarter of momentum — from Ramadan fundraising to leadership onboarding, the energy across our NeighborNets has been incredible."
+        <strong>— Young Muslims Finance Operations Team</strong>
+      </div>
+    </div>
+  </div>
+  
+  <div class="page-footer">
+    <span>Young Muslims · Finance Operations Team</span>
+    <span>FY26 Q1 Report · Confidential</span>
+    <span>Page 6</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     PAGE 7 — NEW POLICIES
+══════════════════════════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="page-header-logo"> <img src="https://ymsisters.com/wp-content/uploads/2026/04/YMS-Logo.png" alt="YM Logo" /></div>
+        <div class="page-header-title">FY26 Q1 Quarterly Report</div>
+      </div>
+      <div class="page-header-right">Section 03 · New Policies Effective Q2</div>
+    </div>
+
+    <div class="section-label">Effective Q2 FY26</div>
+    <div class="section-heading">New <em>Financial Policies</em></div>
+    <p style="font-size:9pt; color:var(--ink-mid); margin-bottom:22px; line-height:1.6;">The following policies are <strong style="color:var(--green-deep);">effective beginning Q2 (April 2026)</strong>. Submissions that do not comply will be denied. Please read carefully and share with your full shura.</p>
+
+    <div class="policy-grid">
+
+      <div class="policy-card new">
+        <div class="badge new">New · Q2</div>
+        <h4>Separate receipts for YM purchases</h4>
+        <p>All YM-related expenses must be purchased on their own, separate receipt. <strong style="color:var(--green-deep);">Do not mix personal and YM purchases on the same receipt</strong> — submissions with personal items on the same receipt will not be approved.</p>
+      </div>
+
+      <div class="policy-card new">
+        <div class="badge new">New · Q2</div>
+        <h4>Venmo or Zelle reimbursements only</h4>
+        <p>We are streamlining reimbursements to <strong style="color:var(--green-deep);">Venmo (@Young-Muslims) or Zelle only</strong>. The check option is being removed. After submitting your JotForm, please immediately send your Venmo or Zelle request so we can process it quickly.</p>
+      </div>
+
+      <div class="policy-card new">
+        <div class="badge new">New · Q2</div>
+        <h4>Amazon &amp; online purchases — PDF receipts</h4>
+        <p>Screenshots of Amazon orders or any online purchase receipts are <strong style="color:var(--green-deep);">no longer accepted</strong>. You must <strong style="color:var(--green-deep);">download the receipt as a PDF</strong> from the retailer and upload that file to the form.</p>
+        <ul>
+          <li>Amazon → Order Details → Print/Download as PDF</li>
+          <li>Any online vendor → PDF invoice or receipt</li>
+          <li>Exception: Zelle or Venmo transfer screenshots are still fine</li>
+        </ul>
+      </div>
+
+      <div class="policy-card new">
+        <div class="badge new">New · Q2</div>
+        <h4>Itemized details — items only, no prices</h4>
+        <p>In the <em>Itemized Details</em> field, <strong style="color:var(--green-deep);">list only the items purchased</strong>. Do not include individual item prices and do not include tax — just a clean list of what was bought.</p>
+        <ul>
+          <li>✓ Balloons, tablecloths, string lights, streamers</li>
+          <li>✗ Balloons $10, tablecloths $15 + tax</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="callout green">
+      <p>These updates are designed to make Finance processing faster for everyone. The Venmo/Zelle change in particular means we can approve and pay out the same Tuesday your submission comes in — no delays waiting for checks. Thank you for your patience as we tighten these processes up.</p>
+    </div>
+  </div>
+  <div class="page-footer">
+    <span>Young Muslims · Finance Operations Team</span>
+    <span>FY26 Q1 Report · Confidential</span>
+    <span>Page 7</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     PAGE 8 — POLICY REMINDERS
+══════════════════════════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="page-header-logo"> <img src="https://ymsisters.com/wp-content/uploads/2026/04/YMS-Logo.png" alt="YM Logo" /></div>
+        <div class="page-header-title">FY26 Q1 Quarterly Report</div>
+      </div>
+      <div class="page-header-right">Section 04 · Policy Reminders</div>
+    </div>
+
+    <div class="section-label">Ongoing Policies</div>
+    <div class="section-heading">Friendly <em>Reminders</em></div>
+    <p style="font-size:9pt; color:var(--ink-mid); margin-bottom:22px;">These are not new — but we've seen consistent issues this quarter. Please review.</p>
+
+    <!-- INTERNAL TRANSFER -->
+    <div class="policy-card reminder" style="margin-bottom:14px; display:block;">
+      <div class="badge reminder">Reminder</div>
+      <h4>What counts as an Internal Transfer?</h4>
+      <p style="margin-bottom:10px;">We've seen many submissions incorrectly use <em>Internal Transfer</em> as the transaction type. Internal Transfers are <strong style="color:var(--gold-dark);">only for moving money between your team's existing YM accounts.</strong></p>
+      <p style="font-size:8pt; color:var(--gold-dark); font-weight:600; margin-bottom:6px;">✓ Valid internal transfers:</p>
+      <div class="transfer-flow">
+        <div class="tf-box">YM Bank</div><div class="tf-arrow">↔</div><div class="tf-box">Cash Box</div>
+        <span style="font-size:8pt; color:var(--ink-light); margin: 0 6px;">·</span>
+        <div class="tf-box">YM Bank</div><div class="tf-arrow">↔</div><div class="tf-box">Personal Bank Acct</div>
+        <span style="font-size:8pt; color:var(--ink-light); margin: 0 6px;">·</span>
+        <div class="tf-box">Cash Box</div><div class="tf-arrow">↔</div><div class="tf-box">Personal Bank Acct</div>
+      </div>
+      <p style="font-size:8pt; color:var(--red); font-weight:600; margin: 10px 0 6px;">✗ This is NOT an internal transfer:</p>
+      <div class="transfer-flow">
+        <div class="tf-box wrong">Personal funds</div><div class="tf-arrow wrong">→</div><div class="tf-box wrong">Personal Bank Acct (YM portion)</div>
+      </div>
+      <p style="font-size:8pt; color:var(--gold-dark); margin-top:8px;">⬆ This is <strong style="color:var(--gold-dark);">Income to Personal Bank Account</strong>. Please resubmit correctly.</p>
+    </div>
+
+    <div class="policy-grid">
+
+      <div class="policy-card reminder">
+        <div class="badge reminder">Reminder</div>
+        <h4>Tax is included in your total</h4>
+        <p>We cover tax. <strong style="color:var(--gold-dark);">Do not exclude tax from your expense total.</strong> Your total amount submitted should include tax — enter the full amount from your receipt.<br> <b><i>We are a nonprofit organization and are eligible for tax expemptions</i></b>, if you need it for large purchases please email finance team.</p>
+      </div>
+
+      <div class="policy-card alert">
+        <div class="badge alert">Required</div>
+        <h4>No receipt = no approval</h4>
+        <p>Every expense submission requires a receipt or bank statement. <strong style="color:var(--red);">We will not approve any submission without one.</strong> For paper receipts, make sure the full receipt is clearly visible — if we can't read it, it will be denied.</p>
+      </div>
+
+      <div class="policy-card reminder">
+        <div class="badge reminder">Reminder</div>
+        <h4>Expense Details format</h4>
+        <p>Follow this format in the <em>Expense Details</em> field:</p>
+        <p style="margin-top:8px; background:white; border-radius:5px; padding:6px 8px; font-family:monospace; font-size:8pt; color:var(--gold-dark);">MM/DD/YY · Event Name · Expense Category</p>
+        <p style="margin-top:6px; font-size:8pt; color:var(--gold-dark);">Example: <strong>1/9/26 NJ Gala – Decorations</strong></p>
+      </div>
+
+      <div class="policy-card alert">
+        <div class="badge alert">Required</div>
+        <h4>Use your YM email</h4>
+        <p>All JotForm submissions <strong style="color:var(--red);">must use your YM email</strong> (e.g. name@ymsisters.com). Personal email submissions will not be accepted. Dashboard access requests from personal emails will also be denied. Email admin@ymsisters.com if you need a YM email.</p>
+      </div>
+
+      <div class="policy-card alert" style="grid-column: span 2;">
+        <div class="badge alert">Action Required</div>
+        <h4>Missing starting balances — contact your SR Finance Lead NOW</h4>
+        <p>It is April 2026. Starting balances were due in <strong style="color:var(--red);">January–February</strong>. Many NNs still have not submitted theirs, which means their dashboards cannot accurately reflect their Q1 finances. Please contact your <strong style="color:var(--red);">SR Finance Lead or SRC immediately</strong>. We will be reaching out individually to all outstanding chapters.</p>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="page-footer">
+    <span>Young Muslims · Finance Operations Team</span>
+    <span>FY26 Q1 Report · Confidential</span>
+    <span>Page 8</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════
+     PAGE 9 — IN MEMORIAM
+══════════════════════════════════ -->
+<div class="page">
+  <div class="inner">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="page-header-logo"><img src="https://ymsisters.com/wp-content/uploads/2026/04/YMS-Logo.png" alt="YM Logo" /></div>
+        <div class="page-header-title">FY26 Q1 Quarterly Report</div>
+      </div>
+      <div class="page-header-right">In Memoriam · LaunchGood Campaign</div>
+    </div>
+
+    <div style="text-align:center; margin-bottom:28px;">
+      <div style="font-size:8pt; color:var(--ink-light); letter-spacing:0.18em; text-transform:uppercase; margin-bottom:10px;">In Loving Memory</div>
+      <div style="font-family:'DM Serif Display', serif; font-size:32pt; color:var(--green-deep); line-height:1.1; margin-bottom:8px;">Adiba Chowdhury</div>
+      <div style="font-size:9pt; color:var(--ink-light); margin-bottom:20px;">&#x625;&#x650;&#x646;&#x651;&#x64E;&#x627; &#x644;&#x650;&#x644;&#x651;&#x647;&#x650; &#x648;&#x625;&#x650;&#x646;&#x651;&#x64E;&#x627; &#x625;&#x650;&#x644;&#x64E;&#x64A;&#x652;&#x647;&#x650; &#x631;&#x64E;&#x627;&#x62C;&#x650;&#x639;&#x64F;&#x648;&#x646;&#x64E;</div>
+      <div style="font-size:8.5pt; color:var(--ink-mid); font-style:italic;">We are from Allah and to Him we return.</div>
+      <div style="width:60px; height:2px; background:var(--gold); margin:20px auto 0;"></div>
+    </div>
+
+    <div style="background:var(--green-deep); border-radius:14px; padding:24px 28px; margin-bottom:24px;">
+      <div style="font-size:8pt; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:18px; font-weight:600;">LaunchGood Campaign · Closed January 31, 2026</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px;">
+        <div>
+          <div style="font-size:7.5pt; color:rgba(255,255,255,0.45); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">Total Raised</div>
+          <div style="font-family:'DM Serif Display', serif; font-size:28pt; color:white; line-height:1;">$13,006</div>
+        </div>
+        <div>
+          <div style="font-size:7.5pt; color:rgba(255,255,255,0.45); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">Campaign Duration</div>
+          <div style="font-family:'DM Serif Display', serif; font-size:18pt; color:white; line-height:1.2;">Dec &ndash; Jan<br><span style="font-size:12pt;">2026</span></div>
+        </div>
+        <div>
+          <div style="font-size:7.5pt; color:rgba(255,255,255,0.45); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:6px;">Total Donors</div>
+          <div style="font-family:'DM Serif Display', serif; font-size:18pt; color:white; line-height:1.2;">288 Supporters</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:24px;">
+      <div class="section-label">Fund Allocation</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:10px;">
+        <div style="border-radius:10px; border:1px solid var(--rule); padding:16px 18px; background:var(--green-pale);">
+          <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--green-mid); margin-bottom:6px;">Sadaqah Jariyah</div>
+          <div style="font-family:'DM Serif Display', serif; font-size:20pt; color:var(--green-deep); line-height:1; margin-bottom:4px;">$3,500</div>
+          <div style="font-size:8pt; color:var(--green-mid);">Towards building a well in her name &mdash; a gift that continues to give.</div>
+        </div>
+        <div style="border-radius:10px; border:1px solid var(--rule); padding:16px 18px; background:var(--gold-light);">
+          <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--gold-dark); margin-bottom:6px;">Masjid Contribution</div>
+          <div style="font-family:'DM Serif Display', serif; font-size:20pt; color:var(--gold-dark); line-height:1; margin-bottom:4px;">$4,753</div>
+          <div style="font-size:8pt; color:var(--gold-dark);">Half of the remaining funds donated to the local masjid.</div>
+        </div>
+        <div style="border-radius:10px; border:1px solid var(--rule); padding:16px 18px; background:var(--cream);">
+          <div style="font-size:7.5pt; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-mid); margin-bottom:6px;">Family Support</div>
+          <div style="font-family:'DM Serif Display', serif; font-size:20pt; color:var(--ink); line-height:1; margin-bottom:4px;">$4,753</div>
+          <div style="font-size:8pt; color:var(--ink-mid);">Remaining funds directed to her family to ease any financial burden.</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <div class="section-label" style="margin-bottom:14px;">Community Remembrances</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:24px;">
+      <div style="border-radius:10px; background:#F7F5F0; border:1px solid var(--rule); padding:16px 18px;">
+        <div style="font-size:18pt; color:var(--green-light); margin-bottom:8px; font-family:'DM Serif Display',serif;">&ldquo;</div>
+        <div style="font-size:8.5pt; color:var(--ink-mid); font-style:italic; line-height:1.65; margin-bottom:12px;">[Share a memory, moment, or quality you will always remember about her.]</div>
+        <div style="border-top:1px solid var(--rule); padding-top:10px;">
+          <div style="font-size:8pt; font-weight:600; color:var(--ink);">&mdash; [Name]</div>
+          <div style="font-size:7.5pt; color:var(--ink-light);">[Role / NN / Region]</div>
+        </div>
+      </div>
+      <div style="border-radius:10px; background:#F7F5F0; border:1px solid var(--rule); padding:16px 18px;">
+        <div style="font-size:18pt; color:var(--green-light); margin-bottom:8px; font-family:'DM Serif Display',serif;">&ldquo;</div>
+        <div style="font-size:8.5pt; color:var(--ink-mid); font-style:italic; line-height:1.65; margin-bottom:12px;">Adiba was one of the kindest, smartest, and most respectful young lady that we have ever met. She will be sorely missed, but always remembered for her beautiful soul.</div>
+        <div style="border-top:1px solid var(--rule); padding-top:10px;">
+          <div style="font-size:8pt; font-weight:600; color:var(--ink);">&mdash; The Lucas Family</div>
+          <div style="font-size:7.5pt; color:var(--ink-light);">Friends &amp; Family</div>
+        </div>
+      </div>
+      <div style="border-radius:10px; background:#F7F5F0; border:1px solid var(--rule); padding:16px 18px;">
+        <div style="font-size:18pt; color:var(--green-light); margin-bottom:8px; font-family:'DM Serif Display',serif;">&ldquo;</div>
+        <div style="font-size:8.5pt; color:var(--ink-mid); font-style:italic; line-height:1.65; margin-bottom:12px;">[Share a memory, moment, or quality you will always remember about her.]</div>
+        <div style="border-top:1px solid var(--rule); padding-top:10px;">
+          <div style="font-size:8pt; font-weight:600; color:var(--ink);">&mdash; [Name]</div>
+          <div style="font-size:7.5pt; color:var(--ink-light);">[Role / NN / Region]</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center; background:var(--green-pale); border-radius:12px; padding:20px 28px;">
+      <div style="font-size:9pt; color:var(--green-deep); font-style:italic; line-height:1.8;">May Allah grant her the highest ranks in Jannah, accept her deeds as sadaqah jariyah,<br>and grant her family, friends, and community patience and comfort.</div>
+      <div style="font-size:8pt; color:var(--green-mid); margin-top:10px; font-weight:600;">&#x627;&#x644;&#x644;&#x651;&#x647;&#x64F;&#x645;&#x651; &#x627;&#x63A;&#x652;&#x641;&#x650;&#x631;&#x652; &#x644;&#x64E;&#x647;&#x64E;&#x627; &#x648;&#x627;&#x631;&#x652;&#x62D;&#x64E;&#x645;&#x652;&#x647;&#x64E;&#x627; &#x648;&#x64E;&#x639;&#x64E;&#x627;&#x641;&#x650;&#x647;&#x64E;&#x627; &#x648;&#x64E;&#x627;&#x639;&#x652;&#x641;&#x64F; &#x639;&#x64E;&#x646;&#x652;&#x647;&#x64E;&#x627;</div>
+    </div>
+
+  </div>
+  <div class="page-footer">
+    <span>Young Muslims · Finance Operations Team</span>
+    <span>FY26 Q1 Report · Confidential</span>
+    <span>Page 9</span>
+  </div>
+</div>
+
+</body>
+</html>
