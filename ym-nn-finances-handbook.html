@@ -113,8 +113,6 @@
       radial-gradient(ellipse at 82% 18%, rgba(194,138,42,0.13) 0%, transparent 52%);
   }
   .hero-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
-  .hero-bismillah { font-size: 1.25rem; color: var(--gold); margin-bottom: 8px; opacity: 0.92; }
-  .hero-trans { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 26px; letter-spacing: 0.08em; }
   .hero-org {
     font-size: 11px;
     letter-spacing: 0.22em;
@@ -133,23 +131,6 @@
     letter-spacing: -0.03em;
   }
   .hero-desc { font-size: 16px; color: rgba(255,255,255,0.55); margin-bottom: 34px; line-height: 1.65; }
-  .hero-contact {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    background: rgba(255,255,255,0.08);
-    border: 0.5px solid rgba(255,255,255,0.18);
-    color: rgba(255,255,255,0.8);
-    padding: 10px 26px;
-    border-radius: 100px;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    backdrop-filter: blur(12px);
-    transition: background 0.2s ease;
-  }
-  .hero-contact:hover { background: rgba(255,255,255,0.14); }
-
   /* ── LAYOUT ── */
   .page { max-width: 1100px; margin: 0 auto; padding: 0 20px 96px; }
 
@@ -583,6 +564,33 @@
   .resource-card h4 { font-size: 14px; font-weight: 600; color: var(--label); margin-bottom: 6px; letter-spacing: -0.01em; }
   .resource-card p  { font-size: 13px; color: var(--label-2); line-height: 1.55; }
 
+  /* ── BISMILLAH BANNER ── */
+  .bismillah-banner {
+    background: var(--surface);
+    border: 0.5px solid var(--sep);
+    border-radius: var(--r3);
+    padding: 28px 32px;
+    margin: 36px 0 0;
+    text-align: center;
+    box-shadow: var(--s1);
+  }
+  .bismillah-arabic {
+    font-size: 2.6rem;
+    color: var(--green);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .bismillah-trans {
+    font-size: 13px;
+    color: var(--label-2);
+    line-height: 1.7;
+  }
+  .bismillah-trans span[lang="ar"] {
+    font-size: 1.15rem;
+    color: var(--gold);
+    vertical-align: middle;
+  }
+
   /* ── MISC ── */
   .divider { height: 0.5px; background: var(--sep-opaque); margin: 8px 0; }
   .body-text { font-size: 15px; color: var(--label-2); line-height: 1.65; margin-bottom: 14px; }
@@ -621,16 +629,18 @@
 
 <div class="hero">
   <div class="hero-inner">
-    <div class="hero-bismillah">بِسْمِ اللهِ وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِ الله</div>
-    <div class="hero-trans">We begin in the name of Allah (SWT) and send prayers upon His Messenger (SAW)</div>
     <div class="hero-org">Young Muslims · Finance Department</div>
     <h1>NeighborNet Finance Handbook</h1>
     <p class="hero-desc">Everything your NN needs to know about tracking income, logging expenses, submitting JotForms, managing your dashboard, and staying audit-ready.</p>
-    <span class="hero-contact">finance@ymsisters.com</span>
   </div>
 </div>
 
 <div class="page">
+
+<div class="bismillah-banner">
+  <div class="bismillah-arabic">﷽</div>
+  <div class="bismillah-trans">We begin in the name of Allah (<span lang="ar">ﷻ</span>) and send prayers and blessings upon His Messenger (<span lang="ar">ﷺ</span>)</div>
+</div>
 
 <!-- 01 ACCOUNTS -->
 <section class="section" id="accounts">
@@ -1066,7 +1076,7 @@
 </div>
 
 <footer>
-  <p class="footer-b">بِسْمِ اللهِ وَالصَّلَاةُ وَالسَّلَامُ عَلَى رَسُولِ الله</p>
+  <p class="footer-b">﷽ &nbsp; ﷺ</p>
   <p>Young Muslims · Finance Department · <a href="mailto:finance@ymsisters.com">finance@ymsisters.com</a></p>
   <p style="margin-top:8px; opacity:0.4; font-size:11px;">NeighborNet Finance Handbook 2026 · For Internal Use Only</p>
 </footer>
