@@ -1,1080 +1,2147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YM Finance Guide | NeighborNet Handbook 2026</title>
-<style>
-  :root {
-    /* Surfaces */
-    --bg: #F2F2F7;
-    --surface: #FFFFFF;
-    --surface-2: #F2F2F7;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YM Finance Guide | NeighborNet Handbook 2026</title>
+  <style>
+    :root {
+      /* Surfaces */
+      --bg: #F2F2F7;
+      --surface: #FFFFFF;
+      --surface-2: #F2F2F7;
 
-    /* Labels */
-    --label: #1C1C1E;
-    --label-2: #636366;
-    --label-3: #AEAEB2;
+      /* Labels */
+      --label: #1C1C1E;
+      --label-2: #636366;
+      --label-3: #AEAEB2;
 
-    /* Separators */
-    --sep: rgba(60,60,67,0.12);
-    --sep-opaque: #E5E5EA;
+      /* Separators */
+      --sep: rgba(60, 60, 67, 0.12);
+      --sep-opaque: #E5E5EA;
 
-    /* Brand */
-    --green: #1A7A4A;
-    --green-fill: rgba(26,122,74,0.10);
-    --green-fill-strong: rgba(26,122,74,0.18);
-    --gold: #C28A2A;
-    --gold-fill: rgba(194,138,42,0.10);
+      /* Brand */
+      --green: #1A7A4A;
+      --green-fill: rgba(26, 122, 74, 0.10);
+      --green-fill-strong: rgba(26, 122, 74, 0.18);
+      --gold: #C28A2A;
+      --gold-fill: rgba(194, 138, 42, 0.10);
 
-    /* System semantic */
-    --red: #FF3B30;
-    --red-fill: rgba(255,59,48,0.09);
-    --sys-green: #34C759;
-    --sys-green-fill: rgba(52,199,89,0.10);
-    --blue: #007AFF;
-    --blue-fill: rgba(0,122,255,0.09);
-    --orange: #FF9500;
-    --orange-fill: rgba(255,149,0,0.10);
+      /* System semantic */
+      --red: #FF3B30;
+      --red-fill: rgba(255, 59, 48, 0.09);
+      --sys-green: #34C759;
+      --sys-green-fill: rgba(52, 199, 89, 0.10);
+      --blue: #007AFF;
+      --blue-fill: rgba(0, 122, 255, 0.09);
+      --orange: #FF9500;
+      --orange-fill: rgba(255, 149, 0, 0.10);
 
-    /* Shadows */
-    --s1: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-    --s2: 0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
-    --s3: 0 8px 28px rgba(0,0,0,0.09), 0 2px 8px rgba(0,0,0,0.05);
+      /* Shadows */
+      --s1: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+      --s2: 0 4px 16px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+      --s3: 0 8px 28px rgba(0, 0, 0, 0.09), 0 2px 8px rgba(0, 0, 0, 0.05);
 
-    /* Radius */
-    --r1: 8px;
-    --r2: 12px;
-    --r3: 16px;
-    --r4: 20px;
-  }
+      /* Radius */
+      --r1: 8px;
+      --r2: 12px;
+      --r3: 16px;
+      --r4: 20px;
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
-    font-size: 15px;
-    color: var(--label);
-    background: var(--bg);
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  /* ── NAV ── */
-  .toc {
-    background: rgba(242,242,247,0.82);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border-bottom: 0.5px solid var(--sep-opaque);
-    padding: 0 20px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-  .toc-inner {
-    display: flex;
-    gap: 2px;
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: center;
-    height: 48px;
-  }
-  .toc a {
-    color: var(--label-2);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-    padding: 6px 11px;
-    border-radius: var(--r1);
-    transition: background 0.15s ease, color 0.15s ease;
-    letter-spacing: -0.01em;
-  }
-  .toc a:hover { color: var(--green); background: var(--green-fill); }
-  .toc-sep { color: var(--sep-opaque); font-size: 14px; padding: 0 2px; user-select: none; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  /* ── HERO ── */
-  .hero {
-    background: linear-gradient(155deg, #0D3B20 0%, #1A5C35 55%, #0D3B20 100%);
-    color: #fff;
-    padding: 100px 32px 84px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse at 20% 55%, rgba(52,199,89,0.14) 0%, transparent 60%),
-      radial-gradient(ellipse at 82% 18%, rgba(194,138,42,0.13) 0%, transparent 52%);
-  }
-  .hero-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
-  .hero-org {
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(194,138,42,0.85);
-    margin-bottom: 20px;
-    font-weight: 600;
-  }
-  .hero h1 {
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
-    font-size: clamp(2.1rem, 5vw, 3.4rem);
-    font-weight: 700;
-    color: #fff;
-    line-height: 1.08;
-    margin-bottom: 18px;
-    letter-spacing: -0.03em;
-  }
-  .hero-desc { font-size: 16px; color: rgba(255,255,255,0.55); margin-bottom: 34px; line-height: 1.65; }
-  /* ── LAYOUT ── */
-  .page { max-width: 1100px; margin: 0 auto; padding: 0 20px 96px; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+      font-size: 15px;
+      color: var(--label);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-  /* ── SECTION ── */
-  .section { padding: 64px 0 0; }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 28px;
-    padding: 24px 28px;
-    background: var(--surface);
-    border-radius: var(--r3);
-    box-shadow: var(--s1);
-    border: 0.5px solid var(--sep);
-  }
-  .section-num {
-    background: var(--green);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 700;
-    padding: 5px 13px;
-    border-radius: 100px;
-    letter-spacing: 0.05em;
-    flex-shrink: 0;
-  }
-  .section-header h2 {
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
-    font-size: clamp(1.25rem, 2.4vw, 1.6rem);
-    font-weight: 700;
-    color: var(--label);
-    letter-spacing: -0.02em;
-  }
+    /* ── NAV ── */
+    .toc {
+      background: rgba(242, 242, 247, 0.82);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 0.5px solid var(--sep-opaque);
+      padding: 0 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
 
-  .sub-title {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--label-2);
-    text-transform: uppercase;
-    letter-spacing: 0.09em;
-    margin: 28px 0 14px;
-  }
+    .toc-inner {
+      display: flex;
+      gap: 2px;
+      max-width: 1200px;
+      margin: 0 auto;
+      align-items: center;
+      height: 48px;
+    }
 
-  /* ── CALLOUTS ── */
-  .callout { padding: 15px 20px; margin: 16px 0; border-radius: var(--r2); font-size: 14px; line-height: 1.6; }
-  .callout-rule  { background: var(--green-fill);  border: 0.5px solid rgba(26,122,74,0.22);  color: #0D4A2A; }
-  .callout-rule strong  { color: var(--green); }
-  .callout-warn  { background: var(--gold-fill);   border: 0.5px solid rgba(194,138,42,0.22); color: #5C3A10; }
-  .callout-warn strong  { color: var(--gold); }
-  .callout-info  { background: var(--blue-fill);   border: 0.5px solid rgba(0,122,255,0.18);  color: #003A80; }
-  .callout-info strong  { color: var(--blue); }
-  .callout-danger{ background: var(--red-fill);    border: 0.5px solid rgba(255,59,48,0.18);  color: #7A0000; }
-  .callout-danger strong{ color: var(--red); }
+    .toc a {
+      color: var(--label-2);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 11px;
+      border-radius: var(--r1);
+      transition: background 0.15s ease, color 0.15s ease;
+      letter-spacing: -0.01em;
+    }
 
-  /* ── GRIDS ── */
-  .two-col   { display: grid; grid-template-columns: 1fr 1fr;        gap: 16px; margin: 16px 0; }
-  .three-col { display: grid; grid-template-columns: repeat(3,1fr);  gap: 16px; margin: 16px 0; }
-  @media (max-width: 700px) { .two-col, .three-col { grid-template-columns: 1fr; } }
+    .toc a:hover {
+      color: var(--green);
+      background: var(--green-fill);
+    }
 
-  /* ── CARDS ── */
-  .card {
-    background: var(--surface);
-    border-radius: var(--r3);
-    padding: 22px 24px;
-    margin-bottom: 12px;
-    box-shadow: var(--s1);
-    border: 0.5px solid var(--sep);
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
-  }
-  .card:hover { box-shadow: var(--s2); transform: translateY(-1px); }
-  .card::before { display: none; }
-  .card.bar-gold   { border-left: 3px solid var(--gold); }
-  .card.bar-red    { border-left: 3px solid var(--red); }
-  .card.bar-income { border-left: 3px solid var(--green); }
-  .card.bar-purple { border-left: 3px solid #7B5EA7; }
-  .card h3 { font-size: 15px; font-weight: 600; color: var(--label); margin-bottom: 8px; letter-spacing: -0.01em; }
-  .card p, .card li { font-size: 14px; color: var(--label-2); line-height: 1.6; }
-  .card ul { padding-left: 0; margin-top: 10px; }
+    .toc-sep {
+      color: var(--sep-opaque);
+      font-size: 14px;
+      padding: 0 2px;
+      user-select: none;
+    }
 
-  /* ── ACCOUNT CARDS ── */
-  .account-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin: 16px 0; }
-  @media (max-width: 700px) { .account-cards { grid-template-columns: 1fr; } }
-  .account-card {
-    background: var(--surface);
-    border: 0.5px solid var(--sep);
-    border-top: 2.5px solid var(--green);
-    border-radius: var(--r3);
-    padding: 20px 22px;
-    box-shadow: var(--s1);
-    transition: box-shadow 0.2s ease;
-  }
-  .account-card:hover { box-shadow: var(--s2); }
-  .account-card.gold-top   { border-top-color: var(--gold); }
-  .account-card.purple-top { border-top-color: #7B5EA7; }
-  .account-tag {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    padding: 4px 11px;
-    border-radius: 100px;
-    display: inline-block;
-    margin-bottom: 12px;
-  }
-  .tag-nat      { background: var(--green-fill);              color: var(--green); }
-  .tag-local    { background: var(--gold-fill);               color: var(--gold); }
-  .tag-personal { background: rgba(123,94,167,0.10);          color: #5A3A8A; }
-  .account-card h3 { font-size: 15px; font-weight: 600; color: var(--label); margin-bottom: 8px; letter-spacing: -0.01em; }
-  .account-card p  { font-size: 13px; color: var(--label-2); line-height: 1.55; }
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(155deg, #0D3B20 0%, #1A5C35 55%, #0D3B20 100%);
+      color: #fff;
+      padding: 100px 32px 84px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
 
-  /* ── COMPARE ── */
-  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 14px 0; }
-  @media (max-width: 580px) { .compare { grid-template-columns: 1fr; } }
-  .compare-col { background: var(--surface); border: 0.5px solid var(--sep); border-radius: var(--r2); overflow: hidden; box-shadow: var(--s1); }
-  .compare-head { padding: 14px 18px; font-size: 13px; font-weight: 600; }
-  .compare-head.cash     { background: var(--gold-fill);  color: var(--gold); }
-  .compare-head.national { background: var(--green-fill); color: var(--green); }
-  .compare-body { padding: 6px 18px 14px; }
-  .compare-body li {
-    font-size: 13px;
-    color: var(--label-2);
-    padding: 9px 0;
-    border-bottom: 0.5px solid var(--sep-opaque);
-    list-style: none;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  .compare-body li::before { content: '·'; color: var(--green); font-size: 22px; line-height: 1; flex-shrink: 0; }
-  .compare-body li:last-child { border-bottom: none; }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 55%, rgba(52, 199, 89, 0.14) 0%, transparent 60%),
+        radial-gradient(ellipse at 82% 18%, rgba(194, 138, 42, 0.13) 0%, transparent 52%);
+    }
 
-  /* ── STEPS ── */
-  .steps { margin: 12px 0; }
-  .step { display: flex; gap: 16px; padding: 16px 0; border-bottom: 0.5px solid var(--sep-opaque); align-items: flex-start; }
-  .step:last-child { border-bottom: none; }
-  .step-n {
-    width: 32px;
-    height: 32px;
-    background: var(--green-fill);
-    color: var(--green);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    font-weight: 700;
-    flex-shrink: 0;
-    margin-top: 1px;
-  }
-  .step-body h4 { font-size: 14px; font-weight: 600; color: var(--label); margin-bottom: 4px; }
-  .step-body p, .step-body li { font-size: 13px; color: var(--label-2); line-height: 1.55; }
-  .step-body ul { padding-left: 0; margin-top: 8px; list-style: none; }
-  .step-body ul li { padding: 3px 0; display: flex; gap: 8px; align-items: baseline; }
-  .step-body ul li::before { content: '›'; color: var(--green); font-weight: 600; flex-shrink: 0; }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+    }
 
-  /* ── TABLE ── */
-  table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    background: var(--surface);
-    border-radius: var(--r2);
-    overflow: hidden;
-    border: 0.5px solid var(--sep-opaque);
-    font-size: 14px;
-    margin: 14px 0;
-    box-shadow: var(--s1);
-  }
-  thead tr { background: var(--surface-2); }
-  thead th {
-    padding: 13px 18px;
-    text-align: left;
-    color: var(--label-2);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    border-bottom: 0.5px solid var(--sep-opaque);
-  }
-  tbody tr:nth-child(even) { background: rgba(242,242,247,0.55); }
-  tbody td { padding: 12px 18px; color: var(--label); border-bottom: 0.5px solid var(--sep-opaque); }
-  tbody tr:last-child td { border-bottom: none; }
+    .hero-org {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(194, 138, 42, 0.85);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
 
-  /* ── BADGE ── */
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    padding: 4px 12px;
-    border-radius: 100px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-  .badge-exp { background: var(--red-fill);      color: var(--red); }
-  .badge-inc { background: var(--sys-green-fill); color: #1A6B2A; }
-  .badge-opt { background: var(--blue-fill);      color: var(--blue); }
+    .hero h1 {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+      font-size: clamp(2.1rem, 5vw, 3.4rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.08;
+      margin-bottom: 18px;
+      letter-spacing: -0.03em;
+    }
 
-  /* ── FLOW ── */
-  .flow {
-    display: flex;
-    margin: 20px 0;
-    flex-wrap: wrap;
-    background: var(--surface);
-    border-radius: var(--r2);
-    box-shadow: var(--s1);
-    border: 0.5px solid var(--sep-opaque);
-    overflow: hidden;
-  }
-  .flow-step {
-    flex: 1;
-    min-width: 130px;
-    padding: 18px 14px;
-    text-align: center;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--label-2);
-    position: relative;
-    line-height: 1.45;
-    border-right: 0.5px solid var(--sep-opaque);
-  }
-  .flow-step:first-child { background: var(--green-fill); color: var(--green); }
-  .flow-step:last-child  { border-right: none; }
-  .flow-step:not(:last-child)::after {
-    content: '›';
-    position: absolute;
-    right: -10px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--label-3);
-    font-size: 20px;
-    z-index: 1;
-  }
-  .flow-step-n {
-    display: block;
-    font-size: 10px;
-    color: var(--label-3);
-    margin-bottom: 6px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
+    .hero-desc {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.55);
+      margin-bottom: 34px;
+      line-height: 1.65;
+    }
 
-  /* ── DENIAL ── */
-  .denial-item {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    background: var(--red-fill);
-    border: 0.5px solid rgba(255,59,48,0.18);
-    border-radius: var(--r1);
-    padding: 12px 16px;
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: #5A0000;
-    font-weight: 500;
-  }
-  .denial-item::before { content: '✕'; color: var(--red); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    /* ── LAYOUT ── */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px 96px;
+    }
 
-  /* ── FLAGS ── */
-  .flag-item {
-    background: var(--red-fill);
-    border: 0.5px solid rgba(255,59,48,0.18);
-    border-radius: var(--r1);
-    padding: 12px 16px;
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: #5A1010;
-    font-weight: 500;
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-  }
-  .flag-item::before { content: '⚠'; font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+    /* ── SECTION ── */
+    .section {
+      padding: 64px 0 0;
+    }
 
-  /* ── PLAIN LIST ── */
-  ul.plain { list-style: none; padding: 0; }
-  ul.plain li {
-    font-size: 14px;
-    color: var(--label-2);
-    padding: 9px 0;
-    border-bottom: 0.5px solid var(--sep-opaque);
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    line-height: 1.5;
-  }
-  ul.plain li:last-child { border-bottom: none; }
-  ul.plain li::before { content: '›'; color: var(--green); font-weight: 600; flex-shrink: 0; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      padding: 24px 28px;
+      background: var(--surface);
+      border-radius: var(--r3);
+      box-shadow: var(--s1);
+      border: 0.5px solid var(--sep);
+    }
 
-  /* ── RECEIPT GRID ── */
-  .receipt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 14px 0; }
-  .receipt-card {
-    background: var(--surface);
-    border: 0.5px solid var(--sep-opaque);
-    border-radius: var(--r2);
-    padding: 18px 20px;
-    box-shadow: var(--s1);
-  }
-  .receipt-card h4 { font-size: 14px; font-weight: 600; color: var(--label); margin-bottom: 8px; }
-  .receipt-card p  { font-size: 13px; color: var(--label-2); line-height: 1.55; }
+    .section-num {
+      background: var(--green);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 13px;
+      border-radius: 100px;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
 
-  /* ── KV ── */
-  .kv-inner { background: var(--surface-2); border-radius: var(--r1); padding: 12px 14px; margin-top: 12px; border: 0.5px solid var(--sep-opaque); }
-  .kv-row { display: flex; justify-content: space-between; padding: 7px 0; border-bottom: 0.5px solid var(--sep-opaque); font-size: 13px; }
-  .kv-row:last-child { border-bottom: none; }
-  .kv-key { color: var(--label-2); }
-  .kv-val { font-weight: 600; color: var(--label); }
+    .section-header h2 {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+      font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+      font-weight: 700;
+      color: var(--label);
+      letter-spacing: -0.02em;
+    }
 
-  /* ── COLLAB ── */
-  .collab-wrapper {
-    background: var(--surface);
-    border: 0.5px solid var(--sep-opaque);
-    border-top: 2.5px solid var(--green);
-    border-radius: var(--r3);
-    padding: 24px;
-    margin: 16px 0;
-    box-shadow: var(--s1);
-  }
-  .collab-wrapper h3 { font-size: 16px; font-weight: 600; color: var(--label); margin-bottom: 6px; letter-spacing: -0.01em; }
-  .collab-desc { font-size: 14px; color: var(--label-2); margin-bottom: 18px; line-height: 1.6; }
-  .collab-split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  @media (max-width: 580px) { .collab-split { grid-template-columns: 1fr; } }
-  .collab-nn { background: var(--surface-2); border: 0.5px solid var(--sep-opaque); border-radius: var(--r1); padding: 16px 18px; }
-  .collab-nn.expense-nn { border-top: 2px solid var(--red); }
-  .collab-nn.income-nn  { border-top: 2px solid var(--green); }
-  .collab-nn h4 { font-size: 11px; font-weight: 700; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.06em; }
-  .collab-nn.expense-nn h4 { color: var(--red); }
-  .collab-nn.income-nn  h4 { color: var(--green); }
-  .collab-nn li { font-size: 13px; color: var(--label); padding: 6px 0; border-bottom: 0.5px solid var(--sep-opaque); list-style: none; display: flex; gap: 8px; }
-  .collab-nn li::before { content: '·'; color: var(--gold); font-size: 22px; line-height: 1; flex-shrink: 0; }
-  .collab-nn li:last-child { border-bottom: none; }
+    .sub-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--label-2);
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      margin: 28px 0 14px;
+    }
 
-  /* ── LUMP SUM TIMELINE ── */
-  .lt-item { display: flex; gap: 16px; padding: 16px 0; border-bottom: 0.5px solid var(--sep-opaque); align-items: flex-start; }
-  .lt-item:last-child { border-bottom: none; }
-  .lt-dot {
-    width: 30px;
-    height: 30px;
-    background: var(--gold-fill);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--gold);
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-  .lt-content h4 { font-size: 14px; font-weight: 600; color: var(--label); margin-bottom: 4px; letter-spacing: -0.01em; }
-  .lt-content p  { font-size: 13px; color: var(--label-2); line-height: 1.55; }
+    /* ── CALLOUTS ── */
+    .callout {
+      padding: 15px 20px;
+      margin: 16px 0;
+      border-radius: var(--r2);
+      font-size: 14px;
+      line-height: 1.6;
+    }
 
-  /* ── CASE STUDY ── */
-  .cs-wrapper {
-    background: var(--surface);
-    border: 0.5px solid var(--sep-opaque);
-    border-radius: var(--r4);
-    padding: 30px;
-    margin: 16px 0;
-    box-shadow: var(--s2);
-  }
-  .cs-wrapper .cs-label {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold);
-    font-weight: 700;
-    margin-bottom: 22px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .cs-wrapper .cs-label::before { content: ''; display: block; width: 22px; height: 2px; background: var(--gold); border-radius: 1px; }
-  .cs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 18px; }
-  @media (max-width: 680px) { .cs-grid { grid-template-columns: 1fr; } }
-  .cs-block { background: var(--surface-2); border: 0.5px solid var(--sep-opaque); border-radius: var(--r2); padding: 16px 18px; }
-  .cs-block h4 { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--label-2); font-weight: 700; margin-bottom: 12px; }
-  .cs-block li { font-size: 14px; color: var(--label); padding: 6px 0; border-bottom: 0.5px solid var(--sep-opaque); list-style: none; display: flex; justify-content: space-between; }
-  .cs-block li:last-child { border-bottom: none; }
-  .cs-amount { font-weight: 700; color: var(--green); }
-  .answer-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
-  @media (max-width: 580px) { .answer-row { grid-template-columns: 1fr; } }
-  .answer-block { background: var(--surface-2); border: 0.5px solid var(--sep-opaque); border-radius: var(--r2); padding: 18px 20px; }
-  .answer-block.expense-ans { border-top: 2px solid var(--red); }
-  .answer-block.income-ans  { border-top: 2px solid var(--green); }
-  .answer-block h4 { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; margin-bottom: 12px; }
-  .answer-block.expense-ans h4 { color: var(--red); }
-  .answer-block.income-ans  h4 { color: var(--green); }
-  .answer-block li { font-size: 13px; color: var(--label); padding: 6px 0; border-bottom: 0.5px solid var(--sep-opaque); list-style: none; display: flex; gap: 8px; }
-  .answer-block li::before { content: '›'; color: var(--gold); font-weight: 700; }
-  .answer-block li:last-child { border-bottom: none; }
-  .final-balance-row { display: grid; grid-template-columns: 1fr 1fr 1fr 2fr; gap: 12px; margin-top: 18px; }
-  @media (max-width: 680px) { .final-balance-row { grid-template-columns: 1fr 1fr; } }
-  .balance-box { background: var(--green); border-radius: var(--r2); padding: 18px 16px; text-align: center; }
-  .balance-box .label  { font-size: 11px; color: rgba(255,255,255,0.5); margin-bottom: 6px; font-weight: 500; }
-  .balance-box .amount { font-size: 26px; font-weight: 700; color: #fff; letter-spacing: -0.02em; }
-  .balance-box .was    { font-size: 11px; color: rgba(255,255,255,0.32); margin-top: 4px; }
-  .balance-note {
-    background: var(--green-fill);
-    border: 0.5px solid rgba(26,122,74,0.20);
-    border-radius: var(--r2);
-    padding: 18px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .balance-note strong { font-size: 15px; font-weight: 700; color: var(--green); margin-bottom: 4px; display: block; }
-  .balance-note span   { font-size: 13px; color: var(--label-2); line-height: 1.5; }
+    .callout-rule {
+      background: var(--green-fill);
+      border: 0.5px solid rgba(26, 122, 74, 0.22);
+      color: #0D4A2A;
+    }
 
-  /* ── REMINDER BOX ── */
-  .reminder-box { background: var(--gold-fill); border: 0.5px solid rgba(194,138,42,0.22); border-radius: var(--r2); padding: 18px 22px; margin: 16px 0; }
-  .reminder-title { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 8px; }
-  .reminder-box p { font-size: 14px; color: #5C3A10; line-height: 1.6; }
+    .callout-rule strong {
+      color: var(--green);
+    }
 
-  /* ── RESOURCES ── */
-  .resource-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin: 14px 0; }
-  .resource-card {
-    background: var(--surface);
-    border: 0.5px solid var(--sep-opaque);
-    border-radius: var(--r2);
-    padding: 18px 20px;
-    box-shadow: var(--s1);
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
-  }
-  .resource-card:hover { box-shadow: var(--s2); transform: translateY(-1px); }
-  .aud-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 10px; display: inline-block; padding: 4px 11px; border-radius: 100px; }
-  .aud-all { background: var(--green-fill); color: var(--green); }
-  .aud-sr  { background: var(--blue-fill);  color: var(--blue); }
-  .aud-nn  { background: rgba(123,94,167,0.10); color: #5A208A; }
-  .resource-card h4 { font-size: 14px; font-weight: 600; color: var(--label); margin-bottom: 6px; letter-spacing: -0.01em; }
-  .resource-card p  { font-size: 13px; color: var(--label-2); line-height: 1.55; }
+    .callout-warn {
+      background: var(--gold-fill);
+      border: 0.5px solid rgba(194, 138, 42, 0.22);
+      color: #5C3A10;
+    }
 
-  /* ── BISMILLAH BANNER ── */
-  .bismillah-banner {
-    padding: 40px 0 8px;
-    text-align: center;
-  }
-  .bismillah-img {
-    width: 100%;
-    max-width: 480px;
-    height: auto;
-    display: block;
-    margin: 0 auto 10px;
-  }
-  .bismillah-trans {
-    font-size: 13px;
-    color: var(--label-2);
-    line-height: 1.7;
-  }
-  .bismillah-trans span[lang="ar"] {
-    font-size: 1.1rem;
-    color: var(--gold);
-    vertical-align: middle;
-  }
+    .callout-warn strong {
+      color: var(--gold);
+    }
 
-  /* ── MISC ── */
-  .divider { height: 0.5px; background: var(--sep-opaque); margin: 8px 0; }
-  .body-text { font-size: 15px; color: var(--label-2); line-height: 1.65; margin-bottom: 14px; }
+    .callout-info {
+      background: var(--blue-fill);
+      border: 0.5px solid rgba(0, 122, 255, 0.18);
+      color: #003A80;
+    }
 
-  footer {
-    background: #0D3B20;
-    color: rgba(255,255,255,0.4);
-    text-align: center;
-    padding: 52px 24px;
-    font-size: 13px;
-    margin-top: 80px;
-  }
-  footer .footer-b { font-size: 17px; color: var(--gold); margin-bottom: 12px; font-weight: 400; opacity: 0.9; }
-  footer a { color: rgba(194,138,42,0.75); text-decoration: none; transition: color 0.15s; }
-  footer a:hover { color: var(--gold); }
-</style>
+    .callout-info strong {
+      color: var(--blue);
+    }
+
+    .callout-danger {
+      background: var(--red-fill);
+      border: 0.5px solid rgba(255, 59, 48, 0.18);
+      color: #7A0000;
+    }
+
+    .callout-danger strong {
+      color: var(--red);
+    }
+
+    /* ── GRIDS ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    .three-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    @media (max-width: 700px) {
+
+      .two-col,
+      .three-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--surface);
+      border-radius: var(--r3);
+      padding: 22px 24px;
+      margin-bottom: 12px;
+      box-shadow: var(--s1);
+      border: 0.5px solid var(--sep);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: var(--s2);
+      transform: translateY(-1px);
+    }
+
+    .card::before {
+      display: none;
+    }
+
+    .card.bar-gold {
+      border-left: 3px solid var(--gold);
+    }
+
+    .card.bar-red {
+      border-left: 3px solid var(--red);
+    }
+
+    .card.bar-income {
+      border-left: 3px solid var(--green);
+    }
+
+    .card.bar-purple {
+      border-left: 3px solid #7B5EA7;
+    }
+
+    .card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--label);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .card p,
+    .card li {
+      font-size: 14px;
+      color: var(--label-2);
+      line-height: 1.6;
+    }
+
+    .card ul {
+      padding-left: 0;
+      margin-top: 10px;
+    }
+
+    /* ── ACCOUNT CARDS ── */
+    .account-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    @media (max-width: 700px) {
+      .account-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .account-card {
+      background: var(--surface);
+      border: 0.5px solid var(--sep);
+      border-top: 2.5px solid var(--green);
+      border-radius: var(--r3);
+      padding: 20px 22px;
+      box-shadow: var(--s1);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .account-card:hover {
+      box-shadow: var(--s2);
+    }
+
+    .account-card.gold-top {
+      border-top-color: var(--gold);
+    }
+
+    .account-card.purple-top {
+      border-top-color: #7B5EA7;
+    }
+
+    .account-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 11px;
+      border-radius: 100px;
+      display: inline-block;
+      margin-bottom: 12px;
+    }
+
+    .tag-nat {
+      background: var(--green-fill);
+      color: var(--green);
+    }
+
+    .tag-local {
+      background: var(--gold-fill);
+      color: var(--gold);
+    }
+
+    .tag-personal {
+      background: rgba(123, 94, 167, 0.10);
+      color: #5A3A8A;
+    }
+
+    .account-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--label);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .account-card p {
+      font-size: 13px;
+      color: var(--label-2);
+      line-height: 1.55;
+    }
+
+    /* ── COMPARE ── */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 14px 0;
+    }
+
+    @media (max-width: 580px) {
+      .compare {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .compare-col {
+      background: var(--surface);
+      border: 0.5px solid var(--sep);
+      border-radius: var(--r2);
+      overflow: hidden;
+      box-shadow: var(--s1);
+    }
+
+    .compare-head {
+      padding: 14px 18px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .compare-head.cash {
+      background: var(--gold-fill);
+      color: var(--gold);
+    }
+
+    .compare-head.national {
+      background: var(--green-fill);
+      color: var(--green);
+    }
+
+    .compare-body {
+      padding: 6px 18px 14px;
+    }
+
+    .compare-body li {
+      font-size: 13px;
+      color: var(--label-2);
+      padding: 9px 0;
+      border-bottom: 0.5px solid var(--sep-opaque);
+      list-style: none;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .compare-body li::before {
+      content: '·';
+      color: var(--green);
+      font-size: 22px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .compare-body li:last-child {
+      border-bottom: none;
+    }
+
+    /* ── STEPS ── */
+    .steps {
+      margin: 12px 0;
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 0.5px solid var(--sep-opaque);
+      align-items: flex-start;
+    }
+
+    .step:last-child {
+      border-bottom: none;
+    }
+
+    .step-n {
+      width: 32px;
+      height: 32px;
+      background: var(--green-fill);
+      color: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .step-body h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--label);
+      margin-bottom: 4px;
+    }
+
+    .step-body p,
+    .step-body li {
+      font-size: 13px;
+      color: var(--label-2);
+      line-height: 1.55;
+    }
+
+    .step-body ul {
+      padding-left: 0;
+      margin-top: 8px;
+      list-style: none;
+    }
+
+    .step-body ul li {
+      padding: 3px 0;
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .step-body ul li::before {
+      content: '›';
+      color: var(--green);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    /* ── TABLE ── */
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: var(--surface);
+      border-radius: var(--r2);
+      overflow: hidden;
+      border: 0.5px solid var(--sep-opaque);
+      font-size: 14px;
+      margin: 14px 0;
+      box-shadow: var(--s1);
+    }
+
+    thead tr {
+      background: var(--surface-2);
+    }
+
+    thead th {
+      padding: 13px 18px;
+      text-align: left;
+      color: var(--label-2);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border-bottom: 0.5px solid var(--sep-opaque);
+    }
+
+    tbody tr:nth-child(even) {
+      background: rgba(242, 242, 247, 0.55);
+    }
+
+    tbody td {
+      padding: 12px 18px;
+      color: var(--label);
+      border-bottom: 0.5px solid var(--sep-opaque);
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* ── BADGE ── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .badge-exp {
+      background: var(--red-fill);
+      color: var(--red);
+    }
+
+    .badge-inc {
+      background: var(--sys-green-fill);
+      color: #1A6B2A;
+    }
+
+    .badge-opt {
+      background: var(--blue-fill);
+      color: var(--blue);
+    }
+
+    /* ── FLOW ── */
+    .flow {
+      display: flex;
+      margin: 20px 0;
+      flex-wrap: wrap;
+      background: var(--surface);
+      border-radius: var(--r2);
+      box-shadow: var(--s1);
+      border: 0.5px solid var(--sep-opaque);
+      overflow: hidden;
+    }
+
+    .flow-step {
+      flex: 1;
+      min-width: 130px;
+      padding: 18px 14px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--label-2);
+      position: relative;
+      line-height: 1.45;
+      border-right: 0.5px solid var(--sep-opaque);
+    }
+
+    .flow-step:first-child {
+      background: var(--green-fill);
+      color: var(--green);
+    }
+
+    .flow-step:last-child {
+      border-right: none;
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: '›';
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--label-3);
+      font-size: 20px;
+      z-index: 1;
+    }
+
+    .flow-step-n {
+      display: block;
+      font-size: 10px;
+      color: var(--label-3);
+      margin-bottom: 6px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── DENIAL ── */
+    .denial-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: var(--red-fill);
+      border: 0.5px solid rgba(255, 59, 48, 0.18);
+      border-radius: var(--r1);
+      padding: 12px 16px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #5A0000;
+      font-weight: 500;
+    }
+
+    .denial-item::before {
+      content: '✕';
+      color: var(--red);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── FLAGS ── */
+    .flag-item {
+      background: var(--red-fill);
+      border: 0.5px solid rgba(255, 59, 48, 0.18);
+      border-radius: var(--r1);
+      padding: 12px 16px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      color: #5A1010;
+      font-weight: 500;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .flag-item::before {
+      content: '⚠';
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── PLAIN LIST ── */
+    ul.plain {
+      list-style: none;
+      padding: 0;
+    }
+
+    ul.plain li {
+      font-size: 14px;
+      color: var(--label-2);
+      padding: 9px 0;
+      border-bottom: 0.5px solid var(--sep-opaque);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      line-height: 1.5;
+    }
+
+    ul.plain li:last-child {
+      border-bottom: none;
+    }
+
+    ul.plain li::before {
+      content: '›';
+      color: var(--green);
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    /* ── RECEIPT GRID ── */
+    .receipt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin: 14px 0;
+    }
+
+    .receipt-card {
+      background: var(--surface);
+      border: 0.5px solid var(--sep-opaque);
+      border-radius: var(--r2);
+      padding: 18px 20px;
+      box-shadow: var(--s1);
+    }
+
+    .receipt-card h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--label);
+      margin-bottom: 8px;
+    }
+
+    .receipt-card p {
+      font-size: 13px;
+      color: var(--label-2);
+      line-height: 1.55;
+    }
+
+    /* ── KV ── */
+    .kv-inner {
+      background: var(--surface-2);
+      border-radius: var(--r1);
+      padding: 12px 14px;
+      margin-top: 12px;
+      border: 0.5px solid var(--sep-opaque);
+    }
+
+    .kv-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 7px 0;
+      border-bottom: 0.5px solid var(--sep-opaque);
+      font-size: 13px;
+    }
+
+    .kv-row:last-child {
+      border-bottom: none;
+    }
+
+    .kv-key {
+      color: var(--label-2);
+    }
+
+    .kv-val {
+      font-weight: 600;
+      color: var(--label);
+    }
+
+    /* ── COLLAB ── */
+    .collab-wrapper {
+      background: var(--surface);
+      border: 0.5px solid var(--sep-opaque);
+      border-top: 2.5px solid var(--green);
+      border-radius: var(--r3);
+      padding: 24px;
+      margin: 16px 0;
+      box-shadow: var(--s1);
+    }
+
+    .collab-wrapper h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--label);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .collab-desc {
+      font-size: 14px;
+      color: var(--label-2);
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .collab-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 580px) {
+      .collab-split {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .collab-nn {
+      background: var(--surface-2);
+      border: 0.5px solid var(--sep-opaque);
+      border-radius: var(--r1);
+      padding: 16px 18px;
+    }
+
+    .collab-nn.expense-nn {
+      border-top: 2px solid var(--red);
+    }
+
+    .collab-nn.income-nn {
+      border-top: 2px solid var(--green);
+    }
+
+    .collab-nn h4 {
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .collab-nn.expense-nn h4 {
+      color: var(--red);
+    }
+
+    .collab-nn.income-nn h4 {
+      color: var(--green);
+    }
+
+    .collab-nn li {
+      font-size: 13px;
+      color: var(--label);
+      padding: 6px 0;
+      border-bottom: 0.5px solid var(--sep-opaque);
+      list-style: none;
+      display: flex;
+      gap: 8px;
+    }
+
+    .collab-nn li::before {
+      content: '·';
+      color: var(--gold);
+      font-size: 22px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .collab-nn li:last-child {
+      border-bottom: none;
+    }
+
+    /* ── LUMP SUM TIMELINE ── */
+    .lt-item {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 0.5px solid var(--sep-opaque);
+      align-items: flex-start;
+    }
+
+    .lt-item:last-child {
+      border-bottom: none;
+    }
+
+    .lt-dot {
+      width: 30px;
+      height: 30px;
+      background: var(--gold-fill);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .lt-content h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--label);
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+
+    .lt-content p {
+      font-size: 13px;
+      color: var(--label-2);
+      line-height: 1.55;
+    }
+
+    /* ── CASE STUDY ── */
+    .cs-wrapper {
+      background: var(--surface);
+      border: 0.5px solid var(--sep-opaque);
+      border-radius: var(--r4);
+      padding: 30px;
+      margin: 16px 0;
+      box-shadow: var(--s2);
+    }
+
+    .cs-wrapper .cs-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cs-wrapper .cs-label::before {
+      content: '';
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 1px;
+    }
+
+    .cs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 680px) {
+      .cs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .cs-block {
+      background: var(--surface-2);
+      border: 0.5px solid var(--sep-opaque);
+      border-radius: var(--r2);
+      padding: 16px 18px;
+    }
+
+    .cs-block h4 {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--label-2);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .cs-block li {
+      font-size: 14px;
+      color: var(--label);
+      padding: 6px 0;
+      border-bottom: 0.5px solid var(--sep-opaque);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .cs-block li:last-child {
+      border-bottom: none;
+    }
+
+    .cs-amount {
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .answer-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 580px) {
+      .answer-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .answer-block {
+      background: var(--surface-2);
+      border: 0.5px solid var(--sep-opaque);
+      border-radius: var(--r2);
+      padding: 18px 20px;
+    }
+
+    .answer-block.expense-ans {
+      border-top: 2px solid var(--red);
+    }
+
+    .answer-block.income-ans {
+      border-top: 2px solid var(--green);
+    }
+
+    .answer-block h4 {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .answer-block.expense-ans h4 {
+      color: var(--red);
+    }
+
+    .answer-block.income-ans h4 {
+      color: var(--green);
+    }
+
+    .answer-block li {
+      font-size: 13px;
+      color: var(--label);
+      padding: 6px 0;
+      border-bottom: 0.5px solid var(--sep-opaque);
+      list-style: none;
+      display: flex;
+      gap: 8px;
+    }
+
+    .answer-block li::before {
+      content: '›';
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .answer-block li:last-child {
+      border-bottom: none;
+    }
+
+    .final-balance-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 2fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 680px) {
+      .final-balance-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .balance-box {
+      background: var(--green);
+      border-radius: var(--r2);
+      padding: 18px 16px;
+      text-align: center;
+    }
+
+    .balance-box .label {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .balance-box .amount {
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+
+    .balance-box .was {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.32);
+      margin-top: 4px;
+    }
+
+    .balance-note {
+      background: var(--green-fill);
+      border: 0.5px solid rgba(26, 122, 74, 0.20);
+      border-radius: var(--r2);
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .balance-note strong {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .balance-note span {
+      font-size: 13px;
+      color: var(--label-2);
+      line-height: 1.5;
+    }
+
+    /* ── REMINDER BOX ── */
+    .reminder-box {
+      background: var(--gold-fill);
+      border: 0.5px solid rgba(194, 138, 42, 0.22);
+      border-radius: var(--r2);
+      padding: 18px 22px;
+      margin: 16px 0;
+    }
+
+    .reminder-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .reminder-box p {
+      font-size: 14px;
+      color: #5C3A10;
+      line-height: 1.6;
+    }
+
+    /* ── RESOURCES ── */
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      margin: 14px 0;
+    }
+
+    .resource-card {
+      background: var(--surface);
+      border: 0.5px solid var(--sep-opaque);
+      border-radius: var(--r2);
+      padding: 18px 20px;
+      box-shadow: var(--s1);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .resource-card:hover {
+      box-shadow: var(--s2);
+      transform: translateY(-1px);
+    }
+
+    .aud-tag {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: inline-block;
+      padding: 4px 11px;
+      border-radius: 100px;
+    }
+
+    .aud-all {
+      background: var(--green-fill);
+      color: var(--green);
+    }
+
+    .aud-sr {
+      background: var(--blue-fill);
+      color: var(--blue);
+    }
+
+    .aud-nn {
+      background: rgba(123, 94, 167, 0.10);
+      color: #5A208A;
+    }
+
+    .resource-card h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--label);
+      margin-bottom: 6px;
+      letter-spacing: -0.01em;
+    }
+
+    .resource-card p {
+      font-size: 13px;
+      color: var(--label-2);
+      line-height: 1.55;
+    }
+
+    /* ── BISMILLAH BANNER ── */
+    .bismillah-banner {
+      padding: 40px 0 8px;
+      text-align: center;
+    }
+
+    .bismillah-img {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    .bismillah-trans {
+      font-size: 13px;
+      color: var(--label-2);
+      line-height: 1.7;
+    }
+
+    .bismillah-trans span[lang="ar"] {
+      font-size: 1.1rem;
+      color: var(--gold);
+      vertical-align: middle;
+    }
+
+    /* ── MISC ── */
+    .divider {
+      height: 0.5px;
+      background: var(--sep-opaque);
+      margin: 8px 0;
+    }
+
+    .body-text {
+      font-size: 15px;
+      color: var(--label-2);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    footer {
+      background: #0D3B20;
+      color: rgba(255, 255, 255, 0.4);
+      text-align: center;
+      padding: 52px 24px;
+      font-size: 13px;
+      margin-top: 80px;
+    }
+
+    footer .footer-b {
+      font-size: 17px;
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-weight: 400;
+      opacity: 0.9;
+    }
+
+    footer a {
+      color: rgba(194, 138, 42, 0.75);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    footer a:hover {
+      color: var(--gold);
+    }
+  </style>
 </head>
+
 <body>
 
-<nav class="toc">
-  <div class="toc-inner">
-    <a href="#accounts">01 Accounts</a><span class="toc-sep">·</span>
-    <a href="#when">02 When to Submit</a><span class="toc-sep">·</span>
-    <a href="#income">03 Income</a><span class="toc-sep">·</span>
-    <a href="#expenses">04 Expenses</a><span class="toc-sep">·</span>
-    <a href="#transfers">05 Transfers</a><span class="toc-sep">·</span>
-    <a href="#cash">06 Cash</a><span class="toc-sep">·</span>
-    <a href="#dashboard">07 Dashboard</a><span class="toc-sep">·</span>
-    <a href="#approval">08 Approval</a><span class="toc-sep">·</span>
-    <a href="#lumpsum">09 Lump Sum</a><span class="toc-sep">·</span>
-    <a href="#audits">10 Audits</a><span class="toc-sep">·</span>
-    <a href="#casestudy">11 Case Study</a><span class="toc-sep">·</span>
-    <a href="#resources">12 Resources</a>
-  </div>
-</nav>
-
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-org">Young Muslims · Finance Department</div>
-    <h1>NeighborNet Finance Handbook</h1>
-    <p class="hero-desc">Everything your NN needs to know about tracking income, logging expenses, submitting JotForms, managing your dashboard, and staying audit-ready.</p>
-  </div>
-</div>
-
-<div class="page">
-
-<div class="bismillah-banner">
-  <img class="bismillah-img" src="bismillah.svg" alt="Bismillah ir-Rahman ir-Raheem">
-  <div class="bismillah-trans">We begin in the name of Allah (<span lang="ar">ﷻ</span>) and send prayers and blessings upon His Messenger (<span lang="ar">ﷺ</span>)</div>
-</div>
-
-<!-- 01 ACCOUNTS -->
-<section class="section" id="accounts">
-  <div class="section-header"><span class="section-num">01</span><h2>Where NNs Can Keep Money — The 3 Accounts</h2></div>
-  <p class="body-text">Every NN has access to three distinct account types. Each has its own purpose, rules, and tracking requirements. All three appear on your NN's Finance Dashboard.</p>
-  <div class="account-cards">
-    <div class="account-card">
-      <span class="account-tag tag-nat">National</span>
-      <h3>YM Bank Account</h3>
-      <p>Funds held in the national YM bank account. Managed centrally by Finance. Used for larger sums — fundraisers, event registrations, donations. This money is NOT physically with you.</p>
+  <nav class="toc">
+    <div class="toc-inner">
+      <a href="#accounts">01 Accounts</a><span class="toc-sep">·</span>
+      <a href="#when">02 When to Submit</a><span class="toc-sep">·</span>
+      <a href="#income">03 Income</a><span class="toc-sep">·</span>
+      <a href="#expenses">04 Expenses</a><span class="toc-sep">·</span>
+      <a href="#transfers">05 Transfers</a><span class="toc-sep">·</span>
+      <a href="#cash">06 Cash</a><span class="toc-sep">·</span>
+      <a href="#dashboard">07 Dashboard</a><span class="toc-sep">·</span>
+      <a href="#approval">08 Approval</a><span class="toc-sep">·</span>
+      <a href="#lumpsum">09 Lump Sum</a><span class="toc-sep">·</span>
+      <a href="#audits">10 Audits</a><span class="toc-sep">·</span>
+      <a href="#casestudy">11 Case Study</a><span class="toc-sep">·</span>
+      <a href="#resources">12 Resources</a>
     </div>
-    <div class="account-card gold-top">
-      <span class="account-tag tag-local">Local Cash</span>
-      <h3>NN Cashbox</h3>
-      <p>Physical cash kept in a secure lockbox. For small, day-to-day needs like dues and bake sales. Maximum $200 at any time. Only NNC &amp; Finance Lead have access.</p>
-    </div>
-    <div class="account-card purple-top">
-      <span class="account-tag tag-personal">Personal ★★★</span>
-      <h3>NNC Personal Bank</h3>
-      <p>NNC's personal checking account used temporarily for YM funds. Must be completely separate from personal money. Avoid interest accrual on these funds.</p>
+  </nav>
+
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-org">Young Muslims · Finance Department</div>
+      <h1>NeighborNet Finance Handbook</h1>
+      <p class="hero-desc">Everything your NN needs to know about tracking income, logging expenses, submitting
+        JotForms, managing your dashboard, and staying audit-ready.</p>
     </div>
   </div>
-  <div class="callout callout-warn"><strong>Cash Limit:</strong> No NN should hold more than <strong>$200 in local cash</strong> at any time. Anything beyond this must be deposited into the National account immediately. All cash — even if kept locally — MUST be logged via JotForm.</div>
-  <div class="sub-title">Cash vs. National — Key Differences</div>
-  <div class="compare">
-    <div class="compare-col">
-      <div class="compare-head cash">Local Cash (Cashbox)</div>
-      <div class="compare-body"><ul>
-        <li>Kept on hand locally</li>
-        <li>Small amounts only (max $200)</li>
-        <li>Day-to-day: dues, bake sales</li>
-        <li>Must still be logged via JotForm</li>
-        <li>Physically secured in lockbox</li>
-      </ul></div>
-    </div>
-    <div class="compare-col">
-      <div class="compare-head national">YM National Bank</div>
-      <div class="compare-body"><ul>
-        <li>Managed at national level</li>
-        <li>Larger sums, fundraisers, donations</li>
-        <li>Requires JotForm to access funds</li>
-        <li>Officially recorded, full oversight</li>
-        <li>Reimbursed via Venmo or Zelle</li>
-      </ul></div>
-    </div>
-  </div>
-</section>
 
-<!-- 02 WHEN TO SUBMIT -->
-<section class="section" id="when">
-  <div class="section-header"><span class="section-num">02</span><h2>When to Submit the JotForm</h2></div>
-  <div class="callout callout-rule"><strong>Rule of Thumb:</strong> If money is moved in any way — you must submit the JotForm. No exceptions. This includes cash kept locally.</div>
-  <div class="callout callout-warn" style="margin-top:12px;"><strong>YM Email Required:</strong> JotForm submissions must be made using your YM email (e.g. name@ymsisters.com). Submissions made with personal emails will NOT be accepted. Dashboard access will not be granted if requested from a personal email.</div>
-  <div class="three-col" style="margin-top:16px;">
-    <div class="card bar-income"><h3>1 — Income Received</h3><p>Any time your NN receives money: dues, bake sales, fundraising, donations, merch sales.</p></div>
-    <div class="card bar-red"><h3>2 — Expense Incurred</h3><p>Any time your NN spends money: supplies, food, decor, transportation, honorariums.</p></div>
-    <div class="card bar-gold"><h3>3 — Internal Transfer</h3><p>Moving funds between your own 3 accounts. See Section 05 for full detail and important distinctions.</p></div>
-  </div>
-  <div class="callout callout-danger"><strong>Important:</strong> Submitting a form does NOT automatically move or release funds. All updates appear on the dashboard only after Finance Department approval.</div>
-</section>
+  <div class="page">
 
-<!-- 03 INCOME -->
-<section class="section" id="income">
-  <div class="section-header"><span class="section-num">03</span><h2>Logging Income</h2></div>
-  <p class="body-text">When your NN receives money of any kind, fill out the JotForm to record the amount and specify where the income will be held.</p>
-  <div class="two-col">
-    <div>
-      <div class="sub-title">JotForm Fields for Income</div>
-      <div class="steps">
-        <div class="step"><div class="step-n">1</div><div class="step-body"><h4>Transaction Type</h4><p>Select <em>Income</em></p></div></div>
-        <div class="step"><div class="step-n">2</div><div class="step-body"><h4>YM Team Type</h4><p>Select <em>NeighborNet (NN)</em>, then choose your specific NN</p></div></div>
-        <div class="step"><div class="step-n">3</div><div class="step-body"><h4>Where is income being held?</h4><ul><li>Deposit to YM National Bank Account</li><li>Log to Team Cash Box (cash on hand)</li><li>Log to Personal Bank Account</li></ul></div></div>
-        <div class="step"><div class="step-n">4</div><div class="step-body"><h4>Total Income Amount</h4><p>Enter exact dollar amount. <strong>Tax is covered — do not exclude it from the total.</strong></p></div></div>
-        <div class="step"><div class="step-n">5</div><div class="step-body"><h4>Income Category</h4><ul><li>Event Registrations (Meeting Dues)</li><li>Merchandise</li><li>Fundraising (Ramadan, Bake Sales, etc.)</li><li>Donations</li><li>Transfer from YM Brothers (SR/National only)</li></ul></div></div>
-        <div class="step"><div class="step-n">6</div><div class="step-body"><h4>Income Details</h4><p>Format: <em>Date, Event Name, Expense Subcategory</em><br>Example: <strong>1/9/26 NJ Gala – Registrations</strong></p></div></div>
+    <div class="bismillah-banner">
+      <img class="bismillah-img" src="bismillah.svg" alt="Bismillah ir-Rahman ir-Raheem">
+      <div class="bismillah-trans">We begin in the name of Allah <span lang="ar">ﷻ</span> and send peace and blessings
+        upon His Messenger <span lang="ar">ﷺ</span></div>
+    </div>
+
+    <!-- 01 ACCOUNTS -->
+    <section class="section" id="accounts">
+      <div class="section-header"><span class="section-num">01</span>
+        <h2>Where NNs Can Keep Money — The 3 Accounts</h2>
       </div>
-    </div>
-    <div>
-      <div class="sub-title">Income by Payment Type</div>
-      <div class="card bar-income">
-        <h3>Cash Received</h3>
-        <p>NNC collects physical cash → fills out JotForm logging income to <strong>Cash Box</strong> → places cash in the lockbox.</p>
-        <div class="kv-inner">
-          <div class="kv-row"><span class="kv-key">Logged to</span><span class="kv-val">Cash Box</span></div>
-          <div class="kv-row"><span class="kv-key">Who submits</span><span class="kv-val">NNC</span></div>
-          <div class="kv-row"><span class="kv-key">Next step</span><span class="kv-val">Add cash to lockbox</span></div>
-          <div class="kv-row"><span class="kv-key">Effect</span><span class="kv-val">Cashbox balance ↑</span></div>
+      <p class="body-text">Every NN has access to three distinct account types. Each has its own purpose, rules, and
+        tracking requirements. All three appear on your NN's Finance Dashboard.</p>
+      <div class="account-cards">
+        <div class="account-card">
+          <span class="account-tag tag-nat">National</span>
+          <h3>YM Bank Account</h3>
+          <p>Funds held in the national YM bank account. Managed centrally by Finance. Used for larger sums —
+            fundraisers, event registrations, donations. This money is NOT physically with you.</p>
+        </div>
+        <div class="account-card gold-top">
+          <span class="account-tag tag-local">Local Cash</span>
+          <h3>NN Cashbox</h3>
+          <p>Physical cash kept in a secure lockbox. For small, day-to-day needs like dues and bake sales. Maximum $200
+            at any time. Only NNC &amp; Finance Lead have access.</p>
+        </div>
+        <div class="account-card purple-top">
+          <span class="account-tag tag-personal">Personal ★★★</span>
+          <h3>NNC Personal Bank</h3>
+          <p>NNC's personal checking account used temporarily for YM funds. Must be completely separate from personal
+            money. Avoid interest accrual on these funds.</p>
         </div>
       </div>
-      <div class="card bar-income">
-        <h3>Zelle / Digital Payment</h3>
-        <p>NNC collects Zelle payments → fills out JotForm logging income to <strong>YM Bank</strong> → sends funds to YM via Venmo.</p>
-        <div class="kv-inner">
-          <div class="kv-row"><span class="kv-key">Logged to</span><span class="kv-val">YM Bank</span></div>
-          <div class="kv-row"><span class="kv-key">Who submits</span><span class="kv-val">NNC</span></div>
-          <div class="kv-row"><span class="kv-key">Next step</span><span class="kv-val">Send via Venmo → @Young-Muslims</span></div>
-          <div class="kv-row"><span class="kv-key">Effect</span><span class="kv-val">YM Bank balance ↑</span></div>
+      <div class="callout callout-warn"><strong>Cash Limit:</strong> No NN should hold more than <strong>$200 in local
+          cash</strong> at any time. Anything beyond this must be deposited into the National account immediately. All
+        cash — even if kept locally — MUST be logged via JotForm.</div>
+      <div class="sub-title">Cash vs. National — Key Differences</div>
+      <div class="compare">
+        <div class="compare-col">
+          <div class="compare-head cash">Local Cash (Cashbox)</div>
+          <div class="compare-body">
+            <ul>
+              <li>Kept on hand locally</li>
+              <li>Small amounts only (max $200)</li>
+              <li>Day-to-day: dues, bake sales</li>
+              <li>Must still be logged via JotForm</li>
+              <li>Physically secured in lockbox</li>
+            </ul>
+          </div>
+        </div>
+        <div class="compare-col">
+          <div class="compare-head national">YM National Bank</div>
+          <div class="compare-body">
+            <ul>
+              <li>Managed at national level</li>
+              <li>Larger sums, fundraisers, donations</li>
+              <li>Requires JotForm to access funds</li>
+              <li>Officially recorded, full oversight</li>
+              <li>Reimbursed via Venmo or Zelle</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- 04 EXPENSES -->
-<section class="section" id="expenses">
-  <div class="section-header"><span class="section-num">04</span><h2>Logging Expenses</h2></div>
-  <p class="body-text">When your NN spends money, log the expense via JotForm. There are two types of expense submissions depending on how reimbursement will happen.</p>
-  <div class="two-col">
-    <div class="card bar-red">
-      <span class="badge badge-exp" style="margin-bottom:10px;">Option A</span>
-      <h3>Request Reimbursement from YM Bank</h3>
-      <p>Someone paid out of pocket. Request reimbursement from YM Bank. Finance reimburses via Venmo or Zelle.</p>
-      <ul class="plain" style="margin-top:10px;">
-        <li>Total Expense Amount</li>
-        <li>Expense Category (see table below)</li>
-        <li>Expense Details — date, event, subcategory</li>
-        <li>Upload Receipt(s) — required</li>
-        <li>Itemized Details — item names only</li>
-        <li>Reimbursement Method: Venmo or Zelle</li>
-      </ul>
-    </div>
-    <div class="card bar-gold">
-      <span class="badge badge-opt" style="margin-bottom:10px;">Option B</span>
-      <h3>Log Already-Reimbursed Expense</h3>
-      <p>Person was <strong>already paid back</strong> using on-hand cash or personal funds. ONLY to record it on the dashboard — no funds move.</p>
-      <ul class="plain" style="margin-top:10px;">
-        <li>Total Expense Amount</li>
-        <li>Expense Category</li>
-        <li>Expense Details</li>
-        <li>Upload Receipt(s) — required</li>
-        <li>Itemized Details</li>
-        <li>Which fund was used: Cash Box or Personal Bank</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="sub-title">Expense Details Format</div>
-  <div class="callout callout-info"><strong>Format: Date · Event Name · Expense Subcategory</strong><br>
-  Examples: &nbsp;<em>1/9/26 NJ Gala – Decorations</em> &nbsp;|&nbsp; <em>3/15/26 Ramadan Iftar – Food</em> &nbsp;|&nbsp; <em>4/20/26 Spring Retreat – Transportation</em></div>
-
-  <div class="sub-title">Itemized Details — How to Fill In</div>
-  <div class="two-col">
-    <div class="callout callout-info" style="margin:0;"><strong>What to include:</strong> List the item names purchased. Do not include individual prices. Do not list tax as a line item.<br><br><strong>Example:</strong> Balloons, Table cloth, String lights, Streamers, Paper plates</div>
-    <div class="callout callout-warn" style="margin:0;"><strong>Tax is covered by YM.</strong> Include the full receipt total (including tax) in your Total Expense Amount. Just don't list tax separately in the itemized section.</div>
-  </div>
-
-  <div class="sub-title">Receipt Requirements</div>
-  <div class="callout callout-danger"><strong>No Receipt = No Approval.</strong> If there is no receipt attached to your submission, it will not be approved — no exceptions.</div>
-  <div class="receipt-grid">
-    <div class="receipt-card"><h4>Amazon Purchases</h4><p>No screenshots. Download the receipt as a PDF from your Amazon account and upload the PDF file.</p></div>
-    <div class="receipt-card"><h4>Any Online Purchase</h4><p>Upload as a PDF — not a screenshot. Download the order confirmation from the site as a PDF.</p></div>
-    <div class="receipt-card"><h4>Zelle / Venmo to Vendor</h4><p>Screenshot is fine for Zelle or Venmo transfers made to an external vendor.</p></div>
-    <div class="receipt-card"><h4>Paper Receipts</h4><p>The entire receipt must be clearly and fully visible. Blurry, cut off, or incomplete paper receipts will NOT be approved.</p></div>
-  </div>
-  <div class="callout callout-danger" style="margin-top:12px;"><strong>No Personal Purchases on YM Receipts.</strong> YM expenses must be purchased completely separately. Each YM purchase must be on its own receipt with no personal items included.</div>
-
-  <div class="sub-title">Expense Categories</div>
-  <table>
-    <thead><tr><th>Category</th><th>Common Examples</th></tr></thead>
-    <tbody>
-      <tr><td>Financial Aid</td><td>Aid requests from NN budgets</td></tr>
-      <tr><td>Fundraising</td><td>Bake sale supplies, fundraising event costs</td></tr>
-      <tr><td>Merchandise</td><td>Merch production, shipping costs</td></tr>
-      <tr><td>NN Operations</td><td>Event food, decor, venue supplies</td></tr>
-      <tr><td>Subregional Operations</td><td>SR event food, decor, supplies</td></tr>
-      <tr><td>National Operations</td><td>National team event expenses</td></tr>
-      <tr><td>Tarbiyyah</td><td>Study circle, workshops, retreat materials</td></tr>
-      <tr><td>Transportation</td><td>Gas, tolls, intra-SR travel</td></tr>
-      <tr><td>Joint Events – Brothers Settlements</td><td>Split expenses with YM Brothers chapters</td></tr>
-    </tbody>
-  </table>
-
-  <div class="sub-title">Reimbursement Methods</div>
-  <div class="two-col">
-    <div class="card bar-income"><h3>Venmo</h3><p>Submit a Venmo request to <strong>@Young-Muslims</strong> for the exact amount. Reimbursement will not happen without the Venmo request — Finance can tap directly to approve!</p></div>
-    <div class="card bar-income"><h3>Zelle</h3><p>Zelle reimbursements are also accepted. Coordinate Zelle details with Finance at <strong>finance@ymsisters.com</strong> after submitting your JotForm.</p></div>
-  </div>
-  <div class="callout callout-rule"><strong>Action Required After JotForm:</strong> Submitting the JotForm alone is not enough to get reimbursed. You must also send a Venmo request or confirm Zelle details so Finance can quickly approve and process your reimbursement.</div>
-</section>
-
-<!-- 05 TRANSFERS -->
-<section class="section" id="transfers">
-  <div class="section-header"><span class="section-num">05</span><h2>Transferring Money</h2></div>
-  <div class="sub-title">Internal Transfer — What It Actually Is</div>
-  <div class="callout callout-warn"><strong>Many NNs are selecting "Internal Transfer" incorrectly.</strong> Please read this carefully before selecting this transaction type on the JotForm.</div>
-  <div class="two-col">
-    <div class="card bar-income">
-      <h3>Internal Transfer IS:</h3>
-      <p>Moving money <strong>between your team's own existing YM accounts</strong>. Valid examples:</p>
-      <ul class="plain" style="margin-top:8px;">
-        <li>YM Bank → Cash Box</li>
-        <li>Cash Box → YM Bank</li>
-        <li>Personal Bank Account → YM Bank</li>
-        <li>YM Bank → Personal Bank Account</li>
-      </ul>
-    </div>
-    <div class="card bar-red">
-      <h3>Internal Transfer is NOT:</h3>
-      <p>If an individual is depositing <strong>their own personal money</strong> into a YM account for the first time — that is <strong>Income to Personal Bank Account</strong>, not an Internal Transfer.</p>
-      <div class="callout callout-danger" style="margin-top:10px;">Internal Transfer = moving existing YM funds between your own accounts.<br>New personal money coming in = Income.</div>
-    </div>
-  </div>
-  <div class="sub-title">JotForm Fields for Internal Transfer</div>
-  <div class="card">
-    <ul class="plain">
-      <li>Transaction Type: <strong>Internal Transfer</strong></li>
-      <li>Total Transfer Amount</li>
-      <li><strong>From account:</strong> YM Bank / Cash Box / Personal Bank Account</li>
-      <li><strong>To account:</strong> YM Bank / Cash Box / Personal Bank Account</li>
-      <li>Transfer Description / Reason — e.g. <em>$15 from dues, $30 from merch sales</em></li>
-    </ul>
-  </div>
-  <div class="sub-title" style="margin-top:24px;">NN-to-NN Transfer (Collab Events)</div>
-  <div class="collab-wrapper">
-    <h3>Transferring Funds to Another NN</h3>
-    <p class="collab-desc">When two NNs collaborate on an event and split costs, <strong>each NN submits their own separate JotForm</strong> to reflect how the transfer affects their own dashboard.</p>
-    <div class="collab-split">
-      <div class="collab-nn expense-nn">
-        <h4>The NN Paying (Richardson)</h4>
-        <ul><li>Transaction Type: <strong>Expense</strong></li><li>Amount: $25</li><li>Category: NN-NN Transfer</li><li>From: YM Bank</li></ul>
+    <!-- 02 WHEN TO SUBMIT -->
+    <section class="section" id="when">
+      <div class="section-header"><span class="section-num">02</span>
+        <h2>When to Submit the JotForm</h2>
       </div>
-      <div class="collab-nn income-nn">
-        <h4>The NN Receiving (Murphy)</h4>
-        <ul><li>Transaction Type: <strong>Income</strong></li><li>Amount: $25</li><li>Category: NN-NN Transfer</li><li>To: YM Bank</li></ul>
+      <div class="callout callout-rule"><strong>Rule of Thumb:</strong> If money is moved in any way — you must submit
+        the JotForm. No exceptions. This includes cash kept locally.</div>
+      <div class="callout callout-warn" style="margin-top:12px;"><strong>YM Email Required:</strong> JotForm submissions
+        must be made using your YM email (e.g. name@ymsisters.com). Submissions made with personal emails will NOT be
+        accepted. Dashboard access will not be granted if requested from a personal email.</div>
+      <div class="three-col" style="margin-top:16px;">
+        <div class="card bar-income">
+          <h3>1 — Income Received</h3>
+          <p>Any time your NN receives money: dues, bake sales, fundraising, donations, merch sales.</p>
+        </div>
+        <div class="card bar-red">
+          <h3>2 — Expense Incurred</h3>
+          <p>Any time your NN spends money: supplies, food, decor, transportation, honorariums.</p>
+        </div>
+        <div class="card bar-gold">
+          <h3>3 — Internal Transfer</h3>
+          <p>Moving funds between your own 3 accounts. See Section 05 for full detail and important distinctions.</p>
+        </div>
       </div>
-    </div>
-    <p style="font-size:12px; color:var(--label-2); margin-top:12px;"><em>Example: Murphy spent $50 on pizza for a joint event. Richardson owes Murphy $25 for their half. Both NNs submit separately as shown above.</em></p>
-  </div>
-</section>
+      <div class="callout callout-danger"><strong>Important:</strong> Submitting a form does NOT automatically move or
+        release funds. All updates appear on the dashboard only after Finance Department approval.</div>
+    </section>
 
-<!-- 06 CASH -->
-<section class="section" id="cash">
-  <div class="section-header"><span class="section-num">06</span><h2>Cash Handling Guidelines</h2></div>
-  <div class="two-col">
-    <div class="card">
-      <h3>Storage Requirements</h3>
-      <ul class="plain">
-        <li>Keep all cash in a secure safe or lockbox</li>
-        <li>Only NNC and Finance Lead may have access</li>
-        <li>Cash must never be mixed with personal money</li>
-        <li>If using a bank account, use a dedicated section for NN funds only</li>
-        <li>Ensure funds do not accrue interest</li>
-        <li>Recommended: send excess to YM National Account for storage</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Receipts & Documentation</h3>
-      <ul class="plain">
-        <li>Always request and keep receipts for every purchase</li>
-        <li>Photograph receipts immediately after purchase in case physical copy is lost</li>
-        <li>Submit receipts with every expense JotForm (see Section 04 for format rules)</li>
-        <li>Do not reimburse from collected cash before logging — all funds must be logged first</li>
-        <li>Report total income AND total expenses separately for every event</li>
-      </ul>
-    </div>
-  </div>
-  <div class="callout callout-rule"><strong>Event Reporting Rule:</strong> Report the total income for the event (dues, sales, donations) AND the total expenses (all supplies, decor, food, etc.) separately. Do not deduct expenses from income first — all funds must be logged completely before any deductions.</div>
-</section>
-
-<!-- 07 DASHBOARD -->
-<section class="section" id="dashboard">
-  <div class="section-header"><span class="section-num">07</span><h2>Understanding Your Dashboard</h2></div>
-  <p class="body-text">Access your Finance Dashboard via the provided link using your YM email. It tracks financial activity in real time — but only reflects what has been submitted via JotForm and approved by Finance.</p>
-  <div class="reminder-box">
-    <div class="reminder-title">Action Required — Starting Balances</div>
-    <p>We are still missing starting balance numbers for many NNs. It is now April and these were due in January/February. Please contact your SR Finance Lead or SRC <strong>immediately</strong> with your starting numbers so your dashboard reflects accurate data.</p>
-  </div>
-  <div class="sub-title">Summary Section — Your 3 Account Rows</div>
-  <div class="card bar-income" style="margin-bottom:10px;"><h3>YM Bank</h3><p>Shows Starting Balance (carried forward from last year), total income deposited, total expenses paid out, and current balance at YM Nationals. <strong>This money is not physically with you.</strong></p></div>
-  <div class="card bar-gold" style="margin-bottom:10px;"><h3>Cash Box</h3><p>Shows starting cash, total cash income logged, total cash expenses recorded, and current on-hand balance. This is the money in your physical lockbox.</p></div>
-  <div class="card bar-purple"><h3>Personal Bank Account</h3><p>Shows funds temporarily held in the NNC's personal checking account. Must be completely separate from personal funds.</p></div>
-  <div class="sub-title">Transaction Table Columns</div>
-  <table>
-    <thead><tr><th>Column</th><th>Description</th></tr></thead>
-    <tbody>
-      <tr><td>Submission Date</td><td>When the JotForm was submitted</td></tr>
-      <tr><td>Name / Email / NN</td><td>Who submitted and from which NeighborNet</td></tr>
-      <tr><td>Transaction Type</td><td>Expense, Income, Internal Transfer, etc.</td></tr>
-      <tr><td>Total Amount</td><td>Row appears red for expenses, green for income</td></tr>
-      <tr><td>Category</td><td>Fundraising, Decor, Food, Transportation, etc.</td></tr>
-      <tr><td>Reimbursement Method</td><td>Venmo or Zelle</td></tr>
-      <tr><td>Account Type</td><td>YM Bank, Cash Box, or Personal Bank Account</td></tr>
-    </tbody>
-  </table>
-  <div class="callout callout-info">Nothing shows on the dashboard unless submitted via JotForm and approved by Finance. The dashboard is only as accurate as the forms you submit.</div>
-</section>
-
-<!-- 08 APPROVAL -->
-<section class="section" id="approval">
-  <div class="section-header"><span class="section-num">08</span><h2>JotForm Approval Process</h2></div>
-  <div class="flow">
-    <div class="flow-step"><span class="flow-step-n">Step 1</span>Fill out and submit JotForm with YM email</div>
-    <div class="flow-step"><span class="flow-step-n">Step 2</span>Email confirmation Finance received submission</div>
-    <div class="flow-step"><span class="flow-step-n">Step 3</span>Finance reviews and approves / denies daily</div>
-    <div class="flow-step"><span class="flow-step-n">If Approved</span>Dashboard updates with checkmark for that entry</div>
-    <div class="flow-step"><span class="flow-step-n">If Denied</span>You receive a follow-up email with reason</div>
-  </div>
-  <div class="sub-title">Reasons for Denial</div>
-  <div class="denial-item">Invalid submission (incorrect form fields, wrong account type selected, personal email used)</div>
-  <div class="denial-item">No receipt attached, or missing bank statement</div>
-  <div class="denial-item">Receipt is not itemized or not clearly visible in full</div>
-  <div class="denial-item">Amazon or online purchase submitted as a screenshot instead of a PDF</div>
-  <div class="denial-item">Personal items present on the same receipt as YM purchases</div>
-</section>
-
-<!-- 09 LUMP SUM -->
-<section class="section" id="lumpsum">
-  <div class="section-header"><span class="section-num">09</span><h2>Pre-Approved Lump Sum</h2></div>
-  <p class="body-text">A Pre-Approved Lump Sum is a cash request submitted without receipts upfront — when your NN needs cash before an event. Requires dual approval before funds are released.</p>
-  <div class="two-col">
-    <div>
-      <div class="sub-title">Process</div>
-      <div class="lt-item"><div class="lt-dot">1</div><div class="lt-content"><h4>Submit Request via JotForm</h4><p>Include: Requested Amount, Purpose of Funds, and Approximate Use breakdown of where the funding will go</p></div></div>
-      <div class="lt-item"><div class="lt-dot">2</div><div class="lt-content"><h4>Dual Approval Required</h4><p>Must be approved by both: Regional Finance Rep / SRC AND National Finance Team</p></div></div>
-      <div class="lt-item"><div class="lt-dot">3</div><div class="lt-content"><h4>Funds Sent via Venmo</h4><p>Once approved, funds are sent through Venmo. Dashboard reflects the amount and details provided.</p></div></div>
-      <div class="lt-item"><div class="lt-dot">4</div><div class="lt-content"><h4>Submit Lump Sum Report — Within 14 Days</h4><p>Breakdown of how funds were used, event name, and leftover balance.</p></div></div>
-      <div class="lt-item"><div class="lt-dot">5</div><div class="lt-content"><h4>Return Unused Funds — Within 7 Business Days</h4><p>Any unused funds must be returned to YM Finance via Venmo @Young-Muslims within 7 business days after report submission.</p></div></div>
-    </div>
-    <div>
-      <div class="sub-title">Approved Uses</div>
-      <div class="card"><ul class="plain"><li>Venue costs</li><li>Event supplies</li><li>Food</li><li>Speaker honorariums</li></ul></div>
-      <div class="callout callout-danger" style="margin-top:14px;"><strong>Funds may only be used for YM-related purposes.</strong> Misuse of lump sum funds is an audit flag and will result in a formal review.</div>
-    </div>
-  </div>
-</section>
-
-<!-- 10 AUDITS -->
-<section class="section" id="audits">
-  <div class="section-header"><span class="section-num">10</span><h2>NN Audits</h2></div>
-  <p class="body-text">The National Finance Team conducts audits on a rolling basis every few months. Every NNC/NN Shura member is responsible for keeping their dashboard fully up to date at all times.</p>
-  <div class="two-col">
-    <div>
-      <div class="sub-title">What Gets Reviewed</div>
-      <div class="steps">
-        <div class="step"><div class="step-n">1</div><div class="step-body"><h4>Dashboard Review</h4><p>Current balance, income and expenses, spending trends, and status of all JotForm submissions</p></div></div>
-        <div class="step"><div class="step-n">2</div><div class="step-body"><h4>Consultation with SRC / SR Finance Lead</h4><p>Your SRC or SR Finance Lead is consulted for additional context on NN financial activity</p></div></div>
-        <div class="step"><div class="step-n">3</div><div class="step-body"><h4>Audit Check-In Call (if needed)</h4><p>Finance schedules a call with NN leadership to clarify patterns and address concerns</p></div></div>
-        <div class="step"><div class="step-n">4</div><div class="step-body"><h4>Action Items & Support</h4><p>Finance provides a clear path forward with specific guidance</p></div></div>
+    <!-- 03 INCOME -->
+    <section class="section" id="income">
+      <div class="section-header"><span class="section-num">03</span>
+        <h2>Logging Income</h2>
       </div>
-    </div>
-    <div>
-      <div class="sub-title">Audit Red Flags</div>
-      <div class="flag-item">Overspending beyond available balance</div>
-      <div class="flag-item">Underspending with no clear purpose for accumulated funds</div>
-      <div class="flag-item">Repeated missing or incomplete documentation</div>
-      <div class="flag-item">Frequent denied reimbursement submissions</div>
-      <div class="flag-item">Inconsistencies between YM Bank, Cash Box, and Personal Bank logs</div>
-      <div class="flag-item">Dashboard not kept up to date</div>
-      <div class="callout callout-info" style="margin-top:14px;"><strong>Stay Audit-Ready:</strong> Submit JotForms promptly for every transaction. Keep local cash minimal and documented. Review your dashboard regularly for accuracy.</div>
-    </div>
-  </div>
-</section>
-
-<!-- 11 CASE STUDY -->
-<section class="section" id="casestudy">
-  <div class="section-header"><span class="section-num">11</span><h2>Case Study: Bouquet Making Event</h2></div>
-  <p class="body-text">A complete walkthrough of how to properly log all transactions for a typical NN event — from expense submission through both income submissions.</p>
-  <div class="cs-wrapper">
-    <div class="cs-label">Full Walkthrough — From Event to Dashboard</div>
-    <div class="cs-grid">
-      <div class="cs-block"><h4>Event Details</h4><ul>
-        <li>Event<span class="cs-amount">Bouquet Making</span></li>
-        <li>Attendees<span class="cs-amount">20 girls</span></li>
-        <li>Entrance Fee<span class="cs-amount">$5 / person</span></li>
-      </ul></div>
-      <div class="cs-block"><h4>Starting Balances</h4><ul>
-        <li>YM Bank<span class="cs-amount">$100</span></li>
-        <li>Cashbox<span class="cs-amount">$20</span></li>
-      </ul></div>
-      <div class="cs-block"><h4>Event Lead Purchased (Personal Card)</h4><ul>
-        <li>Flowers<span class="cs-amount">$50</span></li>
-        <li>Pizza<span class="cs-amount">$30</span></li>
-        <li><strong>Total Spent</strong><span class="cs-amount">$80</span></li>
-      </ul></div>
-    </div>
-    <div class="cs-block" style="margin-bottom:18px;">
-      <h4>How 20 Girls Paid</h4>
-      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:10px;">
-        <div style="background:var(--surface-2); border:0.5px solid var(--sep-opaque); border-radius:var(--r2); padding:14px; text-align:center;"><div style="font-size:11px; color:var(--label-2); margin-bottom:4px;">Via Zelle (15 girls)</div><div style="font-size:24px; font-weight:700; color:var(--green); letter-spacing:-0.02em;">$75</div><div style="font-size:11px; color:var(--label-3);">NNC Personal Bank</div></div>
-        <div style="background:var(--surface-2); border:0.5px solid var(--sep-opaque); border-radius:var(--r2); padding:14px; text-align:center;"><div style="font-size:11px; color:var(--label-2); margin-bottom:4px;">Cash (5 girls)</div><div style="font-size:24px; font-weight:700; color:var(--green); letter-spacing:-0.02em;">$25</div><div style="font-size:11px; color:var(--label-3);">NNC holds physically</div></div>
-        <div style="background:var(--green-fill); border:0.5px solid rgba(26,122,74,0.20); border-radius:var(--r2); padding:14px; text-align:center;"><div style="font-size:11px; color:var(--label-2); margin-bottom:4px;">Total Income</div><div style="font-size:24px; font-weight:700; color:var(--green); letter-spacing:-0.02em;">$100</div><div style="font-size:11px; color:var(--label-3);">20 × $5</div></div>
+      <p class="body-text">When your NN receives money of any kind, fill out the JotForm to record the amount and
+        specify where the income will be held.</p>
+      <div class="two-col">
+        <div>
+          <div class="sub-title">JotForm Fields for Income</div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-n">1</div>
+              <div class="step-body">
+                <h4>Transaction Type</h4>
+                <p>Select <em>Income</em></p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n">2</div>
+              <div class="step-body">
+                <h4>YM Team Type</h4>
+                <p>Select <em>NeighborNet (NN)</em>, then choose your specific NN</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n">3</div>
+              <div class="step-body">
+                <h4>Where is income being held?</h4>
+                <ul>
+                  <li>Deposit to YM National Bank Account</li>
+                  <li>Log to Team Cash Box (cash on hand)</li>
+                  <li>Log to Personal Bank Account</li>
+                </ul>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n">4</div>
+              <div class="step-body">
+                <h4>Total Income Amount</h4>
+                <p>Enter exact dollar amount. <strong>Tax is covered — do not exclude it from the total.</strong></p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n">5</div>
+              <div class="step-body">
+                <h4>Income Category</h4>
+                <ul>
+                  <li>Event Registrations (Meeting Dues)</li>
+                  <li>Merchandise</li>
+                  <li>Fundraising (Ramadan, Bake Sales, etc.)</li>
+                  <li>Donations</li>
+                  <li>Transfer from YM Brothers (SR/National only)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n">6</div>
+              <div class="step-body">
+                <h4>Income Details</h4>
+                <p>Format: <em>Date, Event Name, Expense Subcategory</em><br>Example: <strong>1/9/26 NJ Gala –
+                    Registrations</strong></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="sub-title">Income by Payment Type</div>
+          <div class="card bar-income">
+            <h3>Cash Received</h3>
+            <p>NNC collects physical cash → fills out JotForm logging income to <strong>Cash Box</strong> → places cash
+              in the lockbox.</p>
+            <div class="kv-inner">
+              <div class="kv-row"><span class="kv-key">Logged to</span><span class="kv-val">Cash Box</span></div>
+              <div class="kv-row"><span class="kv-key">Who submits</span><span class="kv-val">NNC</span></div>
+              <div class="kv-row"><span class="kv-key">Next step</span><span class="kv-val">Add cash to lockbox</span>
+              </div>
+              <div class="kv-row"><span class="kv-key">Effect</span><span class="kv-val">Cashbox balance ↑</span></div>
+            </div>
+          </div>
+          <div class="card bar-income">
+            <h3>Zelle / Digital Payment</h3>
+            <p>NNC collects Zelle payments → fills out JotForm logging income to <strong>YM Bank</strong> → sends funds
+              to YM via Venmo.</p>
+            <div class="kv-inner">
+              <div class="kv-row"><span class="kv-key">Logged to</span><span class="kv-val">YM Bank</span></div>
+              <div class="kv-row"><span class="kv-key">Who submits</span><span class="kv-val">NNC</span></div>
+              <div class="kv-row"><span class="kv-key">Next step</span><span class="kv-val">Send via Venmo →
+                  @Young-Muslims</span></div>
+              <div class="kv-row"><span class="kv-key">Effect</span><span class="kv-val">YM Bank balance ↑</span></div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="answer-row">
-      <div class="answer-block expense-ans">
-        <h4>Expense Submission — Event Planning Lead</h4>
-        <ul>
-          <li>Fills out JotForm as Expense</li>
-          <li>Amount: $80 (flowers + pizza)</li>
-          <li>From: YM Bank Account</li>
-          <li>Expense Details: date, event name, expense subcategory</li>
-          <li>Keep all receipts — upload as PDF if purchased online</li>
-          <li>Submit Venmo request to @Young-Muslims for reimbursement</li>
-          <li>YM Bank: $100 → $20 after reimbursement</li>
+    </section>
+
+    <!-- 04 EXPENSES -->
+    <section class="section" id="expenses">
+      <div class="section-header"><span class="section-num">04</span>
+        <h2>Logging Expenses</h2>
+      </div>
+      <p class="body-text">When your NN spends money, log the expense via JotForm. There are two types of expense
+        submissions depending on how reimbursement will happen.</p>
+      <div class="two-col">
+        <div class="card bar-red">
+          <span class="badge badge-exp" style="margin-bottom:10px;">Option A</span>
+          <h3>Request Reimbursement from YM Bank</h3>
+          <p>Someone paid out of pocket. Request reimbursement from YM Bank. Finance reimburses via Venmo or Zelle.</p>
+          <ul class="plain" style="margin-top:10px;">
+            <li>Total Expense Amount</li>
+            <li>Expense Category (see table below)</li>
+            <li>Expense Details — date, event, subcategory</li>
+            <li>Upload Receipt(s) — required</li>
+            <li>Itemized Details — item names only</li>
+            <li>Reimbursement Method: Venmo or Zelle</li>
+          </ul>
+        </div>
+        <div class="card bar-gold">
+          <span class="badge badge-opt" style="margin-bottom:10px;">Option B</span>
+          <h3>Log Already-Reimbursed Expense</h3>
+          <p>Person was <strong>already paid back</strong> using on-hand cash or personal funds. ONLY to record it on
+            the dashboard — no funds move.</p>
+          <ul class="plain" style="margin-top:10px;">
+            <li>Total Expense Amount</li>
+            <li>Expense Category</li>
+            <li>Expense Details</li>
+            <li>Upload Receipt(s) — required</li>
+            <li>Itemized Details</li>
+            <li>Which fund was used: Cash Box or Personal Bank</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sub-title">Expense Details Format</div>
+      <div class="callout callout-info"><strong>Format: Date · Event Name · Expense Subcategory</strong><br>
+        Examples: &nbsp;<em>1/9/26 NJ Gala – Decorations</em> &nbsp;|&nbsp; <em>3/15/26 Ramadan Iftar – Food</em>
+        &nbsp;|&nbsp; <em>4/20/26 Spring Retreat – Transportation</em></div>
+
+      <div class="sub-title">Itemized Details — How to Fill In</div>
+      <div class="two-col">
+        <div class="callout callout-info" style="margin:0;"><strong>What to include:</strong> List the item names
+          purchased. Do not include individual prices. Do not list tax as a line item.<br><br><strong>Example:</strong>
+          Balloons, Table cloth, String lights, Streamers, Paper plates</div>
+        <div class="callout callout-warn" style="margin:0;"><strong>Tax is covered by YM.</strong> Include the full
+          receipt total (including tax) in your Total Expense Amount. Just don't list tax separately in the itemized
+          section.</div>
+      </div>
+
+      <div class="sub-title">Receipt Requirements</div>
+      <div class="callout callout-danger"><strong>No Receipt = No Approval.</strong> If there is no receipt attached to
+        your submission, it will not be approved — no exceptions.</div>
+      <div class="receipt-grid">
+        <div class="receipt-card">
+          <h4>Amazon Purchases</h4>
+          <p>No screenshots. Download the receipt as a PDF from your Amazon account and upload the PDF file.</p>
+        </div>
+        <div class="receipt-card">
+          <h4>Any Online Purchase</h4>
+          <p>Upload as a PDF — not a screenshot. Download the order confirmation from the site as a PDF.</p>
+        </div>
+        <div class="receipt-card">
+          <h4>Zelle / Venmo to Vendor</h4>
+          <p>Screenshot is fine for Zelle or Venmo transfers made to an external vendor.</p>
+        </div>
+        <div class="receipt-card">
+          <h4>Paper Receipts</h4>
+          <p>The entire receipt must be clearly and fully visible. Blurry, cut off, or incomplete paper receipts will
+            NOT be approved.</p>
+        </div>
+      </div>
+      <div class="callout callout-danger" style="margin-top:12px;"><strong>No Personal Purchases on YM
+          Receipts.</strong> YM expenses must be purchased completely separately. Each YM purchase must be on its own
+        receipt with no personal items included.</div>
+
+      <div class="sub-title">Expense Categories</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Common Examples</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Financial Aid</td>
+            <td>Aid requests from NN budgets</td>
+          </tr>
+          <tr>
+            <td>Fundraising</td>
+            <td>Bake sale supplies, fundraising event costs</td>
+          </tr>
+          <tr>
+            <td>Merchandise</td>
+            <td>Merch production, shipping costs</td>
+          </tr>
+          <tr>
+            <td>NN Operations</td>
+            <td>Event food, decor, venue supplies</td>
+          </tr>
+          <tr>
+            <td>Subregional Operations</td>
+            <td>SR event food, decor, supplies</td>
+          </tr>
+          <tr>
+            <td>National Operations</td>
+            <td>National team event expenses</td>
+          </tr>
+          <tr>
+            <td>Tarbiyyah</td>
+            <td>Study circle, workshops, retreat materials</td>
+          </tr>
+          <tr>
+            <td>Transportation</td>
+            <td>Gas, tolls, intra-SR travel</td>
+          </tr>
+          <tr>
+            <td>Joint Events – Brothers Settlements</td>
+            <td>Split expenses with YM Brothers chapters</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="sub-title">Reimbursement Methods</div>
+      <div class="two-col">
+        <div class="card bar-income">
+          <h3>Venmo</h3>
+          <p>Submit a Venmo request to <strong>@Young-Muslims</strong> for the exact amount. Reimbursement will not
+            happen without the Venmo request — Finance can tap directly to approve!</p>
+        </div>
+        <div class="card bar-income">
+          <h3>Zelle</h3>
+          <p>Zelle reimbursements are also accepted. Coordinate Zelle details with Finance at
+            <strong>finance@ymsisters.com</strong> after submitting your JotForm.</p>
+        </div>
+      </div>
+      <div class="callout callout-rule"><strong>Action Required After JotForm:</strong> Submitting the JotForm alone is
+        not enough to get reimbursed. You must also send a Venmo request or confirm Zelle details so Finance can quickly
+        approve and process your reimbursement.</div>
+    </section>
+
+    <!-- 05 TRANSFERS -->
+    <section class="section" id="transfers">
+      <div class="section-header"><span class="section-num">05</span>
+        <h2>Transferring Money</h2>
+      </div>
+      <div class="sub-title">Internal Transfer — What It Actually Is</div>
+      <div class="callout callout-warn"><strong>Many NNs are selecting "Internal Transfer" incorrectly.</strong> Please
+        read this carefully before selecting this transaction type on the JotForm.</div>
+      <div class="two-col">
+        <div class="card bar-income">
+          <h3>Internal Transfer IS:</h3>
+          <p>Moving money <strong>between your team's own existing YM accounts</strong>. Valid examples:</p>
+          <ul class="plain" style="margin-top:8px;">
+            <li>YM Bank → Cash Box</li>
+            <li>Cash Box → YM Bank</li>
+            <li>Personal Bank Account → YM Bank</li>
+            <li>YM Bank → Personal Bank Account</li>
+          </ul>
+        </div>
+        <div class="card bar-red">
+          <h3>Internal Transfer is NOT:</h3>
+          <p>If an individual is depositing <strong>their own personal money</strong> into a YM account for the first
+            time — that is <strong>Income to Personal Bank Account</strong>, not an Internal Transfer.</p>
+          <div class="callout callout-danger" style="margin-top:10px;">Internal Transfer = moving existing YM funds
+            between your own accounts.<br>New personal money coming in = Income.</div>
+        </div>
+      </div>
+      <div class="sub-title">JotForm Fields for Internal Transfer</div>
+      <div class="card">
+        <ul class="plain">
+          <li>Transaction Type: <strong>Internal Transfer</strong></li>
+          <li>Total Transfer Amount</li>
+          <li><strong>From account:</strong> YM Bank / Cash Box / Personal Bank Account</li>
+          <li><strong>To account:</strong> YM Bank / Cash Box / Personal Bank Account</li>
+          <li>Transfer Description / Reason — e.g. <em>$15 from dues, $30 from merch sales</em></li>
         </ul>
       </div>
-      <div class="answer-block income-ans">
-        <h4>Income Submissions — NNC (2 Separate JotForms)</h4>
-        <ul>
-          <li><strong>Cash $25:</strong> Log to Cash Box → physically add cash to lockbox</li>
-          <li>Cashbox: $20 → $45</li>
-          <li><strong>Zelle $75:</strong> Log to YM Bank → send $75 via Venmo to @Young-Muslims</li>
-          <li>YM Bank: $20 → $95 (net of income received and expense paid)</li>
-        </ul>
+      <div class="sub-title" style="margin-top:24px;">NN-to-NN Transfer (Collab Events)</div>
+      <div class="collab-wrapper">
+        <h3>Transferring Funds to Another NN</h3>
+        <p class="collab-desc">When two NNs collaborate on an event and split costs, <strong>each NN submits their own
+            separate JotForm</strong> to reflect how the transfer affects their own dashboard.</p>
+        <div class="collab-split">
+          <div class="collab-nn expense-nn">
+            <h4>The NN Paying (Richardson)</h4>
+            <ul>
+              <li>Transaction Type: <strong>Expense</strong></li>
+              <li>Amount: $25</li>
+              <li>Category: NN-NN Transfer</li>
+              <li>From: YM Bank</li>
+            </ul>
+          </div>
+          <div class="collab-nn income-nn">
+            <h4>The NN Receiving (Murphy)</h4>
+            <ul>
+              <li>Transaction Type: <strong>Income</strong></li>
+              <li>Amount: $25</li>
+              <li>Category: NN-NN Transfer</li>
+              <li>To: YM Bank</li>
+            </ul>
+          </div>
+        </div>
+        <p style="font-size:12px; color:var(--label-2); margin-top:12px;"><em>Example: Murphy spent $50 on pizza for a
+            joint event. Richardson owes Murphy $25 for their half. Both NNs submit separately as shown above.</em></p>
       </div>
-    </div>
-    <div class="final-balance-row">
-      <div class="balance-box"><div class="label">YM Bank</div><div class="amount">$95</div><div class="was">was $100</div></div>
-      <div class="balance-box"><div class="label">Cashbox</div><div class="amount">$45</div><div class="was">was $20</div></div>
-      <div class="balance-box"><div class="label">Total</div><div class="amount">$140</div><div class="was">was $120</div></div>
-      <div class="balance-note"><strong>Net Gain: +$20</strong><span>Revenue $100 − Expenses $80 = $20 profit for the NN. This is correct and expected.</span></div>
-    </div>
+    </section>
+
+    <!-- 06 CASH -->
+    <section class="section" id="cash">
+      <div class="section-header"><span class="section-num">06</span>
+        <h2>Cash Handling Guidelines</h2>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <h3>Storage Requirements</h3>
+          <ul class="plain">
+            <li>Keep all cash in a secure safe or lockbox</li>
+            <li>Only NNC and Finance Lead may have access</li>
+            <li>Cash must never be mixed with personal money</li>
+            <li>If using a bank account, use a dedicated section for NN funds only</li>
+            <li>Ensure funds do not accrue interest</li>
+            <li>Recommended: send excess to YM National Account for storage</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Receipts & Documentation</h3>
+          <ul class="plain">
+            <li>Always request and keep receipts for every purchase</li>
+            <li>Photograph receipts immediately after purchase in case physical copy is lost</li>
+            <li>Submit receipts with every expense JotForm (see Section 04 for format rules)</li>
+            <li>Do not reimburse from collected cash before logging — all funds must be logged first</li>
+            <li>Report total income AND total expenses separately for every event</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout callout-rule"><strong>Event Reporting Rule:</strong> Report the total income for the event
+        (dues, sales, donations) AND the total expenses (all supplies, decor, food, etc.) separately. Do not deduct
+        expenses from income first — all funds must be logged completely before any deductions.</div>
+    </section>
+
+    <!-- 07 DASHBOARD -->
+    <section class="section" id="dashboard">
+      <div class="section-header"><span class="section-num">07</span>
+        <h2>Understanding Your Dashboard</h2>
+      </div>
+      <p class="body-text">Access your Finance Dashboard via the provided link using your YM email. It tracks financial
+        activity in real time — but only reflects what has been submitted via JotForm and approved by Finance.</p>
+      <div class="reminder-box">
+        <div class="reminder-title">Action Required — Starting Balances</div>
+        <p>We are still missing starting balance numbers for many NNs. It is now April and these were due in
+          January/February. Please contact your SR Finance Lead or SRC <strong>immediately</strong> with your starting
+          numbers so your dashboard reflects accurate data.</p>
+      </div>
+      <div class="sub-title">Summary Section — Your 3 Account Rows</div>
+      <div class="card bar-income" style="margin-bottom:10px;">
+        <h3>YM Bank</h3>
+        <p>Shows Starting Balance (carried forward from last year), total income deposited, total expenses paid out, and
+          current balance at YM Nationals. <strong>This money is not physically with you.</strong></p>
+      </div>
+      <div class="card bar-gold" style="margin-bottom:10px;">
+        <h3>Cash Box</h3>
+        <p>Shows starting cash, total cash income logged, total cash expenses recorded, and current on-hand balance.
+          This is the money in your physical lockbox.</p>
+      </div>
+      <div class="card bar-purple">
+        <h3>Personal Bank Account</h3>
+        <p>Shows funds temporarily held in the NNC's personal checking account. Must be completely separate from
+          personal funds.</p>
+      </div>
+      <div class="sub-title">Transaction Table Columns</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Column</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Submission Date</td>
+            <td>When the JotForm was submitted</td>
+          </tr>
+          <tr>
+            <td>Name / Email / NN</td>
+            <td>Who submitted and from which NeighborNet</td>
+          </tr>
+          <tr>
+            <td>Transaction Type</td>
+            <td>Expense, Income, Internal Transfer, etc.</td>
+          </tr>
+          <tr>
+            <td>Total Amount</td>
+            <td>Row appears red for expenses, green for income</td>
+          </tr>
+          <tr>
+            <td>Category</td>
+            <td>Fundraising, Decor, Food, Transportation, etc.</td>
+          </tr>
+          <tr>
+            <td>Reimbursement Method</td>
+            <td>Venmo or Zelle</td>
+          </tr>
+          <tr>
+            <td>Account Type</td>
+            <td>YM Bank, Cash Box, or Personal Bank Account</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout callout-info">Nothing shows on the dashboard unless submitted via JotForm and approved by
+        Finance. The dashboard is only as accurate as the forms you submit.</div>
+    </section>
+
+    <!-- 08 APPROVAL -->
+    <section class="section" id="approval">
+      <div class="section-header"><span class="section-num">08</span>
+        <h2>JotForm Approval Process</h2>
+      </div>
+      <div class="flow">
+        <div class="flow-step"><span class="flow-step-n">Step 1</span>Fill out and submit JotForm with YM email</div>
+        <div class="flow-step"><span class="flow-step-n">Step 2</span>Email confirmation Finance received submission
+        </div>
+        <div class="flow-step"><span class="flow-step-n">Step 3</span>Finance reviews and approves / denies daily</div>
+        <div class="flow-step"><span class="flow-step-n">If Approved</span>Dashboard updates with checkmark for that
+          entry</div>
+        <div class="flow-step"><span class="flow-step-n">If Denied</span>You receive a follow-up email with reason</div>
+      </div>
+      <div class="sub-title">Reasons for Denial</div>
+      <div class="denial-item">Invalid submission (incorrect form fields, wrong account type selected, personal email
+        used)</div>
+      <div class="denial-item">No receipt attached, or missing bank statement</div>
+      <div class="denial-item">Receipt is not itemized or not clearly visible in full</div>
+      <div class="denial-item">Amazon or online purchase submitted as a screenshot instead of a PDF</div>
+      <div class="denial-item">Personal items present on the same receipt as YM purchases</div>
+    </section>
+
+    <!-- 09 LUMP SUM -->
+    <section class="section" id="lumpsum">
+      <div class="section-header"><span class="section-num">09</span>
+        <h2>Pre-Approved Lump Sum</h2>
+      </div>
+      <p class="body-text">A Pre-Approved Lump Sum is a cash request submitted without receipts upfront — when your NN
+        needs cash before an event. Requires dual approval before funds are released.</p>
+      <div class="two-col">
+        <div>
+          <div class="sub-title">Process</div>
+          <div class="lt-item">
+            <div class="lt-dot">1</div>
+            <div class="lt-content">
+              <h4>Submit Request via JotForm</h4>
+              <p>Include: Requested Amount, Purpose of Funds, and Approximate Use breakdown of where the funding will go
+              </p>
+            </div>
+          </div>
+          <div class="lt-item">
+            <div class="lt-dot">2</div>
+            <div class="lt-content">
+              <h4>Dual Approval Required</h4>
+              <p>Must be approved by both: Regional Finance Rep / SRC AND National Finance Team</p>
+            </div>
+          </div>
+          <div class="lt-item">
+            <div class="lt-dot">3</div>
+            <div class="lt-content">
+              <h4>Funds Sent via Venmo</h4>
+              <p>Once approved, funds are sent through Venmo. Dashboard reflects the amount and details provided.</p>
+            </div>
+          </div>
+          <div class="lt-item">
+            <div class="lt-dot">4</div>
+            <div class="lt-content">
+              <h4>Submit Lump Sum Report — Within 14 Days</h4>
+              <p>Breakdown of how funds were used, event name, and leftover balance.</p>
+            </div>
+          </div>
+          <div class="lt-item">
+            <div class="lt-dot">5</div>
+            <div class="lt-content">
+              <h4>Return Unused Funds — Within 7 Business Days</h4>
+              <p>Any unused funds must be returned to YM Finance via Venmo @Young-Muslims within 7 business days after
+                report submission.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="sub-title">Approved Uses</div>
+          <div class="card">
+            <ul class="plain">
+              <li>Venue costs</li>
+              <li>Event supplies</li>
+              <li>Food</li>
+              <li>Speaker honorariums</li>
+            </ul>
+          </div>
+          <div class="callout callout-danger" style="margin-top:14px;"><strong>Funds may only be used for YM-related
+              purposes.</strong> Misuse of lump sum funds is an audit flag and will result in a formal review.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 AUDITS -->
+    <section class="section" id="audits">
+      <div class="section-header"><span class="section-num">10</span>
+        <h2>NN Audits</h2>
+      </div>
+      <p class="body-text">The National Finance Team conducts audits on a rolling basis every few months. Every NNC/NN
+        Shura member is responsible for keeping their dashboard fully up to date at all times.</p>
+      <div class="two-col">
+        <div>
+          <div class="sub-title">What Gets Reviewed</div>
+          <div class="steps">
+            <div class="step">
+              <div class="step-n">1</div>
+              <div class="step-body">
+                <h4>Dashboard Review</h4>
+                <p>Current balance, income and expenses, spending trends, and status of all JotForm submissions</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n">2</div>
+              <div class="step-body">
+                <h4>Consultation with SRC / SR Finance Lead</h4>
+                <p>Your SRC or SR Finance Lead is consulted for additional context on NN financial activity</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n">3</div>
+              <div class="step-body">
+                <h4>Audit Check-In Call (if needed)</h4>
+                <p>Finance schedules a call with NN leadership to clarify patterns and address concerns</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n">4</div>
+              <div class="step-body">
+                <h4>Action Items & Support</h4>
+                <p>Finance provides a clear path forward with specific guidance</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="sub-title">Audit Red Flags</div>
+          <div class="flag-item">Overspending beyond available balance</div>
+          <div class="flag-item">Underspending with no clear purpose for accumulated funds</div>
+          <div class="flag-item">Repeated missing or incomplete documentation</div>
+          <div class="flag-item">Frequent denied reimbursement submissions</div>
+          <div class="flag-item">Inconsistencies between YM Bank, Cash Box, and Personal Bank logs</div>
+          <div class="flag-item">Dashboard not kept up to date</div>
+          <div class="callout callout-info" style="margin-top:14px;"><strong>Stay Audit-Ready:</strong> Submit JotForms
+            promptly for every transaction. Keep local cash minimal and documented. Review your dashboard regularly for
+            accuracy.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 CASE STUDY -->
+    <section class="section" id="casestudy">
+      <div class="section-header"><span class="section-num">11</span>
+        <h2>Case Study: Bouquet Making Event</h2>
+      </div>
+      <p class="body-text">A complete walkthrough of how to properly log all transactions for a typical NN event — from
+        expense submission through both income submissions.</p>
+      <div class="cs-wrapper">
+        <div class="cs-label">Full Walkthrough — From Event to Dashboard</div>
+        <div class="cs-grid">
+          <div class="cs-block">
+            <h4>Event Details</h4>
+            <ul>
+              <li>Event<span class="cs-amount">Bouquet Making</span></li>
+              <li>Attendees<span class="cs-amount">20 girls</span></li>
+              <li>Entrance Fee<span class="cs-amount">$5 / person</span></li>
+            </ul>
+          </div>
+          <div class="cs-block">
+            <h4>Starting Balances</h4>
+            <ul>
+              <li>YM Bank<span class="cs-amount">$100</span></li>
+              <li>Cashbox<span class="cs-amount">$20</span></li>
+            </ul>
+          </div>
+          <div class="cs-block">
+            <h4>Event Lead Purchased (Personal Card)</h4>
+            <ul>
+              <li>Flowers<span class="cs-amount">$50</span></li>
+              <li>Pizza<span class="cs-amount">$30</span></li>
+              <li><strong>Total Spent</strong><span class="cs-amount">$80</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="cs-block" style="margin-bottom:18px;">
+          <h4>How 20 Girls Paid</h4>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:10px;">
+            <div
+              style="background:var(--surface-2); border:0.5px solid var(--sep-opaque); border-radius:var(--r2); padding:14px; text-align:center;">
+              <div style="font-size:11px; color:var(--label-2); margin-bottom:4px;">Via Zelle (15 girls)</div>
+              <div style="font-size:24px; font-weight:700; color:var(--green); letter-spacing:-0.02em;">$75</div>
+              <div style="font-size:11px; color:var(--label-3);">NNC Personal Bank</div>
+            </div>
+            <div
+              style="background:var(--surface-2); border:0.5px solid var(--sep-opaque); border-radius:var(--r2); padding:14px; text-align:center;">
+              <div style="font-size:11px; color:var(--label-2); margin-bottom:4px;">Cash (5 girls)</div>
+              <div style="font-size:24px; font-weight:700; color:var(--green); letter-spacing:-0.02em;">$25</div>
+              <div style="font-size:11px; color:var(--label-3);">NNC holds physically</div>
+            </div>
+            <div
+              style="background:var(--green-fill); border:0.5px solid rgba(26,122,74,0.20); border-radius:var(--r2); padding:14px; text-align:center;">
+              <div style="font-size:11px; color:var(--label-2); margin-bottom:4px;">Total Income</div>
+              <div style="font-size:24px; font-weight:700; color:var(--green); letter-spacing:-0.02em;">$100</div>
+              <div style="font-size:11px; color:var(--label-3);">20 × $5</div>
+            </div>
+          </div>
+        </div>
+        <div class="answer-row">
+          <div class="answer-block expense-ans">
+            <h4>Expense Submission — Event Planning Lead</h4>
+            <ul>
+              <li>Fills out JotForm as Expense</li>
+              <li>Amount: $80 (flowers + pizza)</li>
+              <li>From: YM Bank Account</li>
+              <li>Expense Details: date, event name, expense subcategory</li>
+              <li>Keep all receipts — upload as PDF if purchased online</li>
+              <li>Submit Venmo request to @Young-Muslims for reimbursement</li>
+              <li>YM Bank: $100 → $20 after reimbursement</li>
+            </ul>
+          </div>
+          <div class="answer-block income-ans">
+            <h4>Income Submissions — NNC (2 Separate JotForms)</h4>
+            <ul>
+              <li><strong>Cash $25:</strong> Log to Cash Box → physically add cash to lockbox</li>
+              <li>Cashbox: $20 → $45</li>
+              <li><strong>Zelle $75:</strong> Log to YM Bank → send $75 via Venmo to @Young-Muslims</li>
+              <li>YM Bank: $20 → $95 (net of income received and expense paid)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="final-balance-row">
+          <div class="balance-box">
+            <div class="label">YM Bank</div>
+            <div class="amount">$95</div>
+            <div class="was">was $100</div>
+          </div>
+          <div class="balance-box">
+            <div class="label">Cashbox</div>
+            <div class="amount">$45</div>
+            <div class="was">was $20</div>
+          </div>
+          <div class="balance-box">
+            <div class="label">Total</div>
+            <div class="amount">$140</div>
+            <div class="was">was $120</div>
+          </div>
+          <div class="balance-note"><strong>Net Gain: +$20</strong><span>Revenue $100 − Expenses $80 = $20 profit for
+              the NN. This is correct and expected.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 RESOURCES -->
+    <section class="section" id="resources">
+      <div class="section-header"><span class="section-num">12</span>
+        <h2>Important Pages & Resources</h2>
+      </div>
+      <div class="resource-grid">
+        <div class="resource-card"><span class="aud-tag aud-all">Everyone</span>
+          <h4>Dashboard Master Directory</h4>
+          <p>Central spreadsheet with links to all NN and SR Finance Dashboards.</p>
+        </div>
+        <div class="resource-card"><span class="aud-tag aud-all">Everyone</span>
+          <h4>JotForm</h4>
+          <p>The form for all income, expenses, and transfers. Use your YM email only.</p>
+        </div>
+        <div class="resource-card"><span class="aud-tag aud-all">Everyone</span>
+          <h4>Everything You Need to Know Doc</h4>
+          <p>Comprehensive guide covering all policies and procedures.</p>
+        </div>
+        <div class="resource-card"><span class="aud-tag aud-all">Everyone</span>
+          <h4>Fundraising Toolkit</h4>
+          <p>Templates and resources for running fundraising events and donation campaigns.</p>
+        </div>
+        <div class="resource-card"><span class="aud-tag aud-sr">SR Only</span>
+          <h4>SR Dashboard</h4>
+          <p>SRCs + SR Finance Leads have edit access. Tracks subregional financial activity.</p>
+        </div>
+        <div class="resource-card"><span class="aud-tag aud-sr">SR Only</span>
+          <h4>SR Budget Planning Sheet</h4>
+          <p>For projecting and managing SR-level income and expenses over the year.</p>
+        </div>
+        <div class="resource-card"><span class="aud-tag aud-sr">SR Only</span>
+          <h4>#team-finance-leads</h4>
+          <p>Slack channel in ym-subregional x national team Slack for SR-level finance leads.</p>
+        </div>
+        <div class="resource-card"><span class="aud-tag aud-nn">NNs Only</span>
+          <h4>NN Dashboard</h4>
+          <p>NNCs have comment access. SRC / Finance Leads have edit access.</p>
+        </div>
+        <div class="resource-card"><span class="aud-tag aud-nn">NNs Only</span>
+          <h4>Finance Support Group</h4>
+          <p>WhatsApp chat in YM Leadership Community — for NN-level finance questions.</p>
+        </div>
+      </div>
+      <div class="callout callout-rule" style="margin-top:16px;"><strong>Questions?</strong> Reach out to the Finance
+        Department at <strong>finance@ymsisters.com</strong> — send from your YM email.</div>
+    </section>
+
   </div>
-</section>
 
-<!-- 12 RESOURCES -->
-<section class="section" id="resources">
-  <div class="section-header"><span class="section-num">12</span><h2>Important Pages & Resources</h2></div>
-  <div class="resource-grid">
-    <div class="resource-card"><span class="aud-tag aud-all">Everyone</span><h4>Dashboard Master Directory</h4><p>Central spreadsheet with links to all NN and SR Finance Dashboards.</p></div>
-    <div class="resource-card"><span class="aud-tag aud-all">Everyone</span><h4>JotForm</h4><p>The form for all income, expenses, and transfers. Use your YM email only.</p></div>
-    <div class="resource-card"><span class="aud-tag aud-all">Everyone</span><h4>Everything You Need to Know Doc</h4><p>Comprehensive guide covering all policies and procedures.</p></div>
-    <div class="resource-card"><span class="aud-tag aud-all">Everyone</span><h4>Fundraising Toolkit</h4><p>Templates and resources for running fundraising events and donation campaigns.</p></div>
-    <div class="resource-card"><span class="aud-tag aud-sr">SR Only</span><h4>SR Dashboard</h4><p>SRCs + SR Finance Leads have edit access. Tracks subregional financial activity.</p></div>
-    <div class="resource-card"><span class="aud-tag aud-sr">SR Only</span><h4>SR Budget Planning Sheet</h4><p>For projecting and managing SR-level income and expenses over the year.</p></div>
-    <div class="resource-card"><span class="aud-tag aud-sr">SR Only</span><h4>#team-finance-leads</h4><p>Slack channel in ym-subregional x national team Slack for SR-level finance leads.</p></div>
-    <div class="resource-card"><span class="aud-tag aud-nn">NNs Only</span><h4>NN Dashboard</h4><p>NNCs have comment access. SRC / Finance Leads have edit access.</p></div>
-    <div class="resource-card"><span class="aud-tag aud-nn">NNs Only</span><h4>Finance Support Group</h4><p>WhatsApp chat in YM Leadership Community — for NN-level finance questions.</p></div>
-  </div>
-  <div class="callout callout-rule" style="margin-top:16px;"><strong>Questions?</strong> Reach out to the Finance Department at <strong>finance@ymsisters.com</strong> — send from your YM email.</div>
-</section>
-
-</div>
-
-<footer>
-  <p class="footer-b">﷽ &nbsp; ﷺ</p>
-  <p>Young Muslims · Finance Department · <a href="mailto:finance@ymsisters.com">finance@ymsisters.com</a></p>
-  <p style="margin-top:8px; opacity:0.4; font-size:11px;">NeighborNet Finance Handbook 2026 · For Internal Use Only</p>
-</footer>
+  <footer>
+    <p class="footer-b">﷽ &nbsp; ﷺ</p>
+    <p>Young Muslims · Finance Department · <a href="mailto:finance@ymsisters.com">finance@ymsisters.com</a></p>
+    <p style="margin-top:8px; opacity:0.4; font-size:11px;">NeighborNet Finance Handbook 2026 · For Internal Use Only
+    </p>
+  </footer>
 </body>
+
 </html>
