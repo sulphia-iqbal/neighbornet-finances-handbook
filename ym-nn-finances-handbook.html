@@ -1238,73 +1238,7 @@
       line-height: 1.55;
     }
 
-    /* ── MONEY DIAGRAM ── */
-  .money-diagram { background: var(--surface); border: 0.5px solid var(--sep-opaque); border-radius: var(--r3); padding: 24px; margin: 16px 0; box-shadow: var(--s1); display: flex; flex-direction: column; gap: 24px; }
-  .md-section-title { font-size: 14px; font-weight: 700; color: var(--label); margin-bottom: 4px; }
-  .md-section-sub { font-size: 12px; color: var(--label-2); margin-bottom: 14px; }
-  .md-flow-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-  .md-node { border-radius: var(--r2); padding: 12px 18px; text-align: center; min-width: 130px; }
-  .md-node-neutral { background: var(--surface-2); border: 0.5px solid var(--sep-opaque); }
-  .md-node-green { background: rgba(52,199,89,0.10); border: 0.5px solid rgba(52,199,89,0.28); }
-  .md-node-blue { background: var(--blue-fill); border: 0.5px solid rgba(0,122,255,0.2); }
-  .md-node-title { font-size: 14px; font-weight: 600; color: var(--label); }
-  .md-node-sub { font-size: 12px; color: var(--label-2); margin-top: 2px; }
-  .md-flow-arrow { font-size: 13px; color: var(--label-3); font-weight: 500; white-space: nowrap; }
-  .md-accounts-row { display: grid; grid-template-columns: 1fr 32px 1fr; gap: 16px; align-items: center; }
-  .md-account { border-radius: var(--r2); padding: 18px; }
-  .md-account-green { background: rgba(52,199,89,0.08); border: 0.5px solid rgba(52,199,89,0.25); }
-  .md-account-blue { background: var(--blue-fill); border: 0.5px solid rgba(0,122,255,0.2); }
-  .md-account-title { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
-  .md-account-green .md-account-title { color: #1A6B2A; }
-  .md-account-blue .md-account-title { color: var(--blue); }
-  .md-step-card { background: var(--surface); border: 0.5px solid var(--sep-opaque); border-radius: var(--r1); padding: 10px 14px; margin-bottom: 8px; }
-  .md-step-amount { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
-  .md-step-amount.income { color: var(--green); }
-  .md-step-amount.expense { color: var(--red); }
-  .md-step-desc { font-size: 12px; color: var(--label-2); }
-  .md-net-balance { text-align: center; margin-top: 12px; }
-  .md-net-label { font-size: 11px; color: var(--label-3); margin-bottom: 2px; }
-  .md-net-amount { font-size: 18px; font-weight: 700; color: var(--label-2); }
-  .md-net-amount.positive { color: var(--green); }
-  .md-transfer-arrow { text-align: center; font-size: 24px; color: var(--label-3); }
-  .md-warning { background: var(--red-fill); border: 0.5px solid rgba(255,59,48,0.2); border-radius: var(--r2); padding: 16px 20px; }
-  .md-warning-title { font-size: 14px; font-weight: 700; color: var(--red); margin-bottom: 8px; }
-  .md-warning p { font-size: 13px; color: #5A0000; margin-bottom: 4px; line-height: 1.5; }
-  .md-warning p:last-child { margin-bottom: 0; }
-  @media (max-width: 640px) { .md-accounts-row { grid-template-columns: 1fr; } .md-transfer-arrow { display: none; } }
-
-  /* ── DECISION CHART ── */
-  .decision-chart { display: flex; flex-direction: column; gap: 10px; margin: 14px 0 24px; }
-  .decision-row {
-    display: grid;
-    grid-template-columns: 1fr 32px 160px;
-    align-items: center;
-    gap: 12px;
-    background: var(--surface);
-    border: 0.5px solid var(--sep-opaque);
-    border-radius: var(--r2);
-    padding: 14px 18px;
-    box-shadow: var(--s1);
-  }
-  .decision-q { font-size: 14px; color: var(--label); line-height: 1.5; }
-  .decision-arrow { font-size: 20px; color: var(--label-3); text-align: center; }
-  .decision-a { border-radius: var(--r1); padding: 7px 14px; text-align: center; }
-  .decision-label { font-size: 12px; font-weight: 700; letter-spacing: 0.03em; }
-  .income-a   { background: var(--sys-green-fill); }
-  .income-a .decision-label   { color: #1A6B2A; }
-  .expense-a  { background: var(--red-fill); }
-  .expense-a .decision-label  { color: var(--red); }
-  .transfer-a { background: var(--blue-fill); }
-  .transfer-a .decision-label { color: var(--blue); }
-  .nntransfer-a { background: var(--gold-fill); }
-  .nntransfer-a .decision-label { color: var(--gold); }
-  @media (max-width: 600px) {
-    .decision-row { grid-template-columns: 1fr; }
-    .decision-arrow { display: none; }
-    .decision-a { text-align: left; }
-  }
-
-  /* ── BISMILLAH BANNER ── */
+    /* ── BISMILLAH BANNER ── */
     .bismillah-banner {
       padding: 40px 0 8px;
       text-align: center;
@@ -1329,6 +1263,24 @@
       color: var(--gold);
       vertical-align: middle;
     }
+
+    /* ── DECISION CHART ── */
+    .decision-chart { display: flex; flex-direction: column; gap: 10px; margin: 14px 0 24px; }
+    .decision-row { display: grid; grid-template-columns: 1fr 32px 170px; align-items: center; gap: 12px; background: var(--surface); border: 0.5px solid var(--sep-opaque); border-radius: var(--r2); padding: 14px 18px; box-shadow: var(--s1); }
+    .decision-q { font-size: 14px; color: var(--label); line-height: 1.5; }
+    .decision-arrow { font-size: 18px; color: var(--label-3); text-align: center; }
+    .decision-a { border-radius: var(--r2); padding: 10px 14px; text-align: center; }
+    .decision-label { font-size: 13px; font-weight: 600; text-decoration: none; display: block; }
+    .income-a { background: var(--sys-green-fill); }
+    .income-a .decision-label { color: #1A7A4A; }
+    .expense-a { background: var(--red-fill); }
+    .expense-a .decision-label { color: #C0392B; }
+    .transfer-a { background: var(--blue-fill); }
+    .transfer-a .decision-label { color: var(--blue); }
+    .nntransfer-a { background: var(--gold-fill); }
+    .nntransfer-a .decision-label { color: var(--gold); }
+    .brothers-a { background: rgba(123, 94, 167, 0.10); }
+    .brothers-a .decision-label { color: #5A208A; }
 
     /* ── MISC ── */
     .divider {
@@ -1381,9 +1333,9 @@
       <a href="#when">02 When to Submit</a><span class="toc-sep">·</span>
       <a href="#income">03 Income</a><span class="toc-sep">·</span>
       <a href="#expenses">04 Expenses</a><span class="toc-sep">·</span>
-      <a href="#transfers">05 Transfers</a><span class="toc-sep">·</span>
-    <a href="#nntransfer">05b NN-to-NN</a><span class="toc-sep">·</span>
-    <a href="#brotherstransfer">05c Sisters↔Brothers</a><span class="toc-sep">·</span>
+      <a href="#transfers">05a Transfer</a><span class="toc-sep">·</span>
+      <a href="#nntransfer">05b NN-to-NN</a><span class="toc-sep">·</span>
+      <a href="#brotherstransfer">05c Sisters↔Brothers</a><span class="toc-sep">·</span>
       <a href="#cash">06 Cash</a><span class="toc-sep">·</span>
       <a href="#dashboard">07 Dashboard</a><span class="toc-sep">·</span>
       <a href="#approval">08 Approval</a><span class="toc-sep">·</span>
@@ -1422,7 +1374,7 @@
         <div class="account-card">
           <span class="account-tag tag-nat">National</span>
           <h3>YM Bank Account</h3>
-          <p>Your NN's funds held in the National YM Bank. This money is not physically with you, but you can withdraw
+          <p>Your NN's funds held in the National YM Bank. This money is not physically with you but you can withdraw
             from it at any time! Think of it like your NN's checking account, where the "bank" is YM National Finance.
           </p>
         </div>
@@ -1446,22 +1398,38 @@
       <div class="section-header"><span class="section-num">02</span>
         <h2>When to Submit the JotForm</h2>
       </div>
-      <div class="callout callout-rule"><strong>Rule of Thumb:</strong> If money is moved in any way — you must submit
-        the JotForm. This includes cash kept locally.</div>
-      <div class="three-col" style="margin-top:16px;">
-        <div class="card bar-income">
-          <h3>1 — Income Received</h3>
-          <p>Any time your NN receives money: dues, bake sales, fundraising, donations, merch sales.</p>
+      <div class="callout callout-rule"><strong>Rule of Thumb:</strong> If money is moved in any way — you must submit the JotForm. This includes cash kept locally.</div>
+
+      <div class="sub-title">Which JotForm Type Do I Use?</div>
+      <div class="decision-chart">
+        <div class="decision-row">
+          <div class="decision-q">Is this <strong>new money</strong> coming into your NN for the first time?</div>
+          <div class="decision-arrow">→</div>
+          <div class="decision-a income-a"><a href="#income" class="decision-label">Income — Section 03</a></div>
         </div>
-        <div class="card bar-red">
-          <h3>2 — Expense Incurred</h3>
-          <p>Any time your NN spends money: supplies, food, decor, transportation, honorariums.</p>
+        <div class="decision-row">
+          <div class="decision-q">Is money being <strong>spent</strong> on something (supplies, food, venue, etc.)?</div>
+          <div class="decision-arrow">→</div>
+          <div class="decision-a expense-a"><a href="#expenses" class="decision-label">Expense — Section 04</a></div>
         </div>
-        <div class="card bar-gold">
-          <h3>3 — Internal Transfer</h3>
-          <p>Moving funds between your own 3 accounts. See Section 05 for full detail and important distinctions.</p>
+        <div class="decision-row">
+          <div class="decision-q">Is money <strong>already in your YM accounts</strong> moving between your own Cash Box, YM Bank, or NNC Personal Bank?</div>
+          <div class="decision-arrow">→</div>
+          <div class="decision-a transfer-a"><a href="#transfers" class="decision-label">Internal Transfer — Section 05a</a></div>
+        </div>
+        <div class="decision-row">
+          <div class="decision-q">Is money moving <strong>between your NN and another NN</strong> (collab event)?</div>
+          <div class="decision-arrow">→</div>
+          <div class="decision-a nntransfer-a"><a href="#nntransfer" class="decision-label">NN-to-NN Transfer — Section 05b</a></div>
+        </div>
+        <div class="decision-row">
+          <div class="decision-q">Is money moving between your <strong>Sisters NN and a Brothers chapter</strong> (joint event)?</div>
+          <div class="decision-arrow">→</div>
+          <div class="decision-a brothers-a"><a href="#brotherstransfer" class="decision-label">Sisters↔Brothers — Section 05c</a></div>
         </div>
       </div>
+
+      <div class="callout callout-danger"><strong>Important:</strong> Submitting a form does NOT automatically move or release funds. All updates appear on the dashboard only after Finance Department approval.</div>
     </section>
 
     <!-- 03 INCOME -->
@@ -1545,12 +1513,14 @@
             </div>
           </div>
           <div class="card bar-income">
-            <h3>Zelle / Venmo Payment</h3>
-            <p>NNC collects Zelle/Venmo payments → fills out JotForm logging income to <strong>YM Bank</strong> → sends funds to YM via Venmo/Zelle.</p>
+            <h3>Zelle / Digital Payment</h3>
+            <p>NNC collects Zelle payments → fills out JotForm logging income to <strong>YM Bank</strong> → sends funds
+              to YM via Venmo.</p>
             <div class="kv-inner">
               <div class="kv-row"><span class="kv-key">Logged to</span><span class="kv-val">YM Bank</span></div>
               <div class="kv-row"><span class="kv-key">Who submits</span><span class="kv-val">NNC</span></div>
-              <div class="kv-row"><span class="kv-key">Next step</span><span class="kv-val">Send via Venmo → @Young-Muslims or Send via Zelle to finance@ymsisters.com</span></div>
+              <div class="kv-row"><span class="kv-key">Next step</span><span class="kv-val">Send via Venmo →
+                  @Young-Muslims</span></div>
               <div class="kv-row"><span class="kv-key">Effect</span><span class="kv-val">YM Bank balance ↑</span></div>
             </div>
           </div>
@@ -1569,20 +1539,21 @@
         <div class="card bar-red">
           <span class="badge badge-exp" style="margin-bottom:10px;">Option A</span>
           <h3>Request Reimbursement from YM Bank</h3>
-          <p>Someone paid out of pocket. Request reimbursement using your NN/SR team's funds in the YM Bank. Receive reimbursement via Venmo, Zelle, or physical check.</p>
+          <p>Someone paid out of pocket. Request reimbursement from YM Bank. Finance reimburses via Venmo or Zelle.</p>
           <ul class="plain" style="margin-top:10px;">
             <li>Total Expense Amount</li>
             <li>Expense Category (see table below)</li>
             <li>Expense Details — date, event, subcategory</li>
             <li>Upload Receipt(s) — required</li>
             <li>Itemized Details — item names only</li>
-            <li>Reimbursement Method: Venmo, Zelle, or Physical Check</li>
+            <li>Reimbursement Method: Venmo or Zelle</li>
           </ul>
         </div>
         <div class="card bar-gold">
           <span class="badge badge-opt" style="margin-bottom:10px;">Option B</span>
           <h3>Log Already-Reimbursed Expense</h3>
-          <p>Person was <strong>already paid back</strong> using your NN/SR team's on-hand cashbox funds or NN team's funds held in the NNC's personal bank account. This submission is to only record it on the dashboard.</p>
+          <p>Person was <strong>already paid back</strong> using on-hand cash or personal funds. ONLY to record it on
+            the dashboard — no funds move.</p>
           <ul class="plain" style="margin-top:10px;">
             <li>Total Expense Amount</li>
             <li>Expense Category</li>
@@ -1600,17 +1571,26 @@
         &nbsp;|&nbsp; <em>4/20/26 Spring Retreat – Transportation</em></div>
 
       <div class="sub-title">Itemized Details — How to Fill In</div>
-      <div class="callout callout-info"><strong>What to include:</strong> List the item names purchased. Do not include individual prices. Do not list tax as a line item.<br><br><strong>Example:</strong> Balloons, Table cloth, String lights, Streamers, Paper plates</div>
+      <div class="two-col">
+        <div class="callout callout-info" style="margin:0;"><strong>What to include:</strong> List the item names
+          purchased. Do not include individual prices. Do not list tax as a line item.<br><br><strong>Example:</strong>
+          Balloons, Table cloth, String lights, Streamers, Paper plates</div>
+        <div class="callout callout-warn" style="margin:0;"><strong>Tax is covered by YM.</strong> Include the full
+          receipt total (including tax) in your Total Expense Amount. Just don't list tax separately in the itemized
+          section.</div>
+      </div>
 
       <div class="sub-title">Receipt Requirements</div>
+      <div class="callout callout-danger"><strong>No Receipt = No Approval.</strong> If there is no receipt attached to
+        your submission, it will not be approved — no exceptions.</div>
       <div class="receipt-grid">
-        <div class="receipt-card">
-          <h4>No Receipt = No Approval</h4>
-          <p>If there is no receipt attached to your submission, it will not be approved — no exceptions.</p>
-        </div>
         <div class="receipt-card">
           <h4>Amazon Purchases</h4>
           <p>No screenshots. Download the receipt as a PDF from your Amazon account and upload the PDF file.</p>
+        </div>
+        <div class="receipt-card">
+          <h4>Any Online Purchase</h4>
+          <p>Upload as a PDF — not a screenshot. Download the order confirmation from the site as a PDF.</p>
         </div>
         <div class="receipt-card">
           <h4>Zelle / Venmo to Vendor</h4>
@@ -1618,13 +1598,13 @@
         </div>
         <div class="receipt-card">
           <h4>Paper Receipts</h4>
-          <p>The entire receipt must be clearly and fully visible. Blurry, cut off, or incomplete paper receipts will not be approved.</p>
-        </div>
-        <div class="receipt-card">
-          <h4>No Personal Purchases on YM Receipts</h4>
-          <p>YM expenses must be purchased completely separately. Each YM purchase must be on its own receipt with no personal items included.</p>
+          <p>The entire receipt must be clearly and fully visible. Blurry, cut off, or incomplete paper receipts will
+            NOT be approved.</p>
         </div>
       </div>
+      <div class="callout callout-danger" style="margin-top:12px;"><strong>No Personal Purchases on YM
+          Receipts.</strong> YM expenses must be purchased completely separately. Each YM purchase must be on its own
+        receipt with no personal items included.</div>
 
       <div class="sub-title">Expense Categories</div>
       <table>
@@ -1675,54 +1655,30 @@
       </table>
 
       <div class="sub-title">Reimbursement Methods</div>
-      <div class="three-col">
+      <div class="two-col">
         <div class="card bar-income">
           <h3>Venmo</h3>
-          <p>Submit a Venmo request to <strong>@Young-Muslims</strong> for the exact amount after submitting your JotForm.</p>
+          <p>Submit a Venmo request to <strong>@Young-Muslims</strong> for the exact amount. Reimbursement will not
+            happen without the Venmo request — Finance can tap directly to approve!</p>
         </div>
         <div class="card bar-income">
           <h3>Zelle</h3>
-          <p>Submit a Zelle request to <strong>finance@ymsisters.com</strong> after submitting your JotForm.</p>
-        </div>
-        <div class="card bar-income">
-          <h3>Physical Check</h3>
-          <p>In your JotForm submission you'll be asked to provide your mailing address and we'll send a physical check in the mail.</p>
+          <p>Zelle reimbursements are also accepted. Coordinate Zelle details with Finance at
+            <strong>finance@ymsisters.com</strong> after submitting your JotForm.
+          </p>
         </div>
       </div>
+      <div class="callout callout-rule"><strong>Action Required After JotForm:</strong> Submitting the JotForm alone is
+        not enough to get reimbursed. You must also send a Venmo request or confirm Zelle details so Finance can quickly
+        approve and process your reimbursement.</div>
     </section>
 
-    <!-- 05 TRANSFERS -->
+    <!-- 05a INTERNAL TRANSFER -->
     <section class="section" id="transfers">
-      <div class="section-header"><span class="section-num">05</span>
-        <h2>Transferring Money</h2>
+      <div class="section-header"><span class="section-num">05a</span>
+        <h2>Internal Transfer (Within-Team)</h2>
       </div>
-
-      <div class="sub-title">Which JotForm Type Do I Use?</div>
-      <div class="decision-chart">
-        <div class="decision-row">
-          <div class="decision-q">Is this <strong>new money</strong> coming into your NN for the first time?</div>
-          <div class="decision-arrow">→</div>
-          <div class="decision-a income-a"><span class="decision-label">Income</span></div>
-        </div>
-        <div class="decision-row">
-          <div class="decision-q">Is money being <strong>spent</strong> on something (supplies, food, venue, etc.)?</div>
-          <div class="decision-arrow">→</div>
-          <div class="decision-a expense-a"><span class="decision-label">Expense</span></div>
-        </div>
-        <div class="decision-row">
-          <div class="decision-q">Is money <strong>already in your YM accounts</strong> moving between your own Cash Box, YM Bank, or NNC Personal Bank?</div>
-          <div class="decision-arrow">→</div>
-          <div class="decision-a transfer-a"><span class="decision-label">Internal Transfer</span></div>
-        </div>
-        <div class="decision-row">
-          <div class="decision-q">Is money moving <strong>between your NN and another NN</strong> (collab event)?</div>
-          <div class="decision-arrow">→</div>
-          <div class="decision-a nntransfer-a"><span class="decision-label">NN-to-NN Transfer</span></div>
-        </div>
-      </div>
-
-      <div class="sub-title">Internal Transfer — What It Actually Is</div>
-      <div class="callout callout-warn"><strong>Many NNs are selecting "Internal Transfer" incorrectly.</strong> Read this carefully before selecting this transaction type on the JotForm.</div>
+      <div class="callout callout-warn"><strong>Many NNs select "Internal Transfer" incorrectly.</strong> Read this carefully before selecting this transaction type on the JotForm.</div>
       <div class="two-col">
         <div class="card bar-income">
           <h3>Internal Transfer IS:</h3>
@@ -1737,24 +1693,25 @@
         </div>
         <div class="card bar-red">
           <h3>Internal Transfer is NOT:</h3>
-          <p>When a member sends <strong>brand new money</strong> to your NNC's personal bank account for the first time — that's <strong>Income</strong>, not an Internal Transfer. Here's a full example:</p>
+          <p>When a member sends <strong>brand new money</strong> to your NNC's personal bank for the first time — that's <strong>Income</strong>, not an Internal Transfer. Here's a full example:</p>
           <div class="callout callout-warn" style="margin-top:10px; font-size:13px;">
-            <strong>Step 1 — New money arrives:</strong> Your NNC's personal bank already holds $10 of YM money. A member Zelles your NNC $10 for event dues. That $10 is <em>brand new</em> money → submit an <strong>Income</strong> JotForm, logged to Personal Bank Account. Your Personal Bank now shows $20 of YM funds.<br><br>
+            <strong>Step 1 — New money arrives:</strong> Your NNC's personal bank already holds $10 of YM money. A member Zelles your NNC $10 for event dues. That $10 is brand new money → submit an <strong>Income</strong> JotForm, logged to Personal Bank Account. Your Personal Bank now shows $20 of YM funds.<br><br>
             <strong>Step 2 — Move it to the YM Bank:</strong> You want to send that $20 up to the YM Bank. The money is already in your YM system → submit an <strong>Internal Transfer</strong> JotForm: Personal Bank Account → YM Bank, Amount: $20.
           </div>
         </div>
       </div>
 
-      <div class="sub-title">Visualizing the Two Steps</div>
+      <div class="sub-title">Example: New Income Received → Then Moved to YM Bank (Income + Internal Transfer)</div>
+      <p class="body-text" style="font-size:13px; margin-bottom:8px;">This is the most common case that requires two forms: new money comes in to your NNC's personal bank (Income), and then you move it up to the YM Bank (Internal Transfer).</p>
       <div class="money-diagram">
         <div>
           <div class="md-section-title">1. What actually happened</div>
-          <div class="md-section-sub">E.g. bake sale money Zelled to your NNC (Alina)</div>
+          <div class="md-section-sub">E.g. bake sale money Zelled to your NNC's personal bank</div>
           <div class="md-flow-row">
             <div class="md-node md-node-neutral"><div class="md-node-title">Customers</div><div class="md-node-sub">Pay via Venmo/Zelle</div></div>
-            <div class="md-flow-arrow">$201.96 →</div>
-            <div class="md-node md-node-green"><div class="md-node-title">Personal Bank</div><div class="md-node-sub">Alina's account</div></div>
-            <div class="md-flow-arrow">$201.96 →</div>
+            <div class="md-flow-arrow">$50 →</div>
+            <div class="md-node md-node-green"><div class="md-node-title">Personal Bank</div><div class="md-node-sub">Your NNC's account</div></div>
+            <div class="md-flow-arrow">$50 →</div>
             <div class="md-node md-node-blue"><div class="md-node-title">YM Bank</div><div class="md-node-sub">Chapter account</div></div>
           </div>
         </div>
@@ -1764,44 +1721,24 @@
           <div class="md-accounts-row">
             <div class="md-account md-account-green">
               <div class="md-account-title">Personal Bank Account</div>
-              <div class="md-step-card">
-                <div class="md-step-amount income">Step 1: Income +$201.96</div>
-                <div class="md-step-desc">Income submission to personal bank</div>
-              </div>
-              <div class="md-step-card">
-                <div class="md-step-amount expense">Step 2: Expense −$201.96</div>
-                <div class="md-step-desc">From internal transfer form</div>
-              </div>
+              <div class="md-step-card"><div class="md-step-amount income">Step 1: Income +$50</div><div class="md-step-desc">Income submission to personal bank</div></div>
+              <div class="md-step-card"><div class="md-step-amount expense">Step 2: Expense −$50</div><div class="md-step-desc">From internal transfer form</div></div>
               <div class="md-net-balance"><div class="md-net-label">Net balance</div><div class="md-net-amount">$0 ✓</div></div>
             </div>
             <div class="md-transfer-arrow">→</div>
             <div class="md-account md-account-blue">
               <div class="md-account-title">YM Bank Account</div>
-              <div class="md-step-card">
-                <div class="md-step-amount income">Step 2: Income +$201.96</div>
-                <div class="md-step-desc">From internal transfer form</div>
-              </div>
-              <div class="md-net-balance"><div class="md-net-label">Net balance</div><div class="md-net-amount positive">+$201.96 ✓</div></div>
+              <div class="md-step-card"><div class="md-step-amount income">Step 2: Income +$50</div><div class="md-step-desc">From internal transfer form</div></div>
+              <div class="md-net-balance"><div class="md-net-label">Net balance</div><div class="md-net-amount positive">+$50 ✓</div></div>
             </div>
           </div>
         </div>
         <div class="md-warning">
           <div class="md-warning-title">Skip Step 1?</div>
-          <p>Personal bank shows: $0 − $201.96 = −$201.96</p>
+          <p>Personal bank shows: $0 − $50 = −$50</p>
           <p>Dashboard sees the transfer out, but never the Venmo coming in.</p>
           <p>Step 1 puts the money in the account first, so Step 2 can take it out.</p>
         </div>
-      </div>
-
-      <div class="sub-title">JotForm Fields for Internal Transfer</div>
-      <div class="card">
-        <ul class="plain">
-          <li>Transaction Type: <strong>Internal Transfer</strong></li>
-          <li>Total Transfer Amount</li>
-          <li><strong>From account:</strong> YM Bank / Cash Box / Personal Bank Account</li>
-          <li><strong>To account:</strong> YM Bank / Cash Box / Personal Bank Account</li>
-          <li>Transfer Description / Reason — e.g. <em>$15 from dues, $30 from merch sales</em></li>
-        </ul>
       </div>
     </section>
 
@@ -1810,14 +1747,12 @@
       <div class="section-header"><span class="section-num">05b</span>
         <h2>NN-to-NN Transfer (Collab Events)</h2>
       </div>
-      <p class="body-text">When two NNs collaborate on an event and split costs, <strong>up to 3 separate JotForms</strong> need to be submitted — one for the shura member who paid out of pocket, one for the NN sending their share, and one for the NN receiving it. Here's how it works:</p>
-
+      <p class="body-text">When two NNs collaborate on an event and split costs, <strong>up to 3 separate JotForms</strong> need to be submitted — one for the shura member who paid out of pocket, one for the NN sending their share, and one for the NN receiving it.</p>
       <div class="callout callout-info"><strong>Scenario:</strong> Murphy NN and Richardson NN host a joint event. Fatima (Murphy NNC) pays $50 for pizza out of her own pocket. Richardson NN owes Murphy NN $25 for their half.</div>
-
       <div class="collab-wrapper" style="margin-top:20px;">
         <h3>The 3 JotForm Submissions</h3>
-        <p class="collab-desc">Each submission reflects how the money affects <em>that team's</em> dashboard. All 3 are required.</p>
-        <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:14px;">
+        <p class="collab-desc">Each submission reflects how the money affects that team's dashboard. All 3 are required.</p>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:14px;">
           <div class="collab-nn expense-nn">
             <h4>① Murphy NN — Fatima's Reimbursement</h4>
             <ul>
@@ -1825,7 +1760,7 @@
               <li>Option A: Request Reimbursement</li>
               <li>Amount: $50</li>
               <li>From: YM Bank</li>
-              <li>Submit Venmo/Zelle request to Finance so Fatima gets paid back</li>
+              <li>Submit Venmo/Zelle request so Fatima gets paid back</li>
             </ul>
           </div>
           <div class="collab-nn expense-nn">
@@ -1835,7 +1770,7 @@
               <li>Amount: $25</li>
               <li>Category: NN-NN Transfer</li>
               <li>From: YM Bank</li>
-              <li>Records $25 leaving Richardson's budget</li>
+              <li>Records $25 leaving Richardson's dashboard</li>
             </ul>
           </div>
           <div class="collab-nn income-nn">
@@ -1845,7 +1780,7 @@
               <li>Amount: $25</li>
               <li>Category: NN-NN Transfer</li>
               <li>To: YM Bank</li>
-              <li>Records $25 arriving into Murphy's budget</li>
+              <li>Records $25 arriving into Murphy's dashboard</li>
             </ul>
           </div>
         </div>
@@ -1858,50 +1793,58 @@
       <div class="section-header"><span class="section-num">05c</span>
         <h2>Sisters ↔ Brothers Settlement (Joint Events)</h2>
       </div>
-      <p class="body-text">When a Sisters NN and a Brothers chapter co-host an event and split costs, each org submits their own JotForms — just like an NN-to-NN transfer, except it crosses organizations. The JotForm category to use is <strong>Joint Events – Brothers Settlements</strong>.</p>
-
-      <div class="callout callout-info"><strong>Scenario:</strong> Murphy Sisters NN and a Brothers chapter co-host an iftar. Total cost is $100, split 50/50. Fatima (Murphy NNC) pays the full $100 out of pocket upfront.</div>
+      <p class="body-text">When a Sisters NN and a Brothers chapter co-host an event and split costs, <strong>only the Sisters side submits JotForms</strong>. Brothers do not use this system. The number of forms you submit depends on who paid upfront. Use category <strong>Joint Events – Brothers Settlements</strong> for all submissions in this section.</p>
 
       <div class="collab-wrapper" style="margin-top:20px;">
-        <h3>The 3 JotForm Submissions</h3>
-        <p class="collab-desc">Same logic as NN-to-NN — the shura member gets reimbursed, then the receiving and sending sides each log their share.</p>
-        <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:14px;">
+        <h3>Case A — Sisters Paid Upfront (2 JotForms)</h3>
+        <p class="collab-desc">Your NNC covered the full cost. You need to get reimbursed, then log the money you receive back from Brothers.</p>
+        <div class="callout callout-info" style="margin-bottom:14px;"><strong>Scenario:</strong> Murphy Sisters NN and a Brothers chapter co-host an iftar. Total cost is $100, split 50/50. Your NNC pays the full $100 upfront.</div>
+        <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:14px;">
           <div class="collab-nn expense-nn">
-            <h4>① Murphy Sisters NN — Fatima's Reimbursement</h4>
+            <h4>① Murphy Sisters NN — NNC Reimbursement</h4>
             <ul>
               <li>Transaction Type: <strong>Expense</strong></li>
               <li>Option A: Request Reimbursement</li>
               <li>Amount: $100</li>
               <li>Category: Joint Events – Brothers Settlements</li>
               <li>From: YM Bank</li>
-              <li>Submit Venmo/Zelle request so Fatima gets paid back</li>
-            </ul>
-          </div>
-          <div class="collab-nn expense-nn">
-            <h4>② Brothers Chapter — Sending Their Half</h4>
-            <ul>
-              <li>Transaction Type: <strong>Expense</strong></li>
-              <li>Amount: $50</li>
-              <li>Category: Joint Events – Brothers Settlements</li>
-              <li>From: YM Bank</li>
-              <li>Records $50 leaving their budget</li>
+              <li>Submit Venmo/Zelle request so your NNC gets paid back</li>
             </ul>
           </div>
           <div class="collab-nn income-nn">
-            <h4>③ Murphy Sisters NN — Receiving Brothers' Half</h4>
+            <h4>② Murphy Sisters NN — Receiving Brothers' Half</h4>
             <ul>
               <li>Transaction Type: <strong>Income</strong></li>
               <li>Amount: $50</li>
               <li>Category: Joint Events – Brothers Settlements</li>
               <li>To: YM Bank</li>
-              <li>Records $50 arriving into Murphy's budget</li>
+              <li>Records $50 arriving into Murphy's dashboard</li>
             </ul>
           </div>
         </div>
-        <p style="font-size:12px; color:var(--label-2); margin-top:16px;"><em>End result: Fatima is reimbursed $100. Brothers' dashboard shows a $50 expense. Murphy Sisters' dashboard shows a $100 expense offset by $50 income — net cost to Murphy is $50. ✓</em></p>
+        <p style="font-size:12px; color:var(--label-2); margin-top:16px;"><em>End result: Your NNC is reimbursed $100. Murphy Sisters' dashboard shows a $100 expense offset by $50 income — net cost to Murphy is $50. ✓</em></p>
       </div>
 
-      <div class="callout callout-warn" style="margin-top:16px;"><strong>Coordinate with Brothers Finance.</strong> Make sure the Brothers chapter submits their JotForm on their side too. Both submissions need to be in for the settlement to be fully recorded on both dashboards.</div>
+      <div class="collab-wrapper" style="margin-top:20px;">
+        <h3>Case B — Brothers Paid Upfront (1 JotForm)</h3>
+        <p class="collab-desc">Brothers covered the full cost. Sisters need to send their share to Brothers and log it as an expense.</p>
+        <div class="callout callout-info" style="margin-bottom:14px;"><strong>Scenario:</strong> Same joint iftar, but this time Brothers paid the full $100. Murphy Sisters NN owes Brothers $50.</div>
+        <div style="display:grid; grid-template-columns:1fr; gap:14px; max-width:380px;">
+          <div class="collab-nn expense-nn">
+            <h4>① Murphy Sisters NN — Sending Their Half</h4>
+            <ul>
+              <li>Transaction Type: <strong>Expense</strong></li>
+              <li>Amount: $50</li>
+              <li>Category: Joint Events – Brothers Settlements</li>
+              <li>From: YM Bank</li>
+              <li>Records $50 leaving Murphy's dashboard</li>
+            </ul>
+          </div>
+        </div>
+        <p style="font-size:12px; color:var(--label-2); margin-top:16px;"><em>End result: Murphy Sisters' dashboard shows a $50 expense. ✓</em></p>
+      </div>
+
+      <div class="callout callout-warn" style="margin-top:16px;"><strong>Coordinate with Brothers Finance.</strong> If Sisters are sending payment to Brothers, confirm which account they should receive it to. If Brothers are sending payment to Sisters, make sure they send it to your YM Bank account.</div>
     </section>
 
     <!-- 06 CASH -->
