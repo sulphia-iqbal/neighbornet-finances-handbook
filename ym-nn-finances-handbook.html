@@ -68,40 +68,43 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      padding-left: 176px;
     }
 
     /* ── NAV ── */
     .toc {
-      background: rgba(242, 242, 247, 0.82);
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 176px;
+      height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background: rgba(242, 242, 247, 0.92);
       backdrop-filter: blur(24px) saturate(180%);
       -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border-bottom: 0.5px solid var(--sep-opaque);
-      padding: 0 20px;
-      position: sticky;
-      top: 0;
+      border-right: 0.5px solid var(--sep-opaque);
+      padding: 28px 0 28px;
       z-index: 100;
-      overflow-x: auto;
-      white-space: nowrap;
     }
 
     .toc-inner {
       display: flex;
+      flex-direction: column;
       gap: 2px;
-      max-width: 1200px;
-      margin: 0 auto;
-      align-items: center;
-      height: 48px;
+      padding: 0 10px;
     }
 
     .toc a {
       color: var(--label-2);
       text-decoration: none;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
-      padding: 6px 11px;
+      padding: 7px 10px;
       border-radius: var(--r1);
       transition: background 0.15s ease, color 0.15s ease;
       letter-spacing: -0.01em;
+      display: block;
     }
 
     .toc a:hover {
@@ -109,11 +112,30 @@
       background: var(--green-fill);
     }
 
-    .toc-sep {
-      color: var(--sep-opaque);
-      font-size: 14px;
-      padding: 0 2px;
-      user-select: none;
+    .toc-sep { display: none; }
+
+    @media (max-width: 760px) {
+      body { padding-left: 0 !important; }
+      .toc {
+        position: sticky;
+        width: auto;
+        height: auto;
+        border-right: none;
+        border-bottom: 0.5px solid var(--sep-opaque);
+        padding: 0 16px;
+        overflow-x: auto;
+        overflow-y: visible;
+      }
+      .toc-inner {
+        flex-direction: row;
+        align-items: center;
+        height: 46px;
+        gap: 2px;
+        white-space: nowrap;
+        padding: 0;
+      }
+      .toc a { font-size: 12px; padding: 6px 9px; display: inline; }
+      .toc-sep { display: inline; color: var(--sep-opaque); font-size: 14px; padding: 0 2px; user-select: none; }
     }
 
     /* ── HERO ── */
