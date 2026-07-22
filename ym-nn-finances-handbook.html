@@ -306,6 +306,12 @@
     .case-pair:hover .card:not(:hover) {
       opacity: 0.4;
     }
+    .account-pair .account-card {
+      transition: opacity 0.2s ease;
+    }
+    .account-pair:hover .account-card:not(:hover) {
+      opacity: 0.4;
+    }
 
     .three-col {
       display: grid;
@@ -1435,7 +1441,7 @@
       </div>
       <p class="body-text">Every NN has access to three account types. All three appear on your NN's Finance Dashboard.
       </p>
-      <div class="account-cards">
+      <div class="account-cards account-pair">
         <div class="account-card">
           <span class="account-tag tag-nat">National</span>
           <h3>YM Bank Account</h3>
@@ -2368,7 +2374,7 @@
               <div class="step-n">2</div>
               <div class="step-body">
                 <h4>Send reimbursement request to Finance Team</h4>
-                <p>Zelle request to finance@ymsisters.com. Finance Team will reimburse the event lead directly.</p>
+                <p>Send a Venmo request to <strong>@Young-Muslims</strong> or a Zelle request to <strong>finance@ymsisters.com</strong>. Finance Team will reimburse the event lead directly.</p>
                 <p style="margin-top:8px; color:var(--label-3);">YM Bank: $100 → $20 after reimbursement</p>
               </div>
             </div>
