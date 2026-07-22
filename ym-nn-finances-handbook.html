@@ -2170,11 +2170,11 @@
       </div>
       <div class="card" style="margin-bottom:10px;">
         <h3>Year Tabs (2026, 2025, 2024…)</h3>
-        <p>Where the raw transaction data lives. Every approved JotForm submission appears as a row here. This is the tab to reference when reviewing individual transactions, checking account balances, or reconciling your records.</p>
+        <p>Every approved JotForm submission appears as a row here. This is the tab to reference when reviewing submission logs and checking account balances.</p>
       </div>
       <div class="card" style="margin-bottom:10px;">
         <h3>Denied Requests Tab</h3>
-        <p>Shows all JotForm submissions Finance Team has denied. If a submission appears here, check your email for the denial reason and resubmit a corrected form.</p>
+        <p>Shows all JotForm submissions Finance Team has denied. If your submission is denied, you will receive an email from Finance Team explaining why — check that email, correct the issue, and resubmit.</p>
       </div>
 
       <div class="sub-title" style="margin-top:28px;">Year Tab — Column Reference</div>
@@ -2236,7 +2236,7 @@
           </tr>
           <tr>
             <td>Status</td>
-            <td>Approved ✓ or Denied — set by Finance Team after review</td>
+            <td>Approved ✓ or Pending — entries in this tab are either approved or awaiting review. Denied submissions appear in the Denied Requests tab instead.</td>
           </tr>
         </tbody>
       </table>
@@ -2249,13 +2249,21 @@
       </div>
       <div class="flow">
         <div class="flow-step"><span class="flow-step-n">Step 1</span>Fill out and submit JotForm with YM email</div>
-        <div class="flow-step"><span class="flow-step-n">Step 2</span>You'll receive an email confirmation that the Finance Team has received your submission</div>
+        <div class="flow-step"><span class="flow-step-n">Step 2</span>You'll receive an email confirmation that Finance Team has received your submission</div>
         <div class="flow-step"><span class="flow-step-n">Step 3</span>Finance Team reviews and approves / denies daily</div>
-        <div class="flow-step"><span class="flow-step-n">If Approved</span>Dashboard updates with checkmark for that
-          entry</div>
-        <div class="flow-step"><span class="flow-step-n">If Denied</span>You receive a follow-up email with the reason, and the entry appears in the <strong>Denied Requests</strong> tab of your dashboard</div>
       </div>
-      <div class="sub-title">Reasons for Denial</div>
+      <div style="text-align:center; font-size:20px; color:var(--label-3); margin: 4px 0 8px;">↓</div>
+      <div class="two-col">
+        <div class="card" style="border-left: 3px solid var(--green); text-align:center;">
+          <span style="font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--label-3); display:block; margin-bottom:6px;">If Approved</span>
+          <p style="font-size:13px; color:var(--label-2); line-height:1.5;">The entry's status in your dashboard switches from Pending to Approved ✓</p>
+        </div>
+        <div class="card" style="border-left: 3px solid var(--red); text-align:center;">
+          <span style="font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--label-3); display:block; margin-bottom:6px;">If Denied</span>
+          <p style="font-size:13px; color:var(--label-2); line-height:1.5;">You receive a follow-up email with the reason, and the entry appears in the <strong>Denied Requests</strong> tab of your dashboard</p>
+        </div>
+      </div>
+      <div class="sub-title">Common Reasons for Denial</div>
       <div class="denial-item">Invalid submission (incorrect form fields, wrong account type selected, personal email
         used)</div>
       <div class="denial-item">No receipt attached, or missing bank statement</div>
@@ -2269,53 +2277,46 @@
       <div class="section-header"><span class="section-num">10</span>
         <h2>NN Audits</h2>
       </div>
-      <p class="body-text">The National Finance Team conducts audits on a rolling basis every quarter. Every NNC/NN
-        Shura member is responsible for keeping their dashboard fully up to date at all times.</p>
-      <div class="two-col">
-        <div>
-          <div class="sub-title">How Audits Are Conducted</div>
-          <div class="steps">
-            <div class="step">
-              <div class="step-n">1</div>
-              <div class="step-body">
-                <h4>Dashboard Review</h4>
-                <p>The National Finance Team reviews your dashboard — current balance, income and expenses, spending trends, and general use of JotForm — and comes with a list of questions</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="step-n">2</div>
-              <div class="step-body">
-                <h4>Group Chat Created</h4>
-                <p>The National Finance Team creates a group chat with your NNC and your SRC / SR Finance Lead</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="step-n">3</div>
-              <div class="step-body">
-                <h4>Audit Call</h4>
-                <p>Finance Team schedules a call with NN leadership and SRC (optional) to go through their questions, clarify patterns, and address concerns. NN leadership also has the opportunity to ask questions and discuss strategies or ideas</p>
-              </div>
-            </div>
-            <div class="step">
-              <div class="step-n">4</div>
-              <div class="step-body">
-                <h4>Action Items Sent</h4>
-                <p>After the call, the National Finance Team sends over action items for both NN leadership and the Finance Team based on what was discussed</p>
-              </div>
-            </div>
+      <p class="body-text">The National Finance Team conducts audits on a rolling basis every quarter.</p>
+      <div class="sub-title">How Audits Are Conducted</div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-n">1</div>
+          <div class="step-body">
+            <h4>Dashboard Review</h4>
+            <p>The National Finance Team reviews your dashboard — current balance, income and expenses, spending trends, and general use of JotForm — and comes with a list of questions</p>
           </div>
         </div>
-        <div>
-          <div class="sub-title">Audit Red Flags</div>
-          <div class="flag-item">Overspending beyond available balance</div>
-          <div class="flag-item">Underspending with no clear purpose for accumulated funds</div>
-          <div class="flag-item">Missing JotForm entries for expenses incurred or income generated from events that took place during the year</div>
-          <div class="flag-item">Frequent denied reimbursement submissions</div>
-          <div class="flag-item">Potential inconsistencies between YM Bank, Cash Box, and Personal Bank logs and the actual account balances</div>
-          <div class="flag-item">Dashboard not kept up to date</div>
+        <div class="step">
+          <div class="step-n">2</div>
+          <div class="step-body">
+            <h4>Group Chat Created</h4>
+            <p>The National Finance Team creates a group chat with your NNC and your SRC / SR Finance Lead</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">3</div>
+          <div class="step-body">
+            <h4>Audit Call</h4>
+            <p>Finance Team schedules a call with NN leadership and SR Finance Lead (optional) to go through their questions, clarify patterns, and address concerns. NN leadership also has the opportunity to ask questions and discuss strategies or ideas</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-n">4</div>
+          <div class="step-body">
+            <h4>Action Items Sent</h4>
+            <p>After the call, the National Finance Team sends over action items for both NN leadership and the Finance Team based on what was discussed</p>
+          </div>
         </div>
       </div>
-      <div class="callout callout-info" style="margin-top:16px;"><strong>Stay Audit-Ready:</strong> Submit JotForms promptly after every event. Keep local cash minimal and documented. Review your dashboard regularly to make sure every transaction is logged and accurate.</div>
+      <div class="sub-title" style="margin-top:28px;">Audit Red Flags</div>
+      <div class="flag-item">Overspending beyond available balance</div>
+      <div class="flag-item">Underspending with no clear purpose for accumulated funds</div>
+      <div class="flag-item">Missing JotForm entries for expenses incurred or income generated from events that took place during the year</div>
+      <div class="flag-item">Frequent denied reimbursement submissions</div>
+      <div class="flag-item">Potential inconsistencies between YM Bank, Cash Box, and Personal Bank logs and the actual account balances</div>
+      <div class="flag-item">Dashboard not kept up to date</div>
+      <div class="callout callout-warn" style="margin-top:16px;"><strong>Finance Team Tip:</strong> Submit JotForms promptly after every event. Keep local cash minimal and documented. Review your dashboard regularly to make sure every transaction is logged and accurate.</div>
     </section>
 
     <!-- 11 CASE STUDY -->
