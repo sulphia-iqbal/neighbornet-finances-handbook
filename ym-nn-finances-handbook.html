@@ -2326,7 +2326,7 @@
       <div class="callout callout-info" style="margin-bottom:24px;"><strong>Scenario:</strong> Your NN hosts a bouquet-making craft night. An event lead buys all supplies out of pocket ahead of time. Attendees pay a $5 entrance fee at the door — 15 pay via Zelle ($75 to NNC's personal bank) and 5 pay in cash ($25). This walkthrough shows exactly which JotForms to submit and how each one affects the dashboard.</div>
 
       <div class="sub-title">The Numbers</div>
-      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin:12px 0 12px;">
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:12px 0 12px;">
         <div style="background:var(--surface); border:0.5px solid var(--sep-opaque); border-radius:var(--r2); padding:16px 14px; text-align:center; box-shadow:var(--s1);">
           <div style="font-size:11px; color:var(--label-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">YM Bank (Start)</div>
           <div style="font-size:24px; font-weight:700; color:var(--label-1); letter-spacing:-0.02em;">$100</div>
@@ -2334,6 +2334,10 @@
         <div style="background:var(--surface); border:0.5px solid var(--sep-opaque); border-radius:var(--r2); padding:16px 14px; text-align:center; box-shadow:var(--s1);">
           <div style="font-size:11px; color:var(--label-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">Cashbox (Start)</div>
           <div style="font-size:24px; font-weight:700; color:var(--label-1); letter-spacing:-0.02em;">$20</div>
+        </div>
+        <div style="background:var(--surface); border:0.5px solid var(--sep-opaque); border-radius:var(--r2); padding:16px 14px; text-align:center; box-shadow:var(--s1);">
+          <div style="font-size:11px; color:var(--label-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">Total (Start)</div>
+          <div style="font-size:24px; font-weight:700; color:var(--label-1); letter-spacing:-0.02em;">$120</div>
         </div>
       </div>
       <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:0 0 32px;">
@@ -2364,7 +2368,7 @@
               <div class="step-body">
                 <h4>Fill out JotForm as an Expense</h4>
                 <p>Amount: $80 (flowers + pizza)</p>
-                <p style="margin-top:8px;">Account: YM Bank Account</p>
+                <p style="margin-top:8px;">Account: YM Bank Account — select <strong>Request reimbursement for an expense (with YM Bank Account)</strong></p>
                 <p style="margin-top:8px;">Category: matching purchase category</p>
                 <p style="margin-top:8px;">Attach receipts — upload as PDF for any online purchases</p>
               </div>
@@ -2373,7 +2377,7 @@
               <div class="step-n">2</div>
               <div class="step-body">
                 <h4>Send reimbursement request to Finance Team</h4>
-                <p>Venmo request to @Young-Muslims or Zelle to finance@ymsisters.com. Finance Team will reimburse the event lead directly.</p>
+                <p>Zelle request to finance@ymsisters.com. Finance Team will reimburse the event lead directly.</p>
                 <p style="margin-top:8px; color:var(--label-3);">YM Bank: $100 → $20 after reimbursement</p>
               </div>
             </div>
@@ -2398,8 +2402,14 @@
                 <h4>Fill out JotForm as an Income (Zelle)</h4>
                 <p>Amount: $75</p>
                 <p style="margin-top:8px;">Account: YM Bank Account — select <strong>Deposit to our YM Bank Account</strong></p>
-                <p style="margin-top:8px;">Send $75 via Venmo to @Young-Muslims or Zelle to finance@ymsisters.com.</p>
                 <p style="margin-top:8px; color:var(--label-3);">YM Bank: $20 → $95</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n">3</div>
+              <div class="step-body">
+                <h4>Send $75 to Finance Team</h4>
+                <p>Venmo to @Young-Muslims or Zelle to finance@ymsisters.com.</p>
               </div>
             </div>
           </div>
@@ -2412,18 +2422,27 @@
           <div class="label">YM Bank</div>
           <div class="amount">$95</div>
           <div class="was">was $100</div>
+          <div style="margin-top:8px; display:flex; gap:6px; justify-content:center; flex-wrap:wrap;">
+            <span style="font-size:11px; font-weight:600; color:var(--red); background:var(--red-fill); border-radius:20px; padding:2px 8px;">−$80</span>
+            <span style="font-size:11px; font-weight:600; color:var(--green); background:var(--green-fill); border-radius:20px; padding:2px 8px;">+$75</span>
+          </div>
         </div>
         <div class="balance-box">
           <div class="label">Cashbox</div>
           <div class="amount">$45</div>
           <div class="was">was $20</div>
+          <div style="margin-top:8px; display:flex; gap:6px; justify-content:center;">
+            <span style="font-size:11px; font-weight:600; color:var(--green); background:var(--green-fill); border-radius:20px; padding:2px 8px;">+$25</span>
+          </div>
         </div>
         <div class="balance-box">
           <div class="label">Total</div>
           <div class="amount">$140</div>
           <div class="was">was $120</div>
+          <div style="margin-top:8px; display:flex; gap:6px; justify-content:center;">
+            <span style="font-size:11px; font-weight:600; color:var(--green); background:var(--green-fill); border-radius:20px; padding:2px 8px;">+$20</span>
+          </div>
         </div>
-        <div class="balance-note"><strong>Net Gain: +$20</strong><span>Revenue $100 − Expenses $80 = $20 profit for the NN. This is correct and expected.</span></div>
       </div>
     </section>
 
