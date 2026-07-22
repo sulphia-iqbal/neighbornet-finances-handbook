@@ -2257,7 +2257,7 @@
         <div style="display:flex; flex-direction:column; gap:8px; flex:0 0 260px;">
           <div class="card" style="border-left:3px solid var(--green); margin:0; padding:14px 16px;">
             <span style="font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--label-3); display:block; margin-bottom:6px;">If Approved</span>
-            <p style="font-size:13px; color:var(--label-2); line-height:1.5; margin:0;">The entry's status in your dashboard switches from Pending to Approved ✓</p>
+            <p style="font-size:13px; color:var(--label-2); line-height:1.5; margin:0;">The entry's status in your dashboard switches from Pending to Approved</p>
           </div>
           <div class="card" style="border-left:3px solid var(--red); margin:0; padding:14px 16px;">
             <span style="font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--label-3); display:block; margin-bottom:6px;">If Denied</span>
@@ -2311,13 +2311,11 @@
           </div>
         </div>
       </div>
-      <div class="sub-title" style="margin-top:28px;">Audit Red Flags</div>
-      <div class="flag-item">Overspending beyond available balance</div>
-      <div class="flag-item">Underspending with no clear purpose for accumulated funds</div>
+      <div class="sub-title" style="margin-top:28px;">Topics That May Come Up in Your Audit</div>
       <div class="flag-item">Missing JotForm entries for expenses incurred or income generated from events that took place during the year</div>
       <div class="flag-item">Frequent denied reimbursement submissions</div>
       <div class="flag-item">Potential inconsistencies between YM Bank, Cash Box, and Personal Bank logs and the actual account balances</div>
-      <div class="flag-item">Dashboard not kept up to date</div>
+      <div class="flag-item">Underspending with no clear purpose for accumulated funds</div>
     </section>
 
     <!-- 11 CASE STUDY -->
@@ -2326,9 +2324,12 @@
         <h2>Case Study: Bouquet Making Event</h2>
       </div>
       <p class="body-text">Your NN hosts a bouquet-making craft night. An event lead buys all the supplies out of pocket ahead of time, and attendees pay a small entrance fee at the door — some in cash, some via Zelle. This walkthrough shows exactly which JotForms to submit and how each one affects the dashboard.</p>
+
       <div class="cs-wrapper">
-        <div class="cs-label">Full Walkthrough — From Event to Dashboard</div>
-        <div class="cs-grid">
+
+        <!-- Part 1: The Scenario -->
+        <div class="cs-label">Part 1 — The Scenario</div>
+        <div class="cs-grid" style="grid-template-columns: repeat(2, 1fr);">
           <div class="cs-block">
             <h4>Event Details</h4>
             <ul>
@@ -2345,60 +2346,62 @@
             </ul>
           </div>
           <div class="cs-block">
-            <h4>Event Lead Purchased (Personal Card)</h4>
+            <h4>What Was Purchased (Personal Card)</h4>
             <ul>
               <li>Flowers<span class="cs-amount">$50</span></li>
               <li>Pizza<span class="cs-amount">$30</span></li>
-              <li><strong>Total Spent</strong><span class="cs-amount">$80</span></li>
+              <li><strong>Total</strong><span class="cs-amount">$80</span></li>
+            </ul>
+          </div>
+          <div class="cs-block">
+            <h4>How Attendees Paid</h4>
+            <ul>
+              <li>Via Zelle — 15 girls<span class="cs-amount">$75</span></li>
+              <li>Cash — 5 girls<span class="cs-amount">$25</span></li>
+              <li><strong>Total Income</strong><span class="cs-amount">$100</span></li>
             </ul>
           </div>
         </div>
-        <div class="cs-block" style="margin-bottom:18px;">
-          <h4>How 20 Girls Paid</h4>
-          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:10px;">
-            <div
-              style="background:var(--surface-2); border:0.5px solid var(--sep-opaque); border-radius:var(--r2); padding:14px; text-align:center;">
-              <div style="font-size:11px; color:var(--label-2); margin-bottom:4px;">Via Zelle (15 girls)</div>
-              <div style="font-size:24px; font-weight:700; color:var(--green); letter-spacing:-0.02em;">$75</div>
-              <div style="font-size:11px; color:var(--label-3);">NNC Personal Bank</div>
-            </div>
-            <div
-              style="background:var(--surface-2); border:0.5px solid var(--sep-opaque); border-radius:var(--r2); padding:14px; text-align:center;">
-              <div style="font-size:11px; color:var(--label-2); margin-bottom:4px;">Cash (5 girls)</div>
-              <div style="font-size:24px; font-weight:700; color:var(--green); letter-spacing:-0.02em;">$25</div>
-              <div style="font-size:11px; color:var(--label-3);">NNC holds physically</div>
-            </div>
-            <div
-              style="background:var(--green-fill); border:0.5px solid rgba(26,122,74,0.20); border-radius:var(--r2); padding:14px; text-align:center;">
-              <div style="font-size:11px; color:var(--label-2); margin-bottom:4px;">Total Income</div>
-              <div style="font-size:24px; font-weight:700; color:var(--green); letter-spacing:-0.02em;">$100</div>
-              <div style="font-size:11px; color:var(--label-3);">20 × $5</div>
-            </div>
-          </div>
+
+        <!-- Divider -->
+        <div style="margin: 28px 0 24px; display:flex; align-items:center; gap:14px;">
+          <div style="flex:1; height:0.5px; background:var(--sep-opaque);"></div>
+          <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); font-weight:700;">Part 2 — What to Submit</div>
+          <div style="flex:1; height:0.5px; background:var(--sep-opaque);"></div>
         </div>
+
+        <!-- Part 2: What to Submit -->
         <div class="answer-row">
           <div class="answer-block expense-ans">
-            <h4>Expense Submission — Event Planning Lead</h4>
+            <h4>Expense JotForm — Event Lead</h4>
             <ul>
-              <li>Fills out JotForm as Expense</li>
+              <li>Fill out JotForm as Expense</li>
               <li>Amount: $80 (flowers + pizza)</li>
-              <li>From: YM Bank Account</li>
-              <li>Expense Details: date, event name, expense subcategory</li>
-              <li>Keep all receipts — upload as PDF if purchased online</li>
-              <li>Submit Venmo request to @Young-Muslims for reimbursement</li>
+              <li>Account: YM Bank Account</li>
+              <li>Category: matching purchase category</li>
+              <li>Expense Details: date, event name, description</li>
+              <li>Attach receipts — upload as PDF if purchased online</li>
+              <li>Send Venmo request to @Young-Muslims for reimbursement</li>
               <li>YM Bank: $100 → $20 after reimbursement</li>
             </ul>
           </div>
           <div class="answer-block income-ans">
-            <h4>Income Submissions — NNC (2 Separate JotForms)</h4>
+            <h4>Income JotForms — NNC (2 Separate Forms)</h4>
             <ul>
-              <li><strong>Cash $25:</strong> Log to Cash Box → physically add cash to lockbox</li>
-              <li>Cashbox: $20 → $45</li>
-              <li><strong>Zelle $75:</strong> Log to YM Bank → send $75 via Venmo to @Young-Muslims</li>
-              <li>YM Bank: $20 → $95 (net of income received and expense paid)</li>
+              <li><strong>JotForm 1 — Cash $25:</strong> Select Log to Cash Box. Physically place $25 in the lockbox. Cashbox: $20 → $45</li>
+              <li><strong>JotForm 2 — Zelle $75:</strong> Select Log to YM Bank. Send $75 via Venmo to @Young-Muslims. YM Bank: $20 → $95</li>
             </ul>
           </div>
         </div>
+
+        <!-- Divider -->
+        <div style="margin: 28px 0 24px; display:flex; align-items:center; gap:14px;">
+          <div style="flex:1; height:0.5px; background:var(--sep-opaque);"></div>
+          <div style="font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); font-weight:700;">Final Dashboard Balances</div>
+          <div style="flex:1; height:0.5px; background:var(--sep-opaque);"></div>
+        </div>
+
+        <!-- Final Balances -->
         <div class="final-balance-row">
           <div class="balance-box">
             <div class="label">YM Bank</div>
@@ -2415,9 +2418,9 @@
             <div class="amount">$140</div>
             <div class="was">was $120</div>
           </div>
-          <div class="balance-note"><strong>Net Gain: +$20</strong><span>Revenue $100 − Expenses $80 = $20 profit for
-              the NN. This is correct and expected.</span></div>
+          <div class="balance-note"><strong>Net Gain: +$20</strong><span>Revenue $100 − Expenses $80 = $20 profit for the NN. This is correct and expected.</span></div>
         </div>
+
       </div>
     </section>
 
@@ -2462,7 +2465,8 @@
         <div>
           <div class="resource-grid">
             <div class="resource-card">
-              <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;"><span class="aud-tag aud-nn" style="margin-bottom:0;">NNs Only</span><h4 style="margin-bottom:0;">Your NN Dashboard</h4></div>
+              <span class="aud-tag aud-nn">NNs Only</span>
+              <h4>Your NN Dashboard</h4>
               <p>NNCs have comment access. SRC / Finance Leads have edit access.</p>
             </div>
             <div class="resource-card"><span class="aud-tag aud-nn">NNs Only</span>
