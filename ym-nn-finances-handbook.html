@@ -300,6 +300,12 @@
       gap: 16px;
       margin: 16px 0;
     }
+    .case-pair .card {
+      transition: opacity 0.2s ease;
+    }
+    .case-pair:hover .card:not(:hover) {
+      opacity: 0.4;
+    }
 
     .three-col {
       display: grid;
@@ -2043,7 +2049,7 @@
       </div>
       <p class="body-text">When YM Sisters and YM Brothers co-host an event and split costs, <strong>only the Sisters side submits our JotForm</strong>. YM Brothers do not use our system. The following are the steps to follow when settling finances for a joint event:</p>
 
-      <div class="two-col" style="margin-top: 20px;">
+      <div class="two-col case-pair" style="margin-top: 20px;">
         <div class="card">
           <h3>Case A — Sisters Paid Upfront</h3>
           <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Your NNC covered the full cost. You need to get reimbursed and log the payment you receive back from Brothers.</p>
