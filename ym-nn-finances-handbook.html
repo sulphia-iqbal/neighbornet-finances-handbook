@@ -419,6 +419,9 @@
     .account-card.purple-top {
       border-top-color: #7B5EA7;
     }
+    .account-card.teal-top {
+      border-top-color: #32ADE6;
+    }
 
     .account-tag {
       font-size: 11px;
@@ -444,6 +447,10 @@
     .tag-personal {
       background: rgba(123, 94, 167, 0.10);
       color: #5A3A8A;
+    }
+    .tag-sr {
+      background: rgba(50, 173, 230, 0.12);
+      color: #1A7FA8;
     }
 
     .account-card h3 {
@@ -1319,6 +1326,8 @@
     .nntransfer-a .decision-label { color: var(--gold); }
     .brothers-a { background: rgba(123, 94, 167, 0.10); }
     .brothers-a .decision-label { color: #5A208A; }
+    .sr-a { background: rgba(50, 173, 230, 0.12); }
+    .sr-a .decision-label { color: #1A7FA8; }
 
     /* ── MONEY DIAGRAM ── */
     .money-diagram { background: var(--surface); border: 0.5px solid var(--sep-opaque); border-radius: var(--r3); padding: 24px; margin: 16px 0; box-shadow: var(--s1); display: flex; flex-direction: column; gap: 24px; }
@@ -1408,6 +1417,7 @@
       <a href="#transfers">06a Internal</a><span class="toc-sep">·</span>
       <a href="#nntransfer">06b NN-to-NN</a><span class="toc-sep">·</span>
       <a href="#brotherstransfer">06c Sisters↔Brothers</a><span class="toc-sep">·</span>
+      <a href="#srtransfer">06d NN→SR</a><span class="toc-sep">·</span>
       <a href="#cash">07 Cash</a><span class="toc-sep">·</span>
       <a href="#dashboard">08 Dashboard</a><span class="toc-sep">·</span>
       <a href="#approval">09 Approval</a><span class="toc-sep">·</span>
@@ -1497,6 +1507,11 @@
           <div class="decision-q">Is money moving between <strong>YM Sisters and YM Brothers</strong> for a joint event?</div>
           <div class="decision-arrow">→</div>
           <div class="decision-a brothers-a"><a href="#brotherstransfer" class="decision-label">Sisters↔Brothers — Section 06c</a></div>
+        </div>
+        <div class="decision-row">
+          <div class="decision-q">Is your NN sending funds to your <strong>SR</strong> — to cover your share of an SR event overage, or to move surplus funds you won't realistically spend?</div>
+          <div class="decision-arrow">→</div>
+          <div class="decision-a sr-a"><a href="#srtransfer" class="decision-label">NN→SR Reallocation — Section 06d</a></div>
         </div>
         <div class="decision-row">
           <div class="decision-q">Do you need to <strong>request funds from your YM Bank</strong> in advance to have on hand for an upcoming event?</div>
@@ -1767,8 +1782,8 @@
         <p style="margin-top: 8px;">Only use cash when you can give the person the exact amount they are owed. This usually works best for simple, whole-dollar amounts.</p>
         <div style="margin-top: 16px; padding-top: 14px; border-top: 0.5px solid var(--sep-opaque); display: flex; flex-direction: column; gap: 4px;">
           <p style="font-size: 13px; font-weight: 600; color: var(--pink);">Why cash reimbursements can be tricky</p>
-          <p style="font-size: 13px; color: var(--label-2); line-height: 1.6;">Many purchases include cents. For example, imagine you have $150 in your cashbox and someone needs to be reimbursed $19.75. It may be difficult to give them the exact amount in cash, which can make it tempting to round the reimbursement up to a cleaner number.</p>
-          <p style="font-size: 13px; color: var(--label-2); line-height: 1.6; margin-top: 8px;">Even though the difference may seem small, that is not proper accounting. If someone is owed $19.75, they should receive exactly $19.75 — not $20.</p>
+          <p style="font-size: 13px; color: var(--label-2); line-height: 1.6;">Many purchases include cents. For example, imagine you have $150 in your cashbox and someone needs to be reimbursed $19.78. It may be difficult to give them the exact amount in cash, which can make it tempting to round the reimbursement up to a cleaner number.</p>
+          <p style="font-size: 13px; color: var(--label-2); line-height: 1.6; margin-top: 8px;">Even though the difference may seem small, that is not proper accounting. If someone is owed $19.78, they should receive exactly $19.78 — not $20.</p>
           <p style="font-size: 13px; color: var(--label-2); line-height: 1.6; margin-top: 8px;">This is also part of handling the community's money with proper Islamic financial etiquette.</p>
           <p style="font-size: 13px; color: var(--label-2); line-height: 1.6; margin-top: 8px;">For this reason, reimbursements should usually be made through the YM Bank account, where you can send the exact amount down to the cent. Cash should only be used when the reimbursement amount is simple, exact, and easy to document — which in practice is rare.</p>
         </div>
@@ -1781,9 +1796,9 @@
       <div class="section-header"><span class="section-num">05</span>
         <h2>Pre-Approved Lump Sum</h2>
       </div>
-      <p class="body-text">A Pre-Approved Lump Sum is a cash request submitted without receipts upfront — when your NN needs cash before an event to cover venue costs, event supplies, food, or speaker honorariums. Requires dual approval from Finance Team and your SR before funds are released.</p>
+      <p class="body-text">A Pre-Approved Lump Sum is when Nationals sends funds to your NN upfront — for when you need money before an event to cover costs like venue fees, event supplies, food, or speaker honorariums. This is different from making a purchase out of pocket and submitting for reimbursement afterward. Lump Sum requests require dual approval from Finance Team and your SR before any funds are sent.</p>
       <div class="card">
-          <h3>Process</h3>
+          <h3>How to Request a Lump Sum</h3>
           <div class="lt-item">
             <div class="lt-dot">1</div>
             <div class="lt-content">
@@ -1820,8 +1835,8 @@
       <div class="section-header"><span class="section-num">06</span>
         <h2>Transfers</h2>
       </div>
-      <p class="body-text">Any time money moves between accounts — whether within your own team, between two NNs, or between Sisters and Brothers — you need to log it. There are three types of transfer submissions, each covered in its own sub-section.</p>
-      <div class="account-cards">
+      <p class="body-text">Any time money moves between accounts — whether within your own team, between two NNs, between Sisters and Brothers, or from your NN to your SR — you need to log it. There are four types of transfer submissions, each covered in its own sub-section.</p>
+      <div class="account-cards" style="grid-template-columns: repeat(2, 1fr);">
         <div class="account-card">
           <span class="account-tag tag-nat">06a</span>
           <h3><a href="#transfers" style="color: inherit; text-decoration: none;">Internal Transfer</a></h3>
@@ -1836,6 +1851,11 @@
           <span class="account-tag tag-personal">06c</span>
           <h3><a href="#brotherstransfer" style="color: inherit; text-decoration: none;">Sisters ↔ Brothers Settlement</a></h3>
           <p>Money moving between a YM Sisters NN and a YM Brothers chapter for a joint event. Only the Sisters side submits JotForms.</p>
+        </div>
+        <div class="account-card teal-top">
+          <span class="account-tag tag-sr">06d</span>
+          <h3><a href="#srtransfer" style="color: inherit; text-decoration: none;">NN→SR Fund Reallocation</a></h3>
+          <p>Money moving from your NN to your SR — either to cover your share of an SR event that went over budget, or to move surplus funds that your chapter won't realistically spend.</p>
         </div>
       </div>
     </section>
@@ -2120,6 +2140,79 @@
           <div class="step-body" style="padding: 10px 0 4px;">
             <h4>That's it!</h4>
             <p>Finance Team will send the payment to Brothers. Your dashboard shows a $50 expense. ✓</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06d NN-TO-SR -->
+    <section class="section" id="srtransfer">
+      <div class="section-header"><span class="section-num">06d</span>
+        <h2>NN→SR Fund Reallocation</h2>
+      </div>
+      <p class="body-text">There are two situations where your NN sends funds to your SR. Both require a conversation first — no money moves without both sides agreeing.</p>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>Type A — Splitting an Event Cost Overage</h3>
+          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Your SR hosted an event with multiple NNs and it went over budget. The extra cost is split evenly between the NNs that were part of it.</p>
+          <div class="callout callout-info" style="margin-bottom:14px; font-size:13px;"><strong>Scenario:</strong> Your SR hosted an SR-wide event. It went $100 over budget and 4 NNs participated — each NN covers $25 of the overage.</div>
+          <div class="steps" style="margin-top:12px;">
+            <div class="step">
+              <div class="step-n">1</div>
+              <div class="step-body">
+                <h4>Submit an Expense JotForm</h4>
+                <p>For <em>"How should this expense be recorded?"</em> select <strong>Request transfer to SR for event cost-share (with YM Bank Account)</strong>.</p>
+                <p style="margin-top:12px;">Amount: your share of the overage (e.g. $25)</p>
+                <p style="margin-top:12px;">Category: <strong>SR Event Cost-Share</strong></p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n">2</div>
+              <div class="step-body">
+                <h4>Send your share to YM Bank</h4>
+                <p>Send a Venmo request to <strong>@Young-Muslims</strong> or a Zelle request to <strong>finance@ymsisters.com</strong> for your share.</p>
+              </div>
+            </div>
+          </div>
+          <div class="step-body" style="padding: 10px 0 4px;">
+            <h4>That's it!</h4>
+            <p>Your dashboard shows a $25 expense. The SR's overage is settled. ✓</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Type B — Sharing Surplus Funds</h3>
+          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">If your chapter has way more saved up than it'll realistically spend, you and the SR can agree to move some of it over so it can go toward programming instead of just sitting idle.</p>
+          <div class="callout callout-info" style="margin-bottom:14px; font-size:13px;">When your NN fundraises, that money is raised for the whole org — your chapter holds and manages it locally. Moving surplus to the SR isn't your chapter losing money. It's the organization putting its own money to work where it's actually needed. This only happens if both sides talk it through and agree.</div>
+          <div class="steps" style="margin-top:12px;">
+            <div class="step">
+              <div class="step-n">1</div>
+              <div class="step-body">
+                <h4>Talk with your SRC first</h4>
+                <p>Have a conversation with your SRC and agree on the amount together. No funds move without mutual agreement.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n">2</div>
+              <div class="step-body">
+                <h4>Submit an Expense JotForm</h4>
+                <p>For <em>"How should this expense be recorded?"</em> select <strong>Request transfer to SR for surplus reallocation (with YM Bank Account)</strong>.</p>
+                <p style="margin-top:12px;">Amount: the amount you and your SRC agreed on</p>
+                <p style="margin-top:12px;">Category: <strong>SR Fund Reallocation</strong></p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-n">3</div>
+              <div class="step-body">
+                <h4>Send funds to YM Bank</h4>
+                <p>Send a Venmo request to <strong>@Young-Muslims</strong> or a Zelle request to <strong>finance@ymsisters.com</strong> for the agreed amount.</p>
+              </div>
+            </div>
+          </div>
+          <div class="step-body" style="padding: 10px 0 4px;">
+            <h4>That's it!</h4>
+            <p>Your dashboard shows an expense for the reallocated amount. ✓</p>
           </div>
         </div>
       </div>
