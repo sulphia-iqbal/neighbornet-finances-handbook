@@ -114,10 +114,15 @@
       background: var(--green-fill);
     }
 
-    .toc-sep { display: none; }
+    .toc-sep {
+      display: none;
+    }
 
     @media (max-width: 760px) {
-      body { padding-left: 0 !important; }
+      body {
+        padding-left: 0 !important;
+      }
+
       .toc {
         position: sticky;
         width: auto;
@@ -128,6 +133,7 @@
         overflow-x: auto;
         overflow-y: visible;
       }
+
       .toc-inner {
         flex-direction: row;
         align-items: center;
@@ -136,8 +142,20 @@
         white-space: nowrap;
         padding: 0;
       }
-      .toc a { font-size: 12px; padding: 6px 9px; display: inline; }
-      .toc-sep { display: inline; color: var(--sep-opaque); font-size: 14px; padding: 0 2px; user-select: none; }
+
+      .toc a {
+        font-size: 12px;
+        padding: 6px 9px;
+        display: inline;
+      }
+
+      .toc-sep {
+        display: inline;
+        color: var(--sep-opaque);
+        font-size: 14px;
+        padding: 0 2px;
+        user-select: none;
+      }
     }
 
     /* ── HERO ── */
@@ -300,15 +318,19 @@
       gap: 16px;
       margin: 16px 0;
     }
+
     .case-pair .card {
       transition: opacity 0.2s ease;
     }
+
     .case-pair:hover .card:not(:hover) {
       opacity: 0.4;
     }
+
     .account-pair .account-card {
       transition: opacity 0.2s ease;
     }
+
     .account-pair:hover .account-card:not(:hover) {
       opacity: 0.4;
     }
@@ -419,6 +441,7 @@
     .account-card.purple-top {
       border-top-color: #7B5EA7;
     }
+
     .account-card.teal-top {
       border-top-color: #32ADE6;
     }
@@ -448,6 +471,7 @@
       background: rgba(123, 94, 167, 0.10);
       color: #5A3A8A;
     }
+
     .tag-sr {
       background: rgba(50, 173, 230, 0.12);
       color: #1A7FA8;
@@ -1267,8 +1291,17 @@
       color: #5A208A;
     }
 
-    .resource-card h4 a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--sep-opaque); }
-    .resource-card h4 a:hover { color: var(--green); border-bottom-color: var(--green); }
+    .resource-card h4 a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid var(--sep-opaque);
+    }
+
+    .resource-card h4 a:hover {
+      color: var(--green);
+      border-bottom-color: var(--green);
+    }
+
     .resource-card h4 {
       font-size: 14px;
       font-weight: 600;
@@ -1310,56 +1343,286 @@
     }
 
     /* ── DECISION CHART ── */
-    .decision-chart { display: flex; flex-direction: column; gap: 10px; margin: 14px 0 24px; }
-    .decision-row { display: grid; grid-template-columns: 1fr 32px 170px; align-items: center; gap: 12px; background: var(--surface); border: 0.5px solid var(--sep-opaque); border-radius: var(--r2); padding: 14px 18px; box-shadow: var(--s1); }
-    .decision-q { font-size: 14px; color: var(--label); line-height: 1.5; }
-    .decision-arrow { font-size: 18px; color: var(--label-3); text-align: center; }
-    .decision-a { border-radius: var(--r2); padding: 10px 14px; text-align: center; }
-    .decision-label { font-size: 13px; font-weight: 600; text-decoration: none; display: block; }
-    .income-a { background: var(--sys-green-fill); }
-    .income-a .decision-label { color: #1A7A4A; }
-    .expense-a { background: var(--red-fill); }
-    .expense-a .decision-label { color: #C0392B; }
-    .transfer-a { background: var(--blue-fill); }
-    .transfer-a .decision-label { color: var(--blue); }
-    .nntransfer-a { background: var(--gold-fill); }
-    .nntransfer-a .decision-label { color: var(--gold); }
-    .brothers-a { background: rgba(123, 94, 167, 0.10); }
-    .brothers-a .decision-label { color: #5A208A; }
-    .sr-a { background: rgba(50, 173, 230, 0.12); }
-    .sr-a .decision-label { color: #1A7FA8; }
+    .decision-chart {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 14px 0 24px;
+    }
+
+    .decision-row {
+      display: grid;
+      grid-template-columns: 1fr 32px 170px;
+      align-items: center;
+      gap: 12px;
+      background: var(--surface);
+      border: 0.5px solid var(--sep-opaque);
+      border-radius: var(--r2);
+      padding: 14px 18px;
+      box-shadow: var(--s1);
+    }
+
+    .decision-q {
+      font-size: 14px;
+      color: var(--label);
+      line-height: 1.5;
+    }
+
+    .decision-arrow {
+      font-size: 18px;
+      color: var(--label-3);
+      text-align: center;
+    }
+
+    .decision-a {
+      border-radius: var(--r2);
+      padding: 10px 14px;
+      text-align: center;
+    }
+
+    .decision-label {
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      display: block;
+    }
+
+    .income-a {
+      background: var(--sys-green-fill);
+    }
+
+    .income-a .decision-label {
+      color: #1A7A4A;
+    }
+
+    .expense-a {
+      background: var(--red-fill);
+    }
+
+    .expense-a .decision-label {
+      color: #C0392B;
+    }
+
+    .transfer-a {
+      background: var(--blue-fill);
+    }
+
+    .transfer-a .decision-label {
+      color: var(--blue);
+    }
+
+    .nntransfer-a {
+      background: var(--gold-fill);
+    }
+
+    .nntransfer-a .decision-label {
+      color: var(--gold);
+    }
+
+    .brothers-a {
+      background: rgba(123, 94, 167, 0.10);
+    }
+
+    .brothers-a .decision-label {
+      color: #5A208A;
+    }
+
+    .sr-a {
+      background: rgba(50, 173, 230, 0.12);
+    }
+
+    .sr-a .decision-label {
+      color: #1A7FA8;
+    }
 
     /* ── MONEY DIAGRAM ── */
-    .money-diagram { background: var(--surface); border: 0.5px solid var(--sep-opaque); border-radius: var(--r3); padding: 24px; margin: 16px 0; box-shadow: var(--s1); display: flex; flex-direction: column; gap: 24px; }
-    .md-section-title { font-size: 13px; font-weight: 700; color: var(--label); letter-spacing: 0.01em; margin-bottom: 4px; }
-    .md-section-sub { font-size: 12px; color: var(--label-3); margin-bottom: 12px; }
-    .md-flow-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .md-node { border-radius: var(--r2); padding: 12px 16px; min-width: 110px; text-align: center; }
-    .md-node-neutral { background: var(--fill-1); border: 0.5px solid var(--sep-opaque); }
-    .md-node-green { background: rgba(52,199,89,0.08); border: 0.5px solid rgba(52,199,89,0.25); }
-    .md-node-blue { background: var(--blue-fill); border: 0.5px solid rgba(0,122,255,0.2); }
-    .md-node-title { font-size: 13px; font-weight: 600; color: var(--label); }
-    .md-node-sub { font-size: 11px; color: var(--label-3); margin-top: 2px; }
-    .md-flow-arrow { font-size: 15px; color: var(--label-3); white-space: nowrap; }
-    .md-accounts-row { display: grid; grid-template-columns: 1fr 32px 1fr; gap: 16px; align-items: center; }
-    .md-account { border-radius: var(--r2); padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
-    .md-account-green { background: rgba(52,199,89,0.08); border: 0.5px solid rgba(52,199,89,0.25); }
-    .md-account-blue { background: var(--blue-fill); border: 0.5px solid rgba(0,122,255,0.2); }
-    .md-account-title { font-size: 12px; font-weight: 700; color: var(--label); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
-    .md-transfer-arrow { font-size: 22px; color: var(--label-3); text-align: center; }
-    .md-step-card { background: var(--surface); border: 0.5px solid var(--sep-opaque); border-radius: var(--r1); padding: 8px 10px; }
-    .md-step-amount { font-size: 12px; font-weight: 700; margin-bottom: 2px; }
-    .md-step-amount.income { color: var(--green); }
-    .md-step-amount.expense { color: var(--red); }
-    .md-step-desc { font-size: 11px; color: var(--label-3); }
-    .md-net-balance { display: flex; justify-content: space-between; align-items: center; border-top: 0.5px solid var(--sep-opaque); padding-top: 8px; margin-top: 4px; }
-    .md-net-label { font-size: 11px; color: var(--label-3); }
-    .md-net-amount { font-size: 13px; font-weight: 700; color: var(--label-2); }
-    .md-net-amount.positive { color: var(--green); }
-    .md-warning { background: var(--red-fill); border: 0.5px solid rgba(255,59,48,0.2); border-radius: var(--r2); padding: 14px 18px; }
-    .md-warning-title { font-size: 13px; font-weight: 700; color: var(--red); margin-bottom: 6px; }
-    .md-warning p { font-size: 13px; color: var(--label-2); line-height: 1.5; margin-bottom: 4px; }
-    .md-warning p:last-child { margin-bottom: 0; }
+    .money-diagram {
+      background: var(--surface);
+      border: 0.5px solid var(--sep-opaque);
+      border-radius: var(--r3);
+      padding: 24px;
+      margin: 16px 0;
+      box-shadow: var(--s1);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .md-section-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--label);
+      letter-spacing: 0.01em;
+      margin-bottom: 4px;
+    }
+
+    .md-section-sub {
+      font-size: 12px;
+      color: var(--label-3);
+      margin-bottom: 12px;
+    }
+
+    .md-flow-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .md-node {
+      border-radius: var(--r2);
+      padding: 12px 16px;
+      min-width: 110px;
+      text-align: center;
+    }
+
+    .md-node-neutral {
+      background: var(--fill-1);
+      border: 0.5px solid var(--sep-opaque);
+    }
+
+    .md-node-green {
+      background: rgba(52, 199, 89, 0.08);
+      border: 0.5px solid rgba(52, 199, 89, 0.25);
+    }
+
+    .md-node-blue {
+      background: var(--blue-fill);
+      border: 0.5px solid rgba(0, 122, 255, 0.2);
+    }
+
+    .md-node-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--label);
+    }
+
+    .md-node-sub {
+      font-size: 11px;
+      color: var(--label-3);
+      margin-top: 2px;
+    }
+
+    .md-flow-arrow {
+      font-size: 15px;
+      color: var(--label-3);
+      white-space: nowrap;
+    }
+
+    .md-accounts-row {
+      display: grid;
+      grid-template-columns: 1fr 32px 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .md-account {
+      border-radius: var(--r2);
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .md-account-green {
+      background: rgba(52, 199, 89, 0.08);
+      border: 0.5px solid rgba(52, 199, 89, 0.25);
+    }
+
+    .md-account-blue {
+      background: var(--blue-fill);
+      border: 0.5px solid rgba(0, 122, 255, 0.2);
+    }
+
+    .md-account-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--label);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .md-transfer-arrow {
+      font-size: 22px;
+      color: var(--label-3);
+      text-align: center;
+    }
+
+    .md-step-card {
+      background: var(--surface);
+      border: 0.5px solid var(--sep-opaque);
+      border-radius: var(--r1);
+      padding: 8px 10px;
+    }
+
+    .md-step-amount {
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .md-step-amount.income {
+      color: var(--green);
+    }
+
+    .md-step-amount.expense {
+      color: var(--red);
+    }
+
+    .md-step-desc {
+      font-size: 11px;
+      color: var(--label-3);
+    }
+
+    .md-net-balance {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 0.5px solid var(--sep-opaque);
+      padding-top: 8px;
+      margin-top: 4px;
+    }
+
+    .md-net-label {
+      font-size: 11px;
+      color: var(--label-3);
+    }
+
+    .md-net-amount {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--label-2);
+    }
+
+    .md-net-amount.positive {
+      color: var(--green);
+    }
+
+    .md-warning {
+      background: var(--red-fill);
+      border: 0.5px solid rgba(255, 59, 48, 0.2);
+      border-radius: var(--r2);
+      padding: 14px 18px;
+    }
+
+    .md-warning-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--red);
+      margin-bottom: 6px;
+    }
+
+    .md-warning p {
+      font-size: 13px;
+      color: var(--label-2);
+      line-height: 1.5;
+      margin-bottom: 4px;
+    }
+
+    .md-warning p:last-child {
+      margin-bottom: 0;
+    }
 
     /* ── MISC ── */
     .divider {
@@ -1479,7 +1742,8 @@
       <div class="section-header"><span class="section-num">02</span>
         <h2>When to Submit the JotForm</h2>
       </div>
-      <p class="body-text">If money is being used, earned, or moved in any way, you must submit the JotForm. This includes any cash kept locally.</p>
+      <p class="body-text">If money is being used, earned, or moved in any way, you must submit the JotForm. This
+        includes any cash kept locally.</p>
 
       <div class="sub-title">What Type of JotForm Submission Do I Make?</div>
       <div class="decision-chart">
@@ -1489,49 +1753,69 @@
           <div class="decision-a income-a"><a href="#income" class="decision-label">Income — Section 03</a></div>
         </div>
         <div class="decision-row">
-          <div class="decision-q">Is money being <strong>spent</strong> on something (supplies, food, venue, etc.)?</div>
+          <div class="decision-q">Is money being <strong>spent</strong> on something (supplies, food, venue, etc.)?
+          </div>
           <div class="decision-arrow">→</div>
           <div class="decision-a expense-a"><a href="#expenses" class="decision-label">Expense — Section 04</a></div>
         </div>
         <div class="decision-row">
-          <div class="decision-q">Is someone being reimbursed for <strong>gas or tolls</strong> for a YM trip?</div>
+          <div class="decision-q">Does someone need to be reimbursed for <strong>gas or tolls</strong>?</div>
           <div class="decision-arrow">→</div>
-          <div class="decision-a expense-a"><a href="#transportation" class="decision-label">Transportation Reimbursement — Section 04</a></div>
+          <div class="decision-a expense-a"><a href="#transportation" class="decision-label">Transportation
+              Reimbursement — Section 04</a></div>
         </div>
         <div class="decision-row">
-          <div class="decision-q">Is money <strong>already in one of your YM accounts</strong> (Cash Box, YM Bank, or NNC Personal Bank) and you need to move it to another one of your accounts?</div>
+          <div class="decision-q">Is money <strong>already in one of your YM accounts</strong> (Cash Box, YM Bank, or
+            NNC Personal Bank) and you need to move it to another one of your accounts?</div>
           <div class="decision-arrow">→</div>
-          <div class="decision-a transfer-a"><a href="#transfers" class="decision-label">Internal Transfer — Section 06a</a></div>
+          <div class="decision-a transfer-a"><a href="#transfers" class="decision-label">Internal Transfer — Section
+              06a</a></div>
         </div>
         <div class="decision-row">
-          <div class="decision-q">Is money moving <strong>between your NN and another NN</strong> for a collab event?</div>
+          <div class="decision-q">Is money moving <strong>between your NN and another NN</strong> for a collab event?
+          </div>
           <div class="decision-arrow">→</div>
-          <div class="decision-a nntransfer-a"><a href="#nntransfer" class="decision-label">NN-to-NN Transfer — Section 06b</a></div>
+          <div class="decision-a nntransfer-a"><a href="#nntransfer" class="decision-label">NN-to-NN Transfer — Section
+              06b</a></div>
         </div>
         <div class="decision-row">
-          <div class="decision-q">Is money moving between <strong>YM Sisters and YM Brothers</strong> for a joint event?</div>
+          <div class="decision-q">Is money moving between <strong>YM Sisters and YM Brothers</strong> for a joint event?
+          </div>
           <div class="decision-arrow">→</div>
-          <div class="decision-a brothers-a"><a href="#brotherstransfer" class="decision-label">Sisters↔Brothers — Section 06c</a></div>
+          <div class="decision-a brothers-a"><a href="#brotherstransfer" class="decision-label">Sisters↔Brothers —
+              Section 06c</a></div>
         </div>
         <div class="decision-row">
-          <div class="decision-q">Is your NN sending funds to your <strong>SR</strong> — to cover your share of an SR event overage, or to move surplus funds you won't realistically spend?</div>
+          <div class="decision-q">Is your NN sending funds to your <strong>SR</strong> — to cover your share of an SR
+            event overage, or to move surplus funds you won't realistically spend?</div>
           <div class="decision-arrow">→</div>
-          <div class="decision-a sr-a"><a href="#srtransfer" class="decision-label">NN→SR Reallocation — Section 06d</a></div>
+          <div class="decision-a sr-a"><a href="#srtransfer" class="decision-label">NN→SR Reallocation — Section 06d</a>
+          </div>
         </div>
         <div class="decision-row">
-          <div class="decision-q">Do you need to <strong>request funds from your YM Bank</strong> in advance to have on hand for an upcoming event?</div>
+          <div class="decision-q">Do you need to <strong>request funds from your YM Bank</strong> in advance to have on
+            hand for an upcoming event?</div>
           <div class="decision-arrow">→</div>
-          <div class="decision-a nntransfer-a"><a href="#lumpsum" class="decision-label">Pre-Approved Lump Sum — Section 05</a></div>
+          <div class="decision-a nntransfer-a"><a href="#lumpsum" class="decision-label">Pre-Approved Lump Sum — Section
+              05</a></div>
         </div>
       </div>
 
       <div class="card" style="border-left: 3px solid var(--pink); margin-top: 28px;">
-        <p style="font-size: 13px; font-weight: 600; color: var(--pink); letter-spacing: 0.02em; text-transform: none; margin: 0 0 8px;">A Note from Finance 💌</p>
+        <p
+          style="font-size: 13px; font-weight: 600; color: var(--pink); letter-spacing: 0.02em; text-transform: none; margin: 0 0 8px;">
+          A Note from Finance 💌</p>
         <h3>Always Log Income and Expenses Separately</h3>
-        <p style="margin-top: 8px;">For every event, submit income and expenses as separate JotForms. Log the full income total (dues, sales, donations) and the full expense total (supplies, decor, food, etc.) on their own — do not subtract one from the other first and submit only the net.</p>
-        <div style="margin-top: 16px; padding-top: 14px; border-top: 0.5px solid var(--sep-opaque); display: flex; flex-direction: column; gap: 4px;">
+        <p style="margin-top: 8px;">For every event, submit income and expenses as separate JotForms. Log the full
+          income total (dues, sales, donations) and the full expense total (supplies, decor, food, etc.) on their own —
+          do not subtract one from the other first and submit only the net.</p>
+        <div
+          style="margin-top: 16px; padding-top: 14px; border-top: 0.5px solid var(--sep-opaque); display: flex; flex-direction: column; gap: 4px;">
           <p style="font-size: 13px; font-weight: 600; color: var(--pink);">Why this matters</p>
-          <p style="font-size: 13px; color: var(--label-2); line-height: 1.6;">Separate logging gives Finance Team and your team a complete picture — how much revenue your events are generating, what you're spending on, and which income sources are working. If you only log the net, that detail disappears and it becomes impossible to see what's worth doing again or what needs to change.</p>
+          <p style="font-size: 13px; color: var(--label-2); line-height: 1.6;">Separate logging gives Finance Team and
+            your team a complete picture — how much revenue your events are generating, what you're spending on, and
+            which income sources are working. If you only log the net, that detail disappears and it becomes impossible
+            to see what's worth doing again or what needs to change.</p>
         </div>
       </div>
 
@@ -1542,7 +1826,8 @@
       <div class="section-header"><span class="section-num">03</span>
         <h2>Logging Income</h2>
       </div>
-      <p class="body-text">Any time your NN receives money — dues, donations, fundraising, merch — submit a JotForm to log it.</p>
+      <p class="body-text">Any time your NN receives money — dues, donations, fundraising, merch — submit a JotForm to
+        log it.</p>
 
       <div class="sub-title">What to Do When Income Arrives</div>
       <div class="two-col" style="margin-bottom: 28px;">
@@ -1551,19 +1836,27 @@
           <div class="steps" style="margin-top:12px;">
             <div class="step">
               <div class="step-n">1</div>
-              <div class="step-body"><h4>Collect the cash</h4><p>Count and confirm the total amount received.</p></div>
+              <div class="step-body">
+                <h4>Collect the cash</h4>
+                <p>Count and confirm the total amount received.</p>
+              </div>
             </div>
             <div class="step">
               <div class="step-n">2</div>
               <div class="step-body">
                 <h4>Submit a JotForm</h4>
-                <p>For <em>"Where is this income being recorded/held?"</em> select <strong>Log to Team Cash Box (cash on hand)</strong>.</p>
-                <p style="margin-top:8px;">For <em>"Income Details"</em> write a brief description in this format:<br><strong>1/9/26 NJ Gala – Cash Registrations</strong></p>
+                <p>For <em>"Where is this income being recorded/held?"</em> select <strong>Log to Team Cash Box (cash on
+                    hand)</strong>.</p>
+                <p style="margin-top:8px;">For <em>"Income Details"</em> write a brief description in this
+                  format:<br><strong>1/9/26 NJ Gala – Cash Registrations</strong></p>
               </div>
             </div>
             <div class="step">
               <div class="step-n">3</div>
-              <div class="step-body"><h4>Place cash in the cashbox</h4><p>Cash must go into the secure cashbox immediately. Do not hold cash outside of it.</p></div>
+              <div class="step-body">
+                <h4>Place cash in the cashbox</h4>
+                <p>Cash must go into the secure cashbox immediately. Do not hold cash outside of it.</p>
+              </div>
             </div>
           </div>
           <div class="step-body" style="padding: 10px 0 4px;">
@@ -1576,24 +1869,34 @@
           <div class="steps" style="margin-top:12px;">
             <div class="step">
               <div class="step-n">1</div>
-              <div class="step-body"><h4>Confirm the payment</h4><p>Verify the amount received in your NNC's account or cash app.</p></div>
+              <div class="step-body">
+                <h4>Confirm the payment</h4>
+                <p>Verify the amount received in your NNC's account or cash app.</p>
+              </div>
             </div>
             <div class="step">
               <div class="step-n">2</div>
               <div class="step-body">
                 <h4>Submit a JotForm</h4>
-                <p>For <em>"Where is this income being recorded/held?"</em> select <strong>Deposit to our YM Bank Account</strong> if sending to nationals right away, or <strong>Log to Personal Bank Account</strong> if holding temporarily (see <a href="#transfers">Section 06a</a>).</p>
-                <p style="margin-top:8px;">For <em>"Income Details"</em> write a brief description in this format:<br><strong>1/9/26 NJ Gala – Zelle Registrations</strong></p>
+                <p>For <em>"Where is this income being recorded/held?"</em> select <strong>Deposit to our YM Bank
+                    Account</strong> if sending to nationals right away, or <strong>Log to Personal Bank
+                    Account</strong> if holding temporarily (see <a href="#transfers">Section 06a</a>).</p>
+                <p style="margin-top:8px;">For <em>"Income Details"</em> write a brief description in this
+                  format:<br><strong>1/9/26 NJ Gala – Zelle Registrations</strong></p>
               </div>
             </div>
             <div class="step">
               <div class="step-n">3</div>
-              <div class="step-body"><h4>If you selected "Deposit to our YM Bank Account", send funds to your YM Bank</h4><p>Venmo → <strong>@Young-Muslims</strong>, or Zelle → <strong>finance@ymsisters.com</strong></p></div>
+              <div class="step-body">
+                <h4>If you selected "Deposit to our YM Bank Account", send funds to your YM Bank</h4>
+                <p>Venmo → <strong>@Young-Muslims</strong>, or Zelle → <strong>finance@ymsisters.com</strong></p>
+              </div>
             </div>
           </div>
           <div class="step-body" style="padding: 10px 0 4px;">
             <h4>That's it!</h4>
-            <p>You can now withdraw from your YM Bank or spend from your NNC's Personal Bank Account for NN expenses.</p>
+            <p>You can now withdraw from your YM Bank or spend from your NNC's Personal Bank Account for NN expenses.
+            </p>
           </div>
         </div>
       </div>
@@ -1644,7 +1947,8 @@
       <div class="section-header"><span class="section-num">04</span>
         <h2>Logging Expenses</h2>
       </div>
-      <p class="body-text">When your NN spends money, log the expense via JotForm. Which option you use depends on whether the person still needs to be paid back.</p>
+      <p class="body-text">When your NN spends money, log the expense via JotForm. Which option you use depends on
+        whether the person still needs to be paid back.</p>
       <div class="sub-title">What to Do When an Expense is Made</div>
       <div class="two-col" style="margin-bottom:28px;">
         <div class="card bar-red">
@@ -1652,26 +1956,39 @@
           <div class="steps" style="margin-top:12px;">
             <div class="step">
               <div class="step-n">1</div>
-              <div class="step-body"><h4>Purchase is made</h4><p>A shura member covers the cost out of their own pocket.</p></div>
+              <div class="step-body">
+                <h4>Purchase is made</h4>
+                <p>A shura member covers the cost out of their own pocket.</p>
+              </div>
             </div>
             <div class="step">
               <div class="step-n">2</div>
               <div class="step-body">
                 <h4>Submit a JotForm</h4>
-                <p>Fill in: Total Expense Amount, Expense Category, upload your receipt(s), and select your Reimbursement Method (Venmo, Zelle, or Check).</p>
-                <p style="margin-top:8px;">For <em>"Expense Details"</em> write a brief description:<br><strong>1/9/26 NJ Gala – Decorations</strong></p>
-                <p style="margin-top:8px;">For <em>"Itemized Details"</em> list item names only — no prices, no tax:<br><strong>Balloons, Table cloth, String lights</strong></p>
-                <p style="margin-top:8px;">See <a href="#receipt-requirements">Receipt Requirements</a> below for how to upload your receipt correctly.</p>
+                <p>For <em>"How should this expense be recorded?"</em> select <strong>Request reimbursement for an expense (with YM Bank Account)</strong>.</p>
+                <p style="margin-top:8px;">Fill in: Total Expense Amount, Expense Category, upload your receipt(s), and select your
+                  Reimbursement Method (Venmo, Zelle, or Check).</p>
+                <p style="margin-top:8px;">For <em>"Expense Details"</em> write a brief description:<br><strong>1/9/26
+                    NJ Gala – Decorations</strong></p>
+                <p style="margin-top:8px;">For <em>"Itemized Details"</em> list item names only — no prices, no
+                  tax:<br><strong>Balloons, Table cloth, String lights</strong></p>
+                <p style="margin-top:8px;">See <a href="#receipt-requirements">Receipt Requirements</a> below for how to
+                  upload your receipt correctly.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-n">3</div>
-              <div class="step-body"><h4>Send your reimbursement request</h4><p>Venmo request → <strong>@Young-Muslims</strong>, or Zelle → <strong>finance@ymsisters.com</strong>. Finance Team will process once both the JotForm and the request are received.</p></div>
+              <div class="step-body">
+                <h4>Send your reimbursement request</h4>
+                <p>Venmo request → <strong>@Young-Muslims</strong>, or Zelle → <strong>finance@ymsisters.com</strong>.
+                  Finance Team will process once both the JotForm and the request are received.</p>
+              </div>
             </div>
           </div>
           <div class="step-body" style="padding: 10px 0 4px;">
             <h4>That's it!</h4>
-            <p>Finance Team will review, approve, and issue your reimbursement. See <a href="#approval">Section 09</a> for details on the approval process.</p>
+            <p>Finance Team will review, approve, and issue your reimbursement. See <a href="#approval">Section 09</a>
+              for details on the approval process.</p>
           </div>
         </div>
         <div class="card bar-red">
@@ -1679,26 +1996,39 @@
           <div class="steps" style="margin-top:12px;">
             <div class="step">
               <div class="step-n">1</div>
-              <div class="step-body"><h4>Purchase is made</h4><p>A shura member covers the cost out of their own pocket.</p></div>
+              <div class="step-body">
+                <h4>Purchase is made</h4>
+                <p>A shura member covers the cost out of their own pocket.</p>
+              </div>
             </div>
             <div class="step">
               <div class="step-n">2</div>
-              <div class="step-body"><h4>NNC reimburses them directly</h4><p>The NNC pays them back using the Cash Box or Personal Bank Account.<br><br><strong>Cash Box</strong> — hand them the cash physically.<br><strong>Personal Bank Account</strong> — Zelle or Venmo them from the YM funds the NNC holds in their personal bank.</p></div>
+              <div class="step-body">
+                <h4>NNC reimburses them directly</h4>
+                <p>The NNC pays them back using the Cash Box or Personal Bank Account.<br><br><strong>Cash Box</strong>
+                  — hand them the cash physically.<br><strong>Personal Bank Account</strong> — Zelle or Venmo them from
+                  the YM funds the NNC holds in their personal bank.</p>
+              </div>
             </div>
             <div class="step">
               <div class="step-n">3</div>
               <div class="step-body">
                 <h4>Submit a JotForm</h4>
-                <p>Fill in: Total Expense Amount, Expense Category, upload your receipt(s), and indicate which fund was used (Cash Box or Personal Bank Account).</p>
-                <p style="margin-top:8px;">For <em>"Expense Details"</em> write a brief description:<br><strong>1/9/26 NJ Gala – Decorations</strong></p>
-                <p style="margin-top:8px;">For <em>"Itemized Details"</em> list item names only — no prices, no tax:<br><strong>Balloons, Table cloth, String lights</strong></p>
-                <p style="margin-top:8px;">See <a href="#receipt-requirements">Receipt Requirements</a> below for how to upload your receipt correctly.</p>
+                <p>Fill in: Total Expense Amount, Expense Category, upload your receipt(s), and indicate which fund was
+                  used (Cash Box or Personal Bank Account).</p>
+                <p style="margin-top:8px;">For <em>"Expense Details"</em> write a brief description:<br><strong>1/9/26
+                    NJ Gala – Decorations</strong></p>
+                <p style="margin-top:8px;">For <em>"Itemized Details"</em> list item names only — no prices, no
+                  tax:<br><strong>Balloons, Table cloth, String lights</strong></p>
+                <p style="margin-top:8px;">See <a href="#receipt-requirements">Receipt Requirements</a> below for how to
+                  upload your receipt correctly.</p>
               </div>
             </div>
           </div>
           <div class="step-body" style="padding: 10px 0 4px;">
             <h4>That's it!</h4>
-            <p>This submission only records the expense on the dashboard. No reimbursement is sent since the person has already been paid.</p>
+            <p>This submission only records the expense on the dashboard. No reimbursement is sent since the person has
+              already been paid.</p>
           </div>
         </div>
       </div>
@@ -1751,30 +2081,36 @@
         </tbody>
       </table>
 
-      <div class="sub-title" id="transportation" style="margin-top: 28px;">Transportation Reimbursements (Gas &amp; Tolls)</div>
+      <div class="sub-title" id="transportation" style="margin-top: 28px;">Transportation Reimbursements (Gas &amp;
+        Tolls)</div>
       <div class="card">
         <h3>Getting Reimbursed for Gas or Tolls</h3>
-        <p style="margin-top: 8px;">If you drove for a YM trip and need to be reimbursed for gas or tolls, here's how to calculate the cost and submit it correctly.</p>
+        <p style="margin-top: 8px;">If you drove for a YM trip and need to be reimbursed for gas or tolls, here's how to
+          calculate the cost and submit it correctly.</p>
         <div class="steps" style="margin-top: 14px;">
           <div class="step">
             <div class="step-n">1</div>
             <div class="step-body">
               <h4>Calculate your gas and toll costs</h4>
-              <p>Use the <a href="https://tollguru.com/toll-calculator" target="_blank" rel="noopener" style="color: var(--blue);">TollGuru Toll Calculator</a> to get an accurate estimate. If you made stops along the way to pick up girls, add those stops to the route — those miles count.</p>
+              <p>Use the <a href="https://tollguru.com/toll-calculator" target="_blank" rel="noopener"
+                  style="color: var(--blue);">TollGuru Toll Calculator</a> to get an accurate estimate. If you made
+                stops along the way to pick up girls, add those stops to the route — those miles count.</p>
             </div>
           </div>
           <div class="step">
             <div class="step-n">2</div>
             <div class="step-body">
               <h4>Screenshot the totals</h4>
-              <p>Take a screenshot of the calculated totals from TollGuru. This is your receipt — upload it to your JotForm.</p>
+              <p>Take a screenshot of the calculated totals from TollGuru. This is your receipt — upload it to your
+                JotForm.</p>
             </div>
           </div>
           <div class="step">
             <div class="step-n">3</div>
             <div class="step-body">
               <h4>Fill out JotForm as an Expense</h4>
-              <p>For <em>"How should this expense be recorded?"</em> select <strong>Request reimbursement for an expense (with YM Bank Account)</strong>.</p>
+              <p>For <em>"How should this expense be recorded?"</em> select <strong>Request reimbursement for an expense
+                  (with YM Bank Account)</strong>.</p>
               <p style="margin-top: 8px;">Amount: the total from TollGuru</p>
               <p style="margin-top: 8px;">Category: <strong>Transportation</strong></p>
               <p style="margin-top: 8px;">Receipt: upload your TollGuru screenshot</p>
@@ -1787,42 +2123,63 @@
       <div class="receipt-grid">
         <div class="receipt-card">
           <h4>No Personal Purchases on Receipt</h4>
-          <p>Each YM purchase must be on its own separate receipt. Do not include personal items on the same transaction — keep YM and personal purchases completely separate.</p>
+          <p>Each YM purchase must be on its own separate receipt. Do not include personal items on the same transaction
+            — keep YM and personal purchases completely separate.</p>
           <p style="margin-top: 10px; font-weight: 600; font-size: 13px; color: var(--green);">Finance Team Tip</p>
-          <p style="font-size: 13px;">If you need to make personal purchases at the same store, buy your personal items first, then make a second, separate transaction for the YM expenses. Upload only that second receipt to your JotForm.</p>
+          <p style="font-size: 13px;">If you need to make personal purchases at the same store, buy your personal items
+            first, then make a second, separate transaction for the YM expenses. Upload only that second receipt to your
+            JotForm.</p>
         </div>
         <div class="receipt-card">
           <h4>Upload Invoice/Receipt as PDF for Online Purchases (e.g. Amazon)</h4>
-          <p>Screenshots of order pages are not accepted. Download the order confirmation or invoice as a PDF, then upload the PDF as your receipt.</p>
+          <p>Screenshots of order pages are not accepted. Download the order confirmation or invoice as a PDF, then
+            upload the PDF as your receipt.</p>
           <p style="margin-top: 10px; font-weight: 600; font-size: 13px;">For Amazon orders:</p>
           <ol style="margin: 6px 0 0 16px; font-size: 13px; line-height: 1.75; color: var(--label-1);">
             <li>Sign in to Amazon</li>
             <li>Go to <strong>Returns &amp; Orders</strong></li>
             <li>Find your purchase and click <strong>Invoice</strong> or <strong>Order Details</strong></li>
             <li>Select <strong>View Invoice</strong> to open the printable version</li>
-            <li>Press <strong>Cmd+P</strong> (Mac) or <strong>Ctrl+P</strong> (Windows), then choose <strong>Save as PDF</strong></li>
+            <li>Press <strong>Cmd+P</strong> (Mac) or <strong>Ctrl+P</strong> (Windows), then choose <strong>Save as
+                PDF</strong></li>
           </ol>
         </div>
         <div class="receipt-card">
           <h4>Paying a Vendor via Zelle or Venmo</h4>
-          <p>If you paid a vendor directly through Zelle or Venmo (e.g. a calligrapher, a rental company, a caterer), always ask them for an invoice first. If they don't have one — for example, if the arrangement was made informally over WhatsApp — a screenshot of the payment confirmation is accepted as your receipt.</p>
+          <p>If you paid a vendor directly through Zelle or Venmo (e.g. a calligrapher, a rental company, a caterer),
+            always ask them for an invoice first. If they don't have one — for example, if the arrangement was made
+            informally over WhatsApp — a screenshot of the payment confirmation is accepted as your receipt.</p>
         </div>
         <div class="receipt-card">
           <h4>Paper Receipts Must Be Fully Visible</h4>
-          <p>Take a clear photo of the entire receipt — all items, prices, and the total must be readable. If the receipt is long, lay it flat and capture it in full. Blurry or cut-off photos will not be approved.</p>
+          <p>Take a clear photo of the entire receipt — all items, prices, and the total must be readable. If the
+            receipt is long, lay it flat and capture it in full. Blurry or cut-off photos will not be approved.</p>
         </div>
       </div>
 
       <div class="card" style="border-left: 3px solid var(--pink); margin-top: 24px;">
-        <p style="font-size: 13px; font-weight: 600; color: var(--pink); letter-spacing: 0.02em; text-transform: none; margin: 0 0 8px;">A Note from Finance 💌</p>
+        <p
+          style="font-size: 13px; font-weight: 600; color: var(--pink); letter-spacing: 0.02em; text-transform: none; margin: 0 0 8px;">
+          A Note from Finance 💌</p>
         <h3>When to Use Cash for Reimbursements</h3>
-        <p style="margin-top: 8px;">Only use cash when you can give the person the exact amount they are owed. This usually works best for simple, whole-dollar amounts.</p>
-        <div style="margin-top: 16px; padding-top: 14px; border-top: 0.5px solid var(--sep-opaque); display: flex; flex-direction: column; gap: 4px;">
+        <p style="margin-top: 8px;">Only use cash when you can give the person the exact amount they are owed. This
+          usually works best for simple, whole-dollar amounts.</p>
+        <div
+          style="margin-top: 16px; padding-top: 14px; border-top: 0.5px solid var(--sep-opaque); display: flex; flex-direction: column; gap: 4px;">
           <p style="font-size: 13px; font-weight: 600; color: var(--pink);">Why cash reimbursements can be tricky</p>
-          <p style="font-size: 13px; color: var(--label-2); line-height: 1.6;">Many purchases include cents. For example, imagine you have $150 in your cashbox and someone needs to be reimbursed $19.78. It may be difficult to give them the exact amount in cash, which can make it tempting to round the reimbursement up to a cleaner number.</p>
-          <p style="font-size: 13px; color: var(--label-2); line-height: 1.6; margin-top: 8px;">Even though the difference may seem small, that is not proper accounting. If someone is owed $19.78, they should receive exactly $19.78 — not $20.</p>
-          <p style="font-size: 13px; color: var(--label-2); line-height: 1.6; margin-top: 8px;">This is also part of handling the community's money with proper Islamic financial etiquette.</p>
-          <p style="font-size: 13px; color: var(--label-2); line-height: 1.6; margin-top: 8px;">For this reason, reimbursements should usually be made through the YM Bank account, where you can send the exact amount down to the cent. Cash should only be used when the reimbursement amount is simple, exact, and easy to document — which in practice is rare.</p>
+          <p style="font-size: 13px; color: var(--label-2); line-height: 1.6;">Many purchases include cents. For
+            example, imagine you have $150 in your cashbox and someone needs to be reimbursed $19.78. It may be
+            difficult to give them the exact amount in cash, which can make it tempting to round the reimbursement up to
+            a cleaner number.</p>
+          <p style="font-size: 13px; color: var(--label-2); line-height: 1.6; margin-top: 8px;">Even though the
+            difference may seem small, that is not proper accounting. If someone is owed $19.78, they should receive
+            exactly $19.78 — not $20.</p>
+          <p style="font-size: 13px; color: var(--label-2); line-height: 1.6; margin-top: 8px;">This is also part of
+            handling the community's money with proper Islamic financial etiquette.</p>
+          <p style="font-size: 13px; color: var(--label-2); line-height: 1.6; margin-top: 8px;">For this reason,
+            reimbursements should usually be made through the YM Bank account, where you can send the exact amount down
+            to the cent. Cash should only be used when the reimbursement amount is simple, exact, and easy to document —
+            which in practice is rare.</p>
         </div>
       </div>
 
@@ -1833,37 +2190,49 @@
       <div class="section-header"><span class="section-num">05</span>
         <h2>Pre-Approved Lump Sum</h2>
       </div>
-      <p class="body-text">A Pre-Approved Lump Sum is when Nationals sends funds to your NN upfront — for when you need money before an event to cover costs like venue fees, event supplies, food, or speaker honorariums. This is different from making a purchase out of pocket and submitting for reimbursement afterward. Lump Sum requests require dual approval from Finance Team and your SR before any funds are sent.</p>
+      <p class="body-text">A Pre-Approved Lump Sum is when Nationals sends funds to your NN upfront — for when you need
+        money before an event to cover costs like venue fees, event supplies, food, or speaker honorariums. This is
+        different from making a purchase out of pocket and submitting for reimbursement afterward. Lump Sum requests
+        require dual approval from Finance Team and your SR before any funds are sent.</p>
       <div class="card">
-          <h3>How to Request a Lump Sum</h3>
-          <div class="lt-item">
-            <div class="lt-dot">1</div>
-            <div class="lt-content">
-              <h4>Email Finance Team to Request Approval</h4>
-              <p>Send an email to <strong>finance@ymsisters.com</strong> and CC your SR Finance Lead (may be your SRC) explaining what the lump sum is for and how much you need. Wait for approval from both Finance Team and your SR before moving forward.</p>
-            </div>
+        <h3>How to Request a Lump Sum</h3>
+        <div class="lt-item">
+          <div class="lt-dot">1</div>
+          <div class="lt-content">
+            <h4>Email Finance Team to Request Approval</h4>
+            <p>Send an email to <strong>finance@ymsisters.com</strong> and CC your SR Finance Lead (may be your SRC)
+              explaining what the lump sum is for and how much you need. Wait for approval from both Finance Team and
+              your SR before moving forward.</p>
           </div>
-          <div class="lt-item">
-            <div class="lt-dot">2</div>
-            <div class="lt-content">
-              <h4>Submit Internal Transfer + Venmo/Zelle Request</h4>
-              <p>Once approved, submit an <strong>Internal Transfer JotForm</strong> (YM Bank → Personal Bank Account) to log the movement on your dashboard — then send a Venmo request to <strong>@Young-Muslims</strong> or Zelle to <strong>finance@ymsisters.com</strong> for the approved amount to receive the actual funds. See <a href="#transfers">Section 06a</a>.</p>
-            </div>
+        </div>
+        <div class="lt-item">
+          <div class="lt-dot">2</div>
+          <div class="lt-content">
+            <h4>Submit Internal Transfer + Venmo/Zelle Request</h4>
+            <p>Once approved, submit an <strong>Internal Transfer JotForm</strong> (YM Bank → Personal Bank Account) to
+              log the movement on your dashboard — then send a Venmo request to <strong>@Young-Muslims</strong> or Zelle
+              to <strong>finance@ymsisters.com</strong> for the approved amount to receive the actual funds. See <a
+                href="#transfers">Section 06a</a>.</p>
           </div>
-          <div class="lt-item">
-            <div class="lt-dot">3</div>
-            <div class="lt-content">
-              <h4>Submit Lump Sum Report — Within 14 Days</h4>
-              <p>Reply in the same email thread with a breakdown of how the funds were used, the event name, and any leftover balance.</p>
-            </div>
+        </div>
+        <div class="lt-item">
+          <div class="lt-dot">3</div>
+          <div class="lt-content">
+            <h4>Submit Lump Sum Report — Within 14 Days</h4>
+            <p>Reply in the same email thread with a breakdown of how the funds were used, the event name, and any
+              leftover balance.</p>
           </div>
-          <div class="lt-item">
-            <div class="lt-dot">4</div>
-            <div class="lt-content">
-              <h4>Return Unused Funds — Within 7 Business Days</h4>
-              <p>Any unused funds must be returned within 7 business days after report submission. Submit an <strong>Internal Transfer JotForm</strong> (Personal Bank Account → YM Bank) to log the return, then send the funds via Venmo to <strong>@Young-Muslims</strong> or Zelle to <strong>finance@ymsisters.com</strong>.</p>
-            </div>
+        </div>
+        <div class="lt-item">
+          <div class="lt-dot">4</div>
+          <div class="lt-content">
+            <h4>Return Unused Funds — Within 7 Business Days</h4>
+            <p>Any unused funds must be returned within 7 business days after report submission. Submit an
+              <strong>Internal Transfer JotForm</strong> (Personal Bank Account → YM Bank) to log the return, then send
+              the funds via Venmo to <strong>@Young-Muslims</strong> or Zelle to <strong>finance@ymsisters.com</strong>.
+            </p>
           </div>
+        </div>
       </div>
     </section>
 
@@ -1872,27 +2241,34 @@
       <div class="section-header"><span class="section-num">06</span>
         <h2>Transfers</h2>
       </div>
-      <p class="body-text">Any time money moves between accounts — whether within your own team, between two NNs, between Sisters and Brothers, or from your NN to your SR — you need to log it. There are four types of transfer submissions, each covered in its own sub-section.</p>
+      <p class="body-text">Any time money moves between accounts — whether within your own team, between two NNs,
+        between Sisters and Brothers, or from your NN to your SR — you need to log it. There are four types of transfer
+        submissions, each covered in its own sub-section.</p>
       <div class="account-cards" style="grid-template-columns: repeat(2, 1fr);">
         <div class="account-card">
           <span class="account-tag tag-nat">06a</span>
           <h3><a href="#transfers" style="color: inherit; text-decoration: none;">Internal Transfer</a></h3>
-          <p>Money moving between your own team's accounts — Cash Box, YM Bank, or NNC Personal Bank. The money is already in your YM system; you're just moving it from one pocket to another.</p>
+          <p>Money moving between your own team's accounts — Cash Box, YM Bank, or NNC Personal Bank. The money is
+            already in your YM system; you're just moving it from one pocket to another.</p>
         </div>
         <div class="account-card gold-top">
           <span class="account-tag tag-local">06b</span>
           <h3><a href="#nntransfer" style="color: inherit; text-decoration: none;">NN-to-NN Transfer</a></h3>
-          <p>Money moving between your NN and another NN for a collab event. Up to 3 JotForms are required to correctly reflect the split on both teams' dashboards.</p>
+          <p>Money moving between your NN and another NN for a collab event. Up to 3 JotForms are required to correctly
+            reflect the split on both teams' dashboards.</p>
         </div>
         <div class="account-card purple-top">
           <span class="account-tag tag-personal">06c</span>
-          <h3><a href="#brotherstransfer" style="color: inherit; text-decoration: none;">Sisters ↔ Brothers Settlement</a></h3>
-          <p>Money moving between a YM Sisters NN and a YM Brothers chapter for a joint event. Only the Sisters side submits JotForms.</p>
+          <h3><a href="#brotherstransfer" style="color: inherit; text-decoration: none;">Sisters ↔ Brothers
+              Settlement</a></h3>
+          <p>Money moving between a YM Sisters NN and a YM Brothers chapter for a joint event. Only the Sisters side
+            submits JotForms.</p>
         </div>
         <div class="account-card teal-top">
           <span class="account-tag tag-sr">06d</span>
           <h3><a href="#srtransfer" style="color: inherit; text-decoration: none;">NN→SR Fund Reallocation</a></h3>
-          <p>Money moving from your NN to your SR — either to cover your share of an SR event that went over budget, or to move surplus funds that your chapter won't realistically spend.</p>
+          <p>Money moving from your NN to your SR — either to cover your share of an SR event that went over budget, or
+            to move surplus funds that your chapter won't realistically spend.</p>
         </div>
       </div>
     </section>
@@ -1902,26 +2278,35 @@
       <div class="section-header"><span class="section-num">06a</span>
         <h2>Internal Transfer</h2>
       </div>
-      <p class="body-text">Many NNs select "Internal Transfer" incorrectly. Read this carefully before selecting this transaction type on the JotForm.</p>
+      <p class="body-text">Many NNs select "Internal Transfer" incorrectly. Read this carefully before selecting this
+        transaction type on the JotForm.</p>
       <div class="two-col">
         <div class="card bar-income">
           <h3>Internal Transfer IS:</h3>
-          <p>Moving money <strong>between your team's own existing YM accounts</strong>. The money is already in your YM system — you're just moving it from one pocket to another.</p>
+          <p>Moving money <strong>between your team's own existing YM accounts</strong>. The money is already in your YM
+            system — you're just moving it from one pocket to another.</p>
           <ul class="plain" style="margin-top:8px;">
             <li>YM Bank → Cash Box</li>
             <li>Cash Box → YM Bank</li>
             <li>Personal Bank Account → YM Bank</li>
             <li>YM Bank → Personal Bank Account</li>
           </ul>
-          <div class="callout callout-info" style="margin-top:12px; font-size:13px;"><strong>Example:</strong> Your cashbox has $40 and you want to transfer it to the YM Bank. Submit an Internal Transfer for Cash Box → YM Bank for $40.</div>
+          <div class="callout callout-info" style="margin-top:12px; font-size:13px;"><strong>Example:</strong> Your
+            cashbox has $40 and you want to transfer it to the YM Bank. Submit an Internal Transfer for Cash Box → YM
+            Bank for $40.</div>
         </div>
         <div class="card bar-red">
           <h3>Internal Transfer is NOT:</h3>
-          <p>When <strong>brand new money</strong> arrives to your NNC — that's <strong>Income</strong>, not an Internal Transfer.</p>
+          <p>When <strong>brand new money</strong> arrives to your NNC — that's <strong>Income</strong>, not an Internal
+            Transfer.</p>
           <div class="callout callout-info" style="margin-top:10px; font-size:13px;">
-            <strong>Example:</strong> Your NNC was sent $50 for event dues via Zelle for this past event. That's new money entering your YM system — submit an <strong>Income</strong> JotForm. You have two options for where to log it:<br><br>
-            <strong>Log to Personal Bank Account</strong> — if your NNC wants to keep the funds in their personal bank account like it is right now.<br><br>
-            <strong>Log to YM Bank (recommended)</strong> — if you want to send it straight to nationals right away. Follow the steps in <a href="#income">Section 03 — If you received a digital payment (Zelle / Venmo)</a>.
+            <strong>Example:</strong> Your NNC was sent $50 for event dues via Zelle for this past event. That's new
+            money entering your YM system — submit an <strong>Income</strong> JotForm. You have two options for where to
+            log it:<br><br>
+            <strong>Log to Personal Bank Account</strong> — if your NNC wants to keep the funds in their personal bank
+            account like it is right now.<br><br>
+            <strong>Log to YM Bank (recommended)</strong> — if you want to send it straight to nationals right away.
+            Follow the steps in <a href="#income">Section 03 — If you received a digital payment (Zelle / Venmo)</a>.
           </div>
         </div>
       </div>
@@ -1930,22 +2315,26 @@
       <div class="two-col" style="margin-bottom: 14px;">
         <div class="card bar-income">
           <h3>YM Bank → Cash Box</h3>
-          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Use this when you need to withdraw cash from your YM Bank to have on hand.</p>
+          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Use this when you need to withdraw cash
+            from your YM Bank to have on hand.</p>
           <div class="steps" style="margin-top:12px;">
             <div class="step">
               <div class="step-n">1</div>
               <div class="step-body">
                 <h4>Submit an Internal Transfer JotForm</h4>
                 <p>From: <strong>YM Bank</strong> → To: <strong>Cash Box</strong><br>
-                Enter the amount and a brief description (e.g., <em>Withdrawing cash for 2/1/26 NJ Gala expenses</em>).<br>
-                For <em>"How would you like the funds transferred?"</em> select <strong>I would like a check mailed to me</strong>.</p>
+                  Enter the amount and a brief description (e.g., <em>Withdrawing cash for 2/1/26 NJ Gala
+                    expenses</em>).<br>
+                  For <em>"How would you like the funds transferred?"</em> select <strong>I would like a check mailed to
+                    me</strong>.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-n">2</div>
               <div class="step-body">
                 <h4>Receive and cash the check</h4>
-                <p>Finance Team will review and mail you a check. Once received, cash it and place the funds in your cashbox.</p>
+                <p>Finance Team will review and mail you a check. Once received, cash it and place the funds in your
+                  cashbox.</p>
               </div>
             </div>
           </div>
@@ -1956,7 +2345,8 @@
         </div>
         <div class="card bar-income">
           <h3>Cash Box → YM Bank</h3>
-          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Use this when you want to send cash you're holding up to your YM Bank.</p>
+          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Use this when you want to send cash
+            you're holding up to your YM Bank.</p>
           <div class="steps" style="margin-top:12px;">
             <div class="step">
               <div class="step-n">1</div>
@@ -1969,7 +2359,8 @@
               <div class="step-n">2</div>
               <div class="step-body">
                 <h4>Send the funds to YM Bank</h4>
-                <p>Venmo → <strong>@Young-Muslims</strong>, or Zelle → <strong>finance@ymsisters.com</strong> for the exact amount.</p>
+                <p>Venmo → <strong>@Young-Muslims</strong>, or Zelle → <strong>finance@ymsisters.com</strong> for the
+                  exact amount.</p>
               </div>
             </div>
             <div class="step">
@@ -1977,7 +2368,8 @@
               <div class="step-body">
                 <h4>Submit an Internal Transfer JotForm</h4>
                 <p>From: <strong>Cash Box</strong> → To: <strong>YM Bank</strong><br>
-                Enter the amount and a brief description (e.g., <em>Depositing cash from 1/9/26 NJ Gala Ticket Revenue</em>).</p>
+                  Enter the amount and a brief description (e.g., <em>Depositing cash from 1/9/26 NJ Gala Ticket
+                    Revenue</em>).</p>
               </div>
             </div>
           </div>
@@ -1990,13 +2382,15 @@
       <div class="two-col" style="margin-bottom: 14px;">
         <div class="card bar-income">
           <h3>Personal Bank Account → YM Bank</h3>
-          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Use this when YM funds sitting in your NNC's personal bank are ready to be sent to your YM Bank account.</p>
+          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Use this when YM funds sitting in your
+            NNC's personal bank are ready to be sent to your YM Bank account.</p>
           <div class="steps" style="margin-top:12px;">
             <div class="step">
               <div class="step-n">1</div>
               <div class="step-body">
                 <h4>Send the funds to YM Bank</h4>
-                <p>Venmo → <strong>@Young-Muslims</strong>, or Zelle → <strong>finance@ymsisters.com</strong> for the exact amount.</p>
+                <p>Venmo → <strong>@Young-Muslims</strong>, or Zelle → <strong>finance@ymsisters.com</strong> for the
+                  exact amount.</p>
               </div>
             </div>
             <div class="step">
@@ -2004,7 +2398,7 @@
               <div class="step-body">
                 <h4>Submit an Internal Transfer JotForm</h4>
                 <p>From: <strong>Personal Bank Account</strong> → To: <strong>YM Bank</strong><br>
-                Enter the amount and a brief description (e.g., <em>Moving Venmo funds to YM Bank</em>).</p>
+                  Enter the amount and a brief description (e.g., <em>Moving Venmo funds to YM Bank</em>).</p>
               </div>
             </div>
           </div>
@@ -2015,22 +2409,25 @@
         </div>
         <div class="card bar-income">
           <h3>YM Bank → Personal Bank Account</h3>
-          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Use this when you need YM funds moved from your YM Bank into your NNC's personal bank.</p>
+          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Use this when you need YM funds moved
+            from your YM Bank into your NNC's personal bank.</p>
           <div class="steps" style="margin-top:12px;">
             <div class="step">
               <div class="step-n">1</div>
               <div class="step-body">
                 <h4>Submit an Internal Transfer JotForm</h4>
                 <p>From: <strong>YM Bank</strong> → To: <strong>Personal Bank Account</strong><br>
-                Enter the amount and a brief description.<br>
-                For <em>"How would you like the funds transferred?"</em> select <strong>Zelle (I submitted a request to finance@ymsisters.com)</strong>.</p>
+                  Enter the amount and a brief description.<br>
+                  For <em>"How would you like the funds transferred?"</em> select <strong>Zelle (I submitted a request
+                    to finance@ymsisters.com)</strong>.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-n">2</div>
               <div class="step-body">
                 <h4>Send a Zelle request to finance</h4>
-                <p>Request the amount from <strong>finance@ymsisters.com</strong> via Zelle so finance can send you the funds.</p>
+                <p>Request the amount from <strong>finance@ymsisters.com</strong> via Zelle so finance can send you the
+                  funds.</p>
               </div>
             </div>
           </div>
@@ -2048,21 +2445,27 @@
       <div class="section-header"><span class="section-num">06b</span>
         <h2>NN-to-NN Transfer (Collab Events)</h2>
       </div>
-      <p class="body-text">When two NNs collaborate on an event and split costs, each NN submits their own JotForms. The number of forms depends on which NN paid upfront.</p>
-      <div class="callout callout-info" style="margin-bottom: 20px;"><strong>Scenario:</strong> YM Murphy and YM Richardson host a collab event. Fatima (Murphy NNC) pays $50 for pizza out of her own pocket. YM Richardson owes YM Murphy $25 for their half.</div>
+      <p class="body-text">When two NNs collaborate on an event and split costs, each NN submits their own JotForms. The
+        number of forms depends on which NN paid upfront.</p>
+      <div class="callout callout-info" style="margin-bottom: 20px;"><strong>Scenario:</strong> YM Murphy and YM
+        Richardson host a collab event. Fatima (Murphy NNC) pays $50 for pizza out of her own pocket. YM Richardson owes
+        YM Murphy $25 for their half.</div>
 
       <div class="two-col">
         <div class="card">
           <h3>YM Murphy Steps <span style="font-weight:400; color:var(--label-2);">(NN that Paid Upfront)</span></h3>
-          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Fatima covered the full $50. YM Murphy needs to get her reimbursed and log the $25 coming back from YM Richardson.</p>
+          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Fatima covered the full $50. YM Murphy
+            needs to get her reimbursed and log the $25 coming back from YM Richardson.</p>
           <div class="steps" style="margin-top:12px;">
             <div class="step">
               <div class="step-n">1</div>
               <div class="step-body">
                 <h4>Submit an Expense JotForm — Fatima's Reimbursement</h4>
-                <p>For <em>"How should this expense be recorded?"</em> select <strong>Request reimbursement for an expense (with YM Bank Account)</strong>.</p>
+                <p>For <em>"How should this expense be recorded?"</em> select <strong>Request reimbursement for an
+                    expense (with YM Bank Account)</strong>.</p>
                 <p style="margin-top:12px;">Amount: $50</p>
-                <p style="margin-top:12px;">Category: use the category that matches the purchase (see <a href="#expenses">Section 04 Expense Categories</a>)</p>
+                <p style="margin-top:12px;">Category: use the category that matches the purchase (see <a
+                    href="#expenses">Section 04 Expense Categories</a>)</p>
                 <p style="margin-top:12px;">Send a Venmo/Zelle request so Fatima gets paid back.</p>
               </div>
             </div>
@@ -2071,7 +2474,8 @@
               <div class="step-body">
                 <h4>Submit an Income JotForm once YM Richardson sends their $25</h4>
                 <p>Only submit this once YM Richardson's payment has been received.</p>
-                <p style="margin-top:12px;">For <em>"Where is this income being recorded/held?"</em> select <strong>Deposit to our YM Bank Account</strong>.</p>
+                <p style="margin-top:12px;">For <em>"Where is this income being recorded/held?"</em> select
+                  <strong>Deposit to our YM Bank Account</strong>.</p>
                 <p style="margin-top:12px;">Amount: $25</p>
                 <p style="margin-top:12px;">Category: <strong>NN-NN Transfer</strong></p>
               </div>
@@ -2079,18 +2483,21 @@
           </div>
           <div class="step-body" style="padding: 10px 0 4px;">
             <h4>That's it!</h4>
-            <p>Fatima is reimbursed $50. YM Murphy's dashboard shows a $50 expense offset by $25 income — net cost to YM Murphy is $25. ✓</p>
+            <p>Fatima is reimbursed $50. YM Murphy's dashboard shows a $50 expense offset by $25 income — net cost to YM
+              Murphy is $25. ✓</p>
           </div>
         </div>
         <div class="card">
           <h3>YM Richardson Steps <span style="font-weight:400; color:var(--label-2);">(Other NN in Collab)</span></h3>
-          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">YM Murphy covered the full cost. YM Richardson needs to send their $25 share and log it as an expense.</p>
+          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">YM Murphy covered the full cost. YM
+            Richardson needs to send their $25 share and log it as an expense.</p>
           <div class="steps" style="margin-top:12px;">
             <div class="step">
               <div class="step-n">1</div>
               <div class="step-body">
                 <h4>Submit an Expense JotForm — Sending Their Share</h4>
-                <p>For <em>"How should this expense be recorded?"</em> select <strong>Request transfer to another NN for collab expenses (with YM Bank Account)</strong>.</p>
+                <p>For <em>"How should this expense be recorded?"</em> select <strong>Request transfer to another NN for
+                    collab expenses (with YM Bank Account)</strong>.</p>
                 <p style="margin-top:12px;">Amount: $25</p>
                 <p style="margin-top:12px;">Category: <strong>NN-NN Transfer</strong></p>
                 <p style="margin-top:12px;">This records $25 leaving YM Richardson's dashboard.</p>
@@ -2110,21 +2517,28 @@
       <div class="section-header"><span class="section-num">06c</span>
         <h2>Sisters ↔ Brothers Settlement (Joint Events)</h2>
       </div>
-      <p class="body-text">When YM Sisters and YM Brothers co-host an event and split costs, <strong>only the Sisters side submits our JotForm</strong>. YM Brothers do not use our system. The following are the steps to follow when settling finances for a joint event:</p>
+      <p class="body-text">When YM Sisters and YM Brothers co-host an event and split costs, <strong>only the Sisters
+          side submits our JotForm</strong>. YM Brothers do not use our system. The following are the steps to follow
+        when settling finances for a joint event:</p>
 
       <div class="two-col case-pair" style="margin-top: 20px;">
         <div class="card">
           <h3>Case A — Sisters Paid Upfront</h3>
-          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Your NNC covered the full cost. You need to get reimbursed and log the payment you receive back from Brothers.</p>
-          <div class="callout callout-info" style="margin-bottom:14px; font-size:13px;"><strong>Scenario:</strong> YM Teaneck Sisters and YM Teaneck Brothers co-host a YM Family Night. Total cost for food is $100, split 50/50. Your NNC paid the full $100 upfront.</div>
+          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Your NNC covered the full cost. You need
+            to get reimbursed and log the payment you receive back from Brothers.</p>
+          <div class="callout callout-info" style="margin-bottom:14px; font-size:13px;"><strong>Scenario:</strong> YM
+            Teaneck Sisters and YM Teaneck Brothers co-host a YM Family Night. Total cost for food is $100, split 50/50.
+            Your NNC paid the full $100 upfront.</div>
           <div class="steps" style="margin-top:12px;">
             <div class="step">
               <div class="step-n">1</div>
               <div class="step-body">
                 <h4>Submit an Expense JotForm</h4>
-                <p>For <em>"How should this expense be recorded?"</em> select <strong>Request reimbursement for an expense (with YM Bank Account)</strong>.</p>
+                <p>For <em>"How should this expense be recorded?"</em> select <strong>Request reimbursement for an
+                    expense (with YM Bank Account)</strong>.</p>
                 <p style="margin-top:12px;">Amount: $100</p>
-                <p style="margin-top:12px;">Category: use the category that matches the purchase (e.g. NN Operations, Tarbiyyah — see <a href="#expenses">Section 04 Expense Categories</a>)</p>
+                <p style="margin-top:12px;">Category: use the category that matches the purchase (e.g. NN Operations,
+                  Tarbiyyah — see <a href="#expenses">Section 04 Expense Categories</a>)</p>
                 <p style="margin-top:12px;">Send a Venmo/Zelle request so your NNC gets paid back.</p>
               </div>
             </div>
@@ -2132,7 +2546,8 @@
               <div class="step-n">2</div>
               <div class="step-body">
                 <h4>Contact the Finance Team</h4>
-                <p>Email <a href="mailto:finance@ymsisters.com">finance@ymsisters.com</a> to let them know your NN needs to receive a $50 payment from Brothers. Finance Team will coordinate with the Brothers chapter.</p>
+                <p>Email <a href="mailto:finance@ymsisters.com">finance@ymsisters.com</a> to let them know your NN needs
+                  to receive a $50 payment from Brothers. Finance Team will coordinate with the Brothers chapter.</p>
               </div>
             </div>
             <div class="step">
@@ -2140,7 +2555,8 @@
               <div class="step-body">
                 <h4>Submit an Income JotForm once payment is confirmed</h4>
                 <p>Only submit this after Finance Team confirms YM Sisters received the payment from Brothers.</p>
-                <p style="margin-top:12px;">For <em>"Where is this income being recorded/held?"</em> select <strong>Deposit to our YM Bank Account</strong>.</p>
+                <p style="margin-top:12px;">For <em>"Where is this income being recorded/held?"</em> select
+                  <strong>Deposit to our YM Bank Account</strong>.</p>
                 <p style="margin-top:12px;">Amount: $50</p>
                 <p style="margin-top:12px;">Category: <strong>Joint Events – Brothers Settlements</strong></p>
               </div>
@@ -2153,14 +2569,18 @@
         </div>
         <div class="card">
           <h3>Case B — Brothers Paid Upfront</h3>
-          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Brothers covered the full cost. You need to send your share to Brothers and log it as an expense.</p>
-          <div class="callout callout-info" style="margin-bottom:14px; font-size:13px;"><strong>Scenario:</strong> Same YM Family Night, but this time YM Teaneck Brothers paid the full $100. YM Teaneck Sisters owes Brothers $50.</div>
+          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Brothers covered the full cost. You need
+            to send your share to Brothers and log it as an expense.</p>
+          <div class="callout callout-info" style="margin-bottom:14px; font-size:13px;"><strong>Scenario:</strong> Same
+            YM Family Night, but this time YM Teaneck Brothers paid the full $100. YM Teaneck Sisters owes Brothers $50.
+          </div>
           <div class="steps" style="margin-top:12px;">
             <div class="step">
               <div class="step-n">1</div>
               <div class="step-body">
                 <h4>Submit an Expense JotForm</h4>
-                <p>For <em>"How should this expense be recorded?"</em> select <strong>Request transfer to YM Brothers for joint event expenses (with YM Bank Account)</strong>.</p>
+                <p>For <em>"How should this expense be recorded?"</em> select <strong>Request transfer to YM Brothers
+                    for joint event expenses (with YM Bank Account)</strong>.</p>
                 <p style="margin-top:12px;">Amount: $50</p>
                 <p style="margin-top:12px;">Category: <strong>Joint Events – Brothers Settlements</strong></p>
                 <p style="margin-top:12px;">This records $50 leaving your dashboard.</p>
@@ -2170,7 +2590,8 @@
               <div class="step-n">2</div>
               <div class="step-body">
                 <h4>Contact the Finance Team</h4>
-                <p>Email <a href="mailto:finance@ymsisters.com">finance@ymsisters.com</a> and ask the team to make the $50 payment to Brothers on your behalf.</p>
+                <p>Email <a href="mailto:finance@ymsisters.com">finance@ymsisters.com</a> and ask the team to make the
+                  $50 payment to Brothers on your behalf.</p>
               </div>
             </div>
           </div>
@@ -2187,20 +2608,26 @@
       <div class="section-header"><span class="section-num">06d</span>
         <h2>NN→SR Fund Reallocation</h2>
       </div>
-      <p class="body-text">There are two situations where your NN sends funds to your SR. Both require a conversation first — no money moves without both sides agreeing.</p>
+      <p class="body-text">There are two situations where your NN sends funds to your SR. Both require a conversation
+        first — no money moves without both sides agreeing.</p>
 
       <div class="two-col">
         <div class="card">
           <h3>Type A — Splitting an Event Cost Overage</h3>
-          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Your SR hosted an event with multiple NNs and it went over budget. The extra cost is split evenly between the NNs that were part of it.</p>
-          <div class="callout callout-info" style="margin-bottom:14px; font-size:13px;"><strong>Scenario:</strong> Your SR hosted an SR-wide event. It went $100 over budget and 4 NNs participated — each NN covers $25 of the overage.</div>
+          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Your SR hosted an event with multiple NNs
+            and it went over budget. The extra cost is split evenly between the NNs that were part of it.</p>
+          <div class="callout callout-info" style="margin-bottom:14px; font-size:13px;"><strong>Scenario:</strong> Your
+            SR hosted an SR-wide event. It went $100 over budget and 4 NNs participated — each NN covers $25 of the
+            overage.</div>
           <div class="steps" style="margin-top:12px;">
             <div class="step">
               <div class="step-n">1</div>
               <div class="step-body">
                 <h4>Submit an Expense JotForm</h4>
-                <p>For <em>"Which YM team type is this transaction for?"</em> select <strong>NeighborNet</strong>, then select your NeighborNet.</p>
-                <p style="margin-top:12px;">For <em>"How should this expense be recorded?"</em> select <strong>Request transfer to SR for event cost-share (with YM Bank Account)</strong>.</p>
+                <p>For <em>"Which YM team type is this transaction for?"</em> select <strong>NeighborNet</strong>, then
+                  select your NeighborNet.</p>
+                <p style="margin-top:12px;">For <em>"How should this expense be recorded?"</em> select <strong>Request
+                    transfer to SR for event cost-share (with YM Bank Account)</strong>.</p>
                 <p style="margin-top:12px;">Amount: your share of the overage (e.g. $25)</p>
                 <p style="margin-top:12px;">Category: <strong>SR Event – NN Cost-Share</strong></p>
               </div>
@@ -2209,8 +2636,10 @@
               <div class="step-n">2</div>
               <div class="step-body">
                 <h4>Submit an Income JotForm for your SR</h4>
-                <p>For <em>"Which YM team type is this transaction for?"</em> select <strong>SubRegion</strong>, then select your SR.</p>
-                <p style="margin-top:12px;">For <em>"Where is this income being recorded/held?"</em> select <strong>Deposit to our YM Bank Account</strong>.</p>
+                <p>For <em>"Which YM team type is this transaction for?"</em> select <strong>SubRegion</strong>, then
+                  select your SR.</p>
+                <p style="margin-top:12px;">For <em>"Where is this income being recorded/held?"</em> select
+                  <strong>Deposit to our YM Bank Account</strong>.</p>
                 <p style="margin-top:12px;">Amount: same as the expense (e.g. $25)</p>
                 <p style="margin-top:12px;">Category: <strong>SR Event – NN Cost-Share</strong></p>
               </div>
@@ -2218,28 +2647,39 @@
           </div>
           <div class="step-body" style="padding: 10px 0 4px;">
             <h4>That's it!</h4>
-            <p>Your NN's dashboard reflects the transfer to your SR. Your SR's dashboard reflects the transfer received from your NN. ✓</p>
+            <p>Your NN's dashboard reflects the transfer to your SR. Your SR's dashboard reflects the transfer received
+              from your NN. ✓</p>
           </div>
         </div>
 
         <div class="card">
           <h3>Type B — Sharing Surplus Funds</h3>
-          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Sometimes an NN ends up with way more money than it'll actually realistically spend. When that happens, the NN and SR can talk it through and agree to move some of that extra money to the SR so it can go toward programming instead of just sitting there.</p>
-          <div class="callout callout-info" style="margin-bottom:14px; font-size:13px;">When your NN fundraises, that money is raised for the whole organization and the NN is just the one holding onto it and putting it to work locally. So when extra funds move to the SR, it's the organization moving its own money to wherever it can actually be used, instead of letting it sit unused in one account. This can only happen if the NN and SR both talk about it and agree — no money can move without that conversation.</div>
+          <p style="font-size:13px; color:var(--label-2); margin-bottom:10px;">Sometimes an NN ends up with way more
+            money than it'll actually realistically spend. When that happens, the NN and SR can talk it through and
+            agree to move some of that extra money to the SR so it can go toward programming instead of just sitting
+            there.</p>
+          <div class="callout callout-info" style="margin-bottom:14px; font-size:13px;">When your NN fundraises, that
+            money is raised for the whole organization and the NN is just the one holding onto it and putting it to work
+            locally. So when extra funds move to the SR, it's the organization moving its own money to wherever it can
+            actually be used, instead of letting it sit unused in one account. This can only happen if the NN and SR
+            both talk about it and agree — no money can move without that conversation.</div>
           <div class="steps" style="margin-top:12px;">
             <div class="step">
               <div class="step-n">1</div>
               <div class="step-body">
                 <h4>Talk with your SRC first</h4>
-                <p>Have a conversation with your SRC and agree on the amount together. No funds move without mutual agreement.</p>
+                <p>Have a conversation with your SRC and agree on the amount together. No funds move without mutual
+                  agreement.</p>
               </div>
             </div>
             <div class="step">
               <div class="step-n">2</div>
               <div class="step-body">
                 <h4>Submit an Expense JotForm</h4>
-                <p>For <em>"Which YM team type is this transaction for?"</em> select <strong>NeighborNet</strong>, then select your NeighborNet.</p>
-                <p style="margin-top:12px;">For <em>"How should this expense be recorded?"</em> select <strong>Request transfer to SR for surplus reallocation (with YM Bank Account)</strong>.</p>
+                <p>For <em>"Which YM team type is this transaction for?"</em> select <strong>NeighborNet</strong>, then
+                  select your NeighborNet.</p>
+                <p style="margin-top:12px;">For <em>"How should this expense be recorded?"</em> select <strong>Request
+                    transfer to SR for surplus reallocation (with YM Bank Account)</strong>.</p>
                 <p style="margin-top:12px;">Amount: the amount you and your SRC agreed on</p>
                 <p style="margin-top:12px;">Category: <strong>NN-SR Fund Reallocation</strong></p>
               </div>
@@ -2248,8 +2688,10 @@
               <div class="step-n">3</div>
               <div class="step-body">
                 <h4>Submit an Income JotForm for your SR</h4>
-                <p>For <em>"Which YM team type is this transaction for?"</em> select <strong>SubRegion</strong>, then select your SR.</p>
-                <p style="margin-top:12px;">For <em>"Where is this income being recorded/held?"</em> select <strong>Deposit to our YM Bank Account</strong>.</p>
+                <p>For <em>"Which YM team type is this transaction for?"</em> select <strong>SubRegion</strong>, then
+                  select your SR.</p>
+                <p style="margin-top:12px;">For <em>"Where is this income being recorded/held?"</em> select
+                  <strong>Deposit to our YM Bank Account</strong>.</p>
                 <p style="margin-top:12px;">Amount: same as the expense</p>
                 <p style="margin-top:12px;">Category: <strong>NN-SR Fund Reallocation</strong></p>
               </div>
@@ -2257,7 +2699,8 @@
           </div>
           <div class="step-body" style="padding: 10px 0 4px;">
             <h4>That's it!</h4>
-            <p>Your NN's dashboard reflects the transfer to your SR. Your SR's dashboard reflects the transfer received from your NN. ✓</p>
+            <p>Your NN's dashboard reflects the transfer to your SR. Your SR's dashboard reflects the transfer received
+              from your NN. ✓</p>
           </div>
         </div>
       </div>
@@ -2271,21 +2714,33 @@
       <div class="card">
         <h3>Storage Requirements</h3>
         <ul class="plain">
-          <li>Keep all cash in a secure safe or lockbox <a href="https://www.amazon.com/Jssmst-Large-Cash-Box-Lock/dp/B072DWDNV9/ref=sr_1_7?channelId=500&clpRedir=Y&dib=eyJ2IjoiMSJ9.L47QcGfkt5M7kWNAuSZU-8mB5T-KufM-WmG5DkZctw9k0O5bGCDO4fpwHJGyk8Mo9NkgUIzXEFlPJas7TQRw3bUDdxuQxzUL-FHq4LywnzhStUQH4pt8Dd01ljMyc9kKqJ4F8stUK6FV6R0t7QgQMER6vICCcXkcp6VUSVH8TVBJuP6Lg8b4aKW1WBrbv7LdFZn6jzEeOi9_D0FbNJOMCxHo1L8ZevvBwUd33jL7O_JA8qbhEUgY0F4lNcMrAPrVLf4hc9KBYY7gkoZESCG7dKpZmmbNurJNHzzSe6gSv6E.6UNBIKdVPXuOeXSsyaC1qLUwZJ65qBQWRldrMLuPfUs&dib_tag=se&keywords=cash%2Bbox&plpRedirect=mhFallback&qid=1784663582&sr=8-7&th=1" target="_blank" style="font-size: 12px; color: var(--blue);">— consider this one</a></li>
+          <li>Keep all cash in a secure safe or lockbox <a
+              href="https://www.amazon.com/Jssmst-Large-Cash-Box-Lock/dp/B072DWDNV9/ref=sr_1_7?channelId=500&clpRedir=Y&dib=eyJ2IjoiMSJ9.L47QcGfkt5M7kWNAuSZU-8mB5T-KufM-WmG5DkZctw9k0O5bGCDO4fpwHJGyk8Mo9NkgUIzXEFlPJas7TQRw3bUDdxuQxzUL-FHq4LywnzhStUQH4pt8Dd01ljMyc9kKqJ4F8stUK6FV6R0t7QgQMER6vICCcXkcp6VUSVH8TVBJuP6Lg8b4aKW1WBrbv7LdFZn6jzEeOi9_D0FbNJOMCxHo1L8ZevvBwUd33jL7O_JA8qbhEUgY0F4lNcMrAPrVLf4hc9KBYY7gkoZESCG7dKpZmmbNurJNHzzSe6gSv6E.6UNBIKdVPXuOeXSsyaC1qLUwZJ65qBQWRldrMLuPfUs&dib_tag=se&keywords=cash%2Bbox&plpRedirect=mhFallback&qid=1784663582&sr=8-7&th=1"
+              target="_blank" style="font-size: 12px; color: var(--blue);">— consider this one</a></li>
           <li>Only NNC and NN Finance Lead may have access</li>
           <li>Cash must never be mixed with personal money</li>
-          <li><span><strong>NNs may hold a maximum of $200 cash on hand.</strong> Anything above $200 should be sent to your YM Bank Account via Internal Transfer (see <a href="#transfers">Section 06a</a>)</span></li>
-          <li><span><strong>SRs may not hold cash on hand</strong> — all funds must go to the YM Bank Account</span></li>
+          <li><span><strong>NNs may hold a maximum of $200 cash on hand.</strong> Anything above $200 should be sent to
+              your YM Bank Account via Internal Transfer (see <a href="#transfers">Section 06a</a>)</span></li>
+          <li><span><strong>SRs may not hold cash on hand</strong> — all funds must go to the YM Bank Account</span>
+          </li>
         </ul>
       </div>
       <div class="card" style="border-left: 3px solid var(--pink); margin-top: 16px;">
-        <p style="font-size: 13px; font-weight: 600; color: var(--pink); letter-spacing: 0.02em; text-transform: none; margin: 0 0 8px;">A Note from Finance 💌</p>
+        <p
+          style="font-size: 13px; font-weight: 600; color: var(--pink); letter-spacing: 0.02em; text-transform: none; margin: 0 0 8px;">
+          A Note from Finance 💌</p>
         <h3>Why the $200 Limit Matters</h3>
-        <p style="margin-top: 8px;">NN funds are an amanah — money that the community has trusted you to protect and manage responsibly.</p>
-        <p style="margin-top: 8px;">The more cash you keep locally, the greater the risk of it being lost, stolen, misplaced, or mixed up with personal money. Once cash is in your possession, you are responsible for keeping it safe and accounting for every dollar.</p>
-        <div style="margin-top: 16px; padding-top: 14px; border-top: 0.5px solid var(--sep-opaque); display: flex; flex-direction: column; gap: 4px;">
+        <p style="margin-top: 8px;">NN funds are an amanah — money that the community has trusted you to protect and
+          manage responsibly.</p>
+        <p style="margin-top: 8px;">The more cash you keep locally, the greater the risk of it being lost, stolen,
+          misplaced, or mixed up with personal money. Once cash is in your possession, you are responsible for keeping
+          it safe and accounting for every dollar.</p>
+        <div
+          style="margin-top: 16px; padding-top: 14px; border-top: 0.5px solid var(--sep-opaque); display: flex; flex-direction: column; gap: 4px;">
           <p style="font-size: 13px; font-weight: 600; color: var(--pink);">What to do</p>
-          <p style="font-size: 13px; color: var(--label-2); line-height: 1.6;">Once the cashbox reaches $200, send the extra funds to the YM Bank through an Internal Transfer. The money is safer there, easier to track, and frees you of the liability.</p>
+          <p style="font-size: 13px; color: var(--label-2); line-height: 1.6;">Once the cashbox reaches $200, send the
+            extra funds to the YM Bank through an Internal Transfer. The money is safer there, easier to track, and
+            frees you of the liability.</p>
         </div>
       </div>
     </section>
@@ -2295,20 +2750,26 @@
       <div class="section-header"><span class="section-num">08</span>
         <h2>Understanding Your Dashboard</h2>
       </div>
-      <p class="body-text">All NNCs and their NN Shuras have commentator access to their NN's Finance Dashboards in Google Sheets. This dashboard tracks and analyzes your NN's financial activity in real time, reflecting what has been submitted via JotForm.</p>
+      <p class="body-text">All NNCs and their NN Shuras have commentator access to their NN's Finance Dashboards in
+        Google Sheets. This dashboard tracks and analyzes your NN's financial activity in real time, reflecting what has
+        been submitted via JotForm.</p>
 
       <div class="sub-title">Dashboard Tabs</div>
       <div class="card" style="margin-bottom:10px;">
         <h3>Dashboard Tab</h3>
-        <p>The overview tab. Shows your total income, total expenses, net balance (YTD), and transaction count. Also includes your top 3 expenses and income entries, top spending months, a quarterly breakdown, and charts for income vs. expenses by account and by category.</p>
+        <p>The overview tab. Shows your total income, total expenses, net balance (YTD), and transaction count. Also
+          includes your top 3 expenses and income entries, top spending months, a quarterly breakdown, and charts for
+          income vs. expenses by account and by category.</p>
       </div>
       <div class="card" style="margin-bottom:10px;">
         <h3>Year Tabs (2026, 2025, 2024…)</h3>
-        <p>Every approved JotForm submission appears as a row here. This is the tab to reference when reviewing submission logs and checking account balances.</p>
+        <p>Every approved JotForm submission appears as a row here. This is the tab to reference when reviewing
+          submission logs and checking account balances.</p>
       </div>
       <div class="card" style="margin-bottom:10px;">
         <h3>Denied Requests Tab</h3>
-        <p>Shows all JotForm submissions Finance Team has denied. If your submission is denied, you will receive an email from Finance Team explaining why — check that email, correct the issue, and resubmit.</p>
+        <p>Shows all JotForm submissions Finance Team has denied. If your submission is denied, you will receive an
+          email from Finance Team explaining why — check that email, correct the issue, and resubmit.</p>
       </div>
 
       <div class="sub-title" style="margin-top:28px;">Year Tab — Column Reference</div>
@@ -2370,7 +2831,8 @@
           </tr>
           <tr>
             <td>Status</td>
-            <td>Approved ✓ or Pending — entries in this tab are either approved or awaiting review. Denied submissions appear in the Denied Requests tab instead.</td>
+            <td>Approved ✓ or Pending — entries in this tab are either approved or awaiting review. Denied submissions
+              appear in the Denied Requests tab instead.</td>
           </tr>
         </tbody>
       </table>
@@ -2384,18 +2846,26 @@
       <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin: 20px 0;">
         <div class="flow" style="margin:0; flex:1; min-width:280px;">
           <div class="flow-step"><span class="flow-step-n">Step 1</span>Fill out and submit JotForm with YM email</div>
-          <div class="flow-step"><span class="flow-step-n">Step 2</span>You'll receive an email confirmation that Finance Team has received your submission</div>
-          <div class="flow-step"><span class="flow-step-n">Step 3</span>Finance Team reviews and approves / denies daily</div>
+          <div class="flow-step"><span class="flow-step-n">Step 2</span>You'll receive an email confirmation that
+            Finance Team has received your submission</div>
+          <div class="flow-step"><span class="flow-step-n">Step 3</span>Finance Team reviews and approves / denies daily
+          </div>
         </div>
         <div style="font-size:26px; color:var(--label-3); flex:0 0 auto; line-height:1;">›</div>
         <div style="display:flex; flex-direction:column; gap:8px; flex:0 0 260px;">
           <div class="card" style="border-left:3px solid var(--green); margin:0; padding:14px 16px;">
-            <span style="font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--label-3); display:block; margin-bottom:6px;">If Approved</span>
-            <p style="font-size:13px; color:var(--label-2); line-height:1.5; margin:0;">The entry's status in your dashboard switches from Pending to Approved</p>
+            <span
+              style="font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--label-3); display:block; margin-bottom:6px;">If
+              Approved</span>
+            <p style="font-size:13px; color:var(--label-2); line-height:1.5; margin:0;">The entry's status in your
+              dashboard switches from Pending to Approved</p>
           </div>
           <div class="card" style="border-left:3px solid var(--red); margin:0; padding:14px 16px;">
-            <span style="font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--label-3); display:block; margin-bottom:6px;">If Denied</span>
-            <p style="font-size:13px; color:var(--label-2); line-height:1.5; margin:0;">You receive a follow-up email with the reason, and the entry appears in the <strong>Denied Requests</strong> tab of your dashboard</p>
+            <span
+              style="font-size:10px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--label-3); display:block; margin-bottom:6px;">If
+              Denied</span>
+            <p style="font-size:13px; color:var(--label-2); line-height:1.5; margin:0;">You receive a follow-up email
+              with the reason, and the entry appears in the <strong>Denied Requests</strong> tab of your dashboard</p>
           </div>
         </div>
       </div>
@@ -2421,7 +2891,8 @@
             <div class="step-n">1</div>
             <div class="step-body">
               <h4>Dashboard Review</h4>
-              <p>The National Finance Team reviews your dashboard — current balance, income and expenses, spending trends, and use of JotForm — and comes with a list of questions</p>
+              <p>The National Finance Team reviews your dashboard — current balance, income and expenses, spending
+                trends, and use of JotForm — and comes with a list of questions</p>
             </div>
           </div>
           <div class="step">
@@ -2435,22 +2906,27 @@
             <div class="step-n">3</div>
             <div class="step-body">
               <h4>Audit Call</h4>
-              <p>Finance Team schedules a call with NN leadership and SR Finance Lead (optional) to go through their questions, clarify patterns, and address concerns. NN leadership also has the opportunity to ask questions and discuss strategies or ideas</p>
+              <p>Finance Team schedules a call with NN leadership and SR Finance Lead (optional) to go through their
+                questions, clarify patterns, and address concerns. NN leadership also has the opportunity to ask
+                questions and discuss strategies or ideas</p>
             </div>
           </div>
           <div class="step">
             <div class="step-n">4</div>
             <div class="step-body">
               <h4>Action Items Sent</h4>
-              <p>After the call, the National Finance Team sends over action items for both NN leadership and the Finance Team based on what was discussed</p>
+              <p>After the call, the National Finance Team sends over action items for both NN leadership and the
+                Finance Team based on what was discussed</p>
             </div>
           </div>
         </div>
       </div>
       <div class="sub-title" style="margin-top:28px;">Topics That May Come Up in Your Audit</div>
-      <div class="flag-item">Missing JotForm entries for expenses incurred or income generated from events that took place during the year</div>
+      <div class="flag-item">Missing JotForm entries for expenses incurred or income generated from events that took
+        place during the year</div>
       <div class="flag-item">Frequent denied reimbursement submissions</div>
-      <div class="flag-item">Potential inconsistencies between YM Bank, Cash Box, and Personal Bank logs and the actual account balances</div>
+      <div class="flag-item">Potential inconsistencies between YM Bank, Cash Box, and Personal Bank logs and the actual
+        account balances</div>
       <div class="flag-item">Underspending with no clear purpose for accumulated funds</div>
     </section>
 
@@ -2459,36 +2935,58 @@
       <div class="section-header"><span class="section-num">11</span>
         <h2>Case Study: Bouquet Making Event</h2>
       </div>
-      <div class="callout callout-info" style="margin-bottom:24px;"><strong>Scenario:</strong> Your NN hosts a bouquet-making craft night. An event lead buys $80 worth of supplies out of pocket ahead of time — $50 for flowers and $30 for pizza. Attendees pay a $5 entrance fee at the door — 15 pay via Zelle ($75 to NNC's personal bank) and 5 pay in cash ($25). This walkthrough shows exactly which JotForms to submit and how each one affects the dashboard.</div>
+      <div class="callout callout-info" style="margin-bottom:24px;"><strong>Scenario:</strong> Your NN hosts a
+        bouquet-making craft night. An event lead buys $80 worth of supplies out of pocket ahead of time — $50 for
+        flowers and $30 for pizza. Attendees pay a $5 entrance fee at the door — 15 pay via Zelle ($75 to NNC's personal
+        bank) and 5 pay in cash ($25). This walkthrough shows exactly which JotForms to submit and how each one affects
+        the dashboard.</div>
 
       <div class="sub-title">The Numbers</div>
       <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:12px 0 12px;">
-        <div style="background:var(--surface); border:0.5px solid var(--sep-opaque); border-radius:var(--r2); padding:16px 14px; text-align:center; box-shadow:var(--s1);">
-          <div style="font-size:11px; color:var(--label-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">YM Bank (Start)</div>
+        <div
+          style="background:var(--surface); border:0.5px solid var(--sep-opaque); border-radius:var(--r2); padding:16px 14px; text-align:center; box-shadow:var(--s1);">
+          <div
+            style="font-size:11px; color:var(--label-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">
+            YM Bank (Start)</div>
           <div style="font-size:24px; font-weight:700; color:var(--label-1); letter-spacing:-0.02em;">$100</div>
         </div>
-        <div style="background:var(--surface); border:0.5px solid var(--sep-opaque); border-radius:var(--r2); padding:16px 14px; text-align:center; box-shadow:var(--s1);">
-          <div style="font-size:11px; color:var(--label-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">Cashbox (Start)</div>
+        <div
+          style="background:var(--surface); border:0.5px solid var(--sep-opaque); border-radius:var(--r2); padding:16px 14px; text-align:center; box-shadow:var(--s1);">
+          <div
+            style="font-size:11px; color:var(--label-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">
+            Cashbox (Start)</div>
           <div style="font-size:24px; font-weight:700; color:var(--label-1); letter-spacing:-0.02em;">$20</div>
         </div>
-        <div style="background:var(--surface); border:0.5px solid var(--sep-opaque); border-radius:var(--r2); padding:16px 14px; text-align:center; box-shadow:var(--s1);">
-          <div style="font-size:11px; color:var(--label-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">Total (Start)</div>
+        <div
+          style="background:var(--surface); border:0.5px solid var(--sep-opaque); border-radius:var(--r2); padding:16px 14px; text-align:center; box-shadow:var(--s1);">
+          <div
+            style="font-size:11px; color:var(--label-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">
+            Total (Start)</div>
           <div style="font-size:24px; font-weight:700; color:var(--label-1); letter-spacing:-0.02em;">$120</div>
         </div>
       </div>
       <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:0 0 32px;">
-        <div style="background:var(--red-fill); border:0.5px solid rgba(255,59,48,0.18); border-radius:var(--r2); padding:16px 14px; text-align:center;">
-          <div style="font-size:11px; color:var(--label-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">Total Purchased</div>
+        <div
+          style="background:var(--red-fill); border:0.5px solid rgba(255,59,48,0.18); border-radius:var(--r2); padding:16px 14px; text-align:center;">
+          <div
+            style="font-size:11px; color:var(--label-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">
+            Total Purchased</div>
           <div style="font-size:24px; font-weight:700; color:var(--red); letter-spacing:-0.02em;">$80</div>
           <div style="font-size:11px; color:var(--label-3); margin-top:6px;">flowers $50 + pizza $30</div>
         </div>
-        <div style="background:var(--green-fill); border:0.5px solid rgba(26,122,74,0.20); border-radius:var(--r2); padding:16px 14px; text-align:center;">
-          <div style="font-size:11px; color:var(--label-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">Income via Zelle</div>
+        <div
+          style="background:var(--green-fill); border:0.5px solid rgba(26,122,74,0.20); border-radius:var(--r2); padding:16px 14px; text-align:center;">
+          <div
+            style="font-size:11px; color:var(--label-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">
+            Income via Zelle</div>
           <div style="font-size:24px; font-weight:700; color:var(--green); letter-spacing:-0.02em;">$75</div>
           <div style="font-size:11px; color:var(--label-3); margin-top:6px;">15 girls × $5</div>
         </div>
-        <div style="background:var(--green-fill); border:0.5px solid rgba(26,122,74,0.20); border-radius:var(--r2); padding:16px 14px; text-align:center;">
-          <div style="font-size:11px; color:var(--label-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">Income via Cash</div>
+        <div
+          style="background:var(--green-fill); border:0.5px solid rgba(26,122,74,0.20); border-radius:var(--r2); padding:16px 14px; text-align:center;">
+          <div
+            style="font-size:11px; color:var(--label-3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;">
+            Income via Cash</div>
           <div style="font-size:24px; font-weight:700; color:var(--green); letter-spacing:-0.02em;">$25</div>
           <div style="font-size:11px; color:var(--label-3); margin-top:6px;">5 girls × $5</div>
         </div>
@@ -2504,7 +3002,8 @@
               <div class="step-body">
                 <h4>Fill out JotForm as an Expense</h4>
                 <p>Amount: $80 (flowers + pizza)</p>
-                <p style="margin-top:8px;">Account: YM Bank Account — select <strong>Request reimbursement for an expense (with YM Bank Account)</strong></p>
+                <p style="margin-top:8px;">Account: YM Bank Account — select <strong>Request reimbursement for an
+                    expense (with YM Bank Account)</strong></p>
                 <p style="margin-top:8px;">Category: matching purchase category</p>
               </div>
             </div>
@@ -2512,7 +3011,8 @@
               <div class="step-n">2</div>
               <div class="step-body">
                 <h4>Send reimbursement request to Finance Team</h4>
-                <p>Send a Venmo request to @Young-Muslims or a Zelle request to finance@ymsisters.com. Finance Team will reimburse the event lead directly.</p>
+                <p>Send a Venmo request to @Young-Muslims or a Zelle request to finance@ymsisters.com. Finance Team will
+                  reimburse the event lead directly.</p>
                 <p style="margin-top:8px; color:var(--label-3);">YM Bank: $100 → $20 after reimbursement</p>
               </div>
             </div>
@@ -2536,7 +3036,8 @@
               <div class="step-body">
                 <h4>Fill out JotForm as an Income (Zelle)</h4>
                 <p>Amount: $75</p>
-                <p style="margin-top:8px;">Account: YM Bank Account — select <strong>Deposit to our YM Bank Account</strong></p>
+                <p style="margin-top:8px;">Account: YM Bank Account — select <strong>Deposit to our YM Bank
+                    Account</strong></p>
                 <p style="margin-top:8px; color:var(--label-3);">YM Bank: $20 → $95</p>
               </div>
             </div>
@@ -2558,8 +3059,10 @@
           <div class="amount">$95</div>
           <div class="was">was $100</div>
           <div style="margin-top:10px; display:flex; gap:6px; justify-content:center; flex-wrap:wrap;">
-            <span style="font-size:11px; font-weight:600; color:#c0392b; background:#fff; border-radius:20px; padding:2px 8px;">−$80</span>
-            <span style="font-size:11px; font-weight:600; color:#1a7a4a; background:#fff; border-radius:20px; padding:2px 8px;">+$75</span>
+            <span
+              style="font-size:11px; font-weight:600; color:#c0392b; background:#fff; border-radius:20px; padding:2px 8px;">−$80</span>
+            <span
+              style="font-size:11px; font-weight:600; color:#1a7a4a; background:#fff; border-radius:20px; padding:2px 8px;">+$75</span>
           </div>
         </div>
         <div class="balance-box">
@@ -2567,7 +3070,8 @@
           <div class="amount">$45</div>
           <div class="was">was $20</div>
           <div style="margin-top:10px; display:flex; gap:6px; justify-content:center;">
-            <span style="font-size:11px; font-weight:600; color:#1a7a4a; background:#fff; border-radius:20px; padding:2px 8px;">+$25</span>
+            <span
+              style="font-size:11px; font-weight:600; color:#1a7a4a; background:#fff; border-radius:20px; padding:2px 8px;">+$25</span>
           </div>
         </div>
         <div class="balance-box">
@@ -2575,7 +3079,8 @@
           <div class="amount">$140</div>
           <div class="was">was $120</div>
           <div style="margin-top:10px; display:flex; gap:6px; justify-content:center;">
-            <span style="font-size:11px; font-weight:600; color:#1a7a4a; background:#fff; border-radius:20px; padding:2px 8px;">+$20</span>
+            <span
+              style="font-size:11px; font-weight:600; color:#1a7a4a; background:#fff; border-radius:20px; padding:2px 8px;">+$20</span>
           </div>
         </div>
       </div>
@@ -2590,11 +3095,27 @@
         <div>
           <div class="resource-grid">
             <div class="resource-card"><span class="aud-tag aud-all">Everyone</span>
-              <h4><a href="https://docs.google.com/spreadsheets/d/1ovnwlXeTWRiNmhbk6z5trel8SivDzLRMI2DR9s7Z7VE/edit?pli=1&gid=2003773609#gid=2003773609" target="_blank" rel="noopener">Dashboard Master Directory <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-left:2px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></h4>
+              <h4><a
+                  href="https://docs.google.com/spreadsheets/d/1ovnwlXeTWRiNmhbk6z5trel8SivDzLRMI2DR9s7Z7VE/edit?pli=1&gid=2003773609#gid=2003773609"
+                  target="_blank" rel="noopener">Dashboard Master Directory <svg xmlns="http://www.w3.org/2000/svg"
+                    width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round"
+                    style="display:inline;vertical-align:middle;margin-left:2px;">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg></a></h4>
               <p>Central spreadsheet with links to all NN and SR Finance Dashboards.</p>
             </div>
             <div class="resource-card"><span class="aud-tag aud-all">Everyone</span>
-              <h4><a href="https://www.jotform.com/form/253554976363065" target="_blank" rel="noopener">JotForm <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-left:2px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></h4>
+              <h4><a href="https://www.jotform.com/form/253554976363065" target="_blank" rel="noopener">JotForm <svg
+                    xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                    style="display:inline;vertical-align:middle;margin-left:2px;">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg></a></h4>
               <p>The form for all income, expenses, and transfers. Use your YM email only.</p>
             </div>
             <div class="resource-card"><span class="aud-tag aud-all">Everyone</span>
@@ -2602,8 +3123,16 @@
               <p>Templates and resources for running fundraising events and donation campaigns.</p>
             </div>
             <div class="resource-card"><span class="aud-tag aud-all">Everyone</span>
-              <h4><a href="https://tollguru.com/toll-calculator" target="_blank" rel="noopener">TollGuru Toll Calculator <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-left:2px;"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></h4>
-              <p>Calculate gas and toll costs for YM trips. Add all stops including pick-ups, then screenshot the totals to use as your receipt.</p>
+              <h4><a href="https://tollguru.com/toll-calculator" target="_blank" rel="noopener">TollGuru Toll Calculator
+                  <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                    style="display:inline;vertical-align:middle;margin-left:2px;">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg></a></h4>
+              <p>Calculate gas and toll costs for YM trips. Add all stops including pick-ups, then screenshot the totals
+                to use as your receipt.</p>
             </div>
           </div>
         </div>
@@ -2637,7 +3166,8 @@
           </div>
         </div>
       </div>
-      <div class="callout callout-rule" style="margin-top:16px;"><strong>Questions?</strong> Reach out to the Finance Team
+      <div class="callout callout-rule" style="margin-top:16px;"><strong>Questions?</strong> Reach out to the Finance
+        Team
         Department at <strong>finance@ymsisters.com</strong>.</div>
     </section>
 
@@ -2646,7 +3176,8 @@
   <footer>
 
     <p>Young Muslims · Finance Department · <a href="mailto:finance@ymsisters.com">finance@ymsisters.com</a></p>
-    <p style="margin-top:8px; opacity:0.4; font-size:11px;">NeighborNet Finances Handbook v1 - July 2026 · For Internal Use Only
+    <p style="margin-top:8px; opacity:0.4; font-size:11px;">NeighborNet Finances Handbook v1 - July 2026 · For Internal
+      Use Only
     </p>
   </footer>
 </body>
